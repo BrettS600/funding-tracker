@@ -6,7 +6,8 @@
   "2026-09-27",
   "2026-10-04",
   "2026-10-11",
-  "2026-10-18"
+  "2026-10-18",
+  "2026-10-25"
  ],
  "meta": {
   "schema": "nih-weekly-1"
@@ -12899,6 +12900,16 @@
       "pi_email": "orwigke@upmc.edu",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11645297"
+     }
+    ],
+    "2026-10-25": [
+     {
+      "amount": 672881,
+      "core": "R33HD117426",
+      "label": "$672,881",
+      "pi": "Lisa Cencia Rohan",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11645331"
      }
     ]
    },
