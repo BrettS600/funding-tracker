@@ -72850,6 +72850,159 @@
    }
   ]
  },
+ "lisa cencia rohan|university of pittsburgh at pittsburgh": {
+  "author_ids": [
+   "https://openalex.org/A5011885117"
+  ],
+  "checked": "2026-11-02",
+  "match": "exact",
+  "rows": [
+   {
+    "abs": true,
+    "pmid": "42514978",
+    "position": "last",
+    "title": "Determining Critical Physiological and Drug Specific Parameters for Enhancing a Physiologically Based Pharmacokinetics Model for the Female Reproductive Tract",
+    "url": "https://doi.org/10.3390/pharmaceutics18070903",
+    "year": 2026
+   },
+   {
+    "abs": true,
+    "pmid": "42198764",
+    "position": "last",
+    "title": "In Vitro Pharmacokinetic Properties of MK-2048, a Potent Drug Candidate for HIV Prevention",
+    "url": "https://doi.org/10.3390/v18050561",
+    "year": 2026
+   },
+   {
+    "abs": false,
+    "pmid": "",
+    "position": "middle",
+    "title": "An Extended-Release Injectable Suspension of Meloxicam for Pain Management in Veterinary Applications",
+    "url": "https://doi.org/10.1007/s12247-026-10559-1",
+    "year": 2026
+   },
+   {
+    "abs": true,
+    "pmid": "40447283",
+    "position": "middle",
+    "title": "Anal Sex and Tenofovir Douche Sequence Impacts Colorectal Distribution of HIV Surrogate and Douche: DREAM-02",
+    "url": "https://doi.org/10.1093/infdis/jiaf286",
+    "year": 2025
+   },
+   {
+    "abs": true,
+    "pmid": "39814320",
+    "position": "last",
+    "title": "Engineering vaginal film platform for mucoadhesion and sustained drug release for HIV-1 prevention",
+    "url": "https://doi.org/10.1016/j.jconrel.2025.01.011",
+    "year": 2025
+   },
+   {
+    "abs": true,
+    "pmid": "39847455",
+    "position": "middle",
+    "title": "Rectal Douche as HIV Pre-Exposure Prophylaxis for Receptive Anal Intercourse: An End User Tenofovir Powder Sachet Preparation Feasibility Study (DREAM-04)",
+    "url": "https://doi.org/10.1097/qai.0000000000003608",
+    "year": 2025
+   },
+   {
+    "abs": false,
+    "pmid": "",
+    "position": "middle",
+    "title": "Fused Deposition Modeling-Based 3D Printing as a Versatile Technology to Manufacture Vaginal Films Incorporating Metronidazole",
+    "url": "https://doi.org/10.1007/s12247-024-09870-6",
+    "year": 2024
+   },
+   {
+    "abs": true,
+    "pmid": "38066471",
+    "position": "middle",
+    "title": "A latent trajectory analysis of young sexual and gender minorities\u2019 adherence to three rectal microbicide placebo formulations (MTN-035; a randomized crossover trial)",
+    "url": "https://doi.org/10.1186/s12889-023-17368-y",
+    "year": 2023
+   },
+   {
+    "abs": true,
+    "pmid": "38019657",
+    "position": "middle",
+    "title": "Tenofovir Douche as HIV Preexposure Prophylaxis for Receptive Anal Intercourse: Safety, Acceptability, Pharmacokinetics, and Pharmacodynamics (DREAM 01)",
+    "url": "https://doi.org/10.1093/infdis/jiad535",
+    "year": 2023
+   },
+   {
+    "abs": true,
+    "pmid": "37638127",
+    "position": "last",
+    "title": "Tenofovir vaginal film as a potential MPT product against HIV-1 and HSV-2 acquisition: formulation development and preclinical assessment in non-human primates",
+    "url": "https://doi.org/10.3389/frph.2023.1217835",
+    "year": 2023
+   },
+   {
+    "abs": true,
+    "pmid": "37382422",
+    "position": "last",
+    "title": "Intracellular Islatravir-Triphosphate in Dried Blood Spots and Peripheral Blood Mononuclear Cells from Pig-Tailed Macaques",
+    "url": "https://doi.org/10.1089/aid.2023.0059",
+    "year": 2023
+   },
+   {
+    "abs": true,
+    "pmid": "37161022",
+    "position": "middle",
+    "title": "A topical rectal douche product containing Q-Griffithsin does not disrupt the epithelial border or alter CD4+ cell distribution in the human rectal mucosa",
+    "url": "https://doi.org/10.1038/s41598-023-34107-w",
+    "year": 2023
+   },
+   {
+    "abs": true,
+    "pmid": "36477356",
+    "position": "middle",
+    "title": "Hypo-osmolar rectal douche tenofovir formulation prevents simian/human immunodeficiency virus acquisition in macaques",
+    "url": "https://doi.org/10.1172/jci.insight.161577",
+    "year": 2022
+   },
+   {
+    "abs": false,
+    "pmid": "",
+    "position": "middle",
+    "title": "A Phase 1a/1b Clinical Trial Design to Assess Safety, Acceptability, Pharmacokinetics and Tolerability of Intranasal Q-Griffithsin for COVID-19 Prophylaxis",
+    "url": "https://doi.org/10.55504/2473-2869.1250",
+    "year": 2022
+   },
+   {
+    "abs": true,
+    "pmid": "36329822",
+    "position": "middle",
+    "title": "Antiviral lectin Q-Griffithsin suppresses fungal infection in murine models of vaginal candidiasis",
+    "url": "https://doi.org/10.3389/fcimb.2022.976033",
+    "year": 2022
+   },
+   {
+    "abs": true,
+    "pmid": "36145696",
+    "position": "last",
+    "title": "Transport and Permeation Properties of Dapivirine: Understanding Potential Drug-Drug Interactions",
+    "url": "https://doi.org/10.3390/pharmaceutics14091948",
+    "year": 2022
+   },
+   {
+    "abs": true,
+    "pmid": "35335526",
+    "position": "last",
+    "title": "Development and Evaluation of Nanoparticles-in-Film Technology to Achieve Extended In Vivo Exposure of MK-2048 for HIV Prevention",
+    "url": "https://doi.org/10.3390/polym14061196",
+    "year": 2022
+   },
+   {
+    "abs": true,
+    "pmid": "34959473",
+    "position": "last",
+    "title": "Investigating the Contribution of Drug-Metabolizing Enzymes in Drug-Drug Interactions of Dapivirine and Miconazole",
+    "url": "https://doi.org/10.3390/pharmaceutics13122193",
+    "year": 2021
+   }
+  ]
+ },
  "liuqing yang|university of tx md anderson can ctr": {
   "author_ids": [
    "https://openalex.org/A5052747073",

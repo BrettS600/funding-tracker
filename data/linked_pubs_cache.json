@@ -110,7 +110,7 @@
   "year": 2026
  },
  "DP2AI192730": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "DP2AI192743": {
@@ -160,7 +160,7 @@
   "pmid": null
  },
  "DP2CA325959": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "DP2EB035905": {
@@ -1705,7 +1705,7 @@
   "pmid": null
  },
  "R01AR086165": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R01AR086251": {
@@ -1977,7 +1977,7 @@
   "pmid": null
  },
  "R01CA308075": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R01CA309441": {
@@ -1985,7 +1985,7 @@
   "pmid": null
  },
  "R01CA309939": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R01CA310975": {
@@ -2005,7 +2005,7 @@
   "pmid": null
  },
  "R01CA316439": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R01CA325384": {
@@ -2254,7 +2254,7 @@
   "year": 2025
  },
  "R01FD008794": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R01GM080203": {
@@ -2420,7 +2420,7 @@
   "pmid": null
  },
  "R01HD120668": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R01HD121516": {
@@ -3320,7 +3320,7 @@
   "pmid": null
  },
  "R13FD008396": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R13HD122396": {
@@ -3533,19 +3533,19 @@
   "pmid": null
  },
  "R21AR088737": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R21AR088867": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R21AR088908": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R21AT014079": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R21CA307416": {
@@ -3553,7 +3553,7 @@
   "pmid": null
  },
  "R21CA308699": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R21CA312975": {
@@ -3561,7 +3561,7 @@
   "pmid": null
  },
  "R21CA317193": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R21DE036374": {
@@ -3904,6 +3904,10 @@
   "url": "https://doi.org/10.1111/psrh.12294",
   "year": 2025
  },
+ "R33HD117426": {
+  "checked": "2026-11-02",
+  "pmid": null
+ },
  "R33HL164873": {
   "abs": true,
   "checked": "2026-09-23",
@@ -3971,7 +3975,7 @@
   "pmid": null
  },
  "R34MH136243": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R34MH138249": {
@@ -4439,7 +4443,7 @@
   "pmid": null
  },
  "R37CA311186": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "R37NS128416": {
@@ -4993,11 +4997,11 @@
   "year": 2025
  },
  "U01FD008646": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U01FD008648": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U01FD008727": {
@@ -5026,7 +5030,7 @@
   "year": 2026
  },
  "U01NS129143": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U01NS131086": {
@@ -5066,71 +5070,71 @@
   "year": 2024
  },
  "U18FD008480": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008900": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008901": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008909": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008912": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008915": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008920": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008931": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008935": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008937": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008939": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008941": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008944": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008945": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008946": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008953": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008962": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008964": {
@@ -5138,7 +5142,7 @@
   "pmid": null
  },
  "U18FD008965": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U19AI171110": {
@@ -5329,7 +5333,7 @@
   "year": 2026
  },
  "U54AI205728": {
-  "checked": "2026-09-28",
+  "checked": "2026-11-02",
   "pmid": null
  },
  "U54AR068069": {
