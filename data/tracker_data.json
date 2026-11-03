@@ -64,6 +64,23 @@
    "funder": "NIH (NHLBI)",
    "university": "Albany Medical College"
   },
+  "albany medical college||physiology||nih (nia)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 205000,
+      "core": "R21AG099011",
+      "label": "$205,000",
+      "pi": "Antonio Paul",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11301548"
+     }
+    ]
+   },
+   "department": "Physiology",
+   "funder": "NIH (NIA)",
+   "university": "Albany Medical College"
+  },
   "albert einstein college of medicine||--||nih (nci)": {
    "cells": {
     "2026-09-06": [
@@ -152,6 +169,40 @@
    },
    "department": "Anatomy/cell Biology",
    "funder": "NIH (NIA)",
+   "university": "Albert Einstein College of Medicine"
+  },
+  "albert einstein college of medicine||biochemistry||nih (nci)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 400000,
+      "core": "R25CA314975",
+      "label": "$400,000",
+      "pi": "Anne R Bresnick",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11422675"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (NCI)",
+   "university": "Albert Einstein College of Medicine"
+  },
+  "albert einstein college of medicine||genetics||nih (nhlbi)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 50114,
+      "core": "F31HL180029",
+      "label": "$50,114",
+      "pi": "Gloria Andreeva Stoyanova",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11458920"
+     }
+    ]
+   },
+   "department": "Genetics",
+   "funder": "NIH (NHLBI)",
    "university": "Albert Einstein College of Medicine"
   },
   "albert einstein college of medicine||genetics||nih (nigms)": {
@@ -263,6 +314,23 @@
    "funder": "NIH (NIMH)",
    "university": "American University"
   },
+  "applied biotechnology institute||--||nih (niddk)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 288221,
+      "core": "R43DK148203",
+      "label": "$288,221",
+      "pi": "John A. Howard",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11405484"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIDDK)",
+   "university": "Applied Biotechnology Institute"
+  },
   "arizona state university-tempe campus||--||nih (nhlbi)": {
    "cells": {
     "2026-09-06": [
@@ -289,6 +357,23 @@
    },
    "department": "--",
    "funder": "NIH (NHLBI)",
+   "university": "Arizona State University-tempe Campus"
+  },
+  "arizona state university-tempe campus||--||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 655118,
+      "core": "R01AG095198",
+      "label": "$655,118",
+      "pi": "Edward Ofori",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11366228"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
    "university": "Arizona State University-tempe Campus"
   },
   "arizona state university-tempe campus||--||nih (nimh)": {
@@ -372,6 +457,40 @@
    "funder": "NIH (NEI)",
    "university": "Augusta University"
   },
+  "augustana university||biology||nih (niaid)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 162000,
+      "core": "K22AI197912",
+      "label": "$162,000",
+      "pi": "Demetra Patricia Kelenis",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11328331"
+     }
+    ]
+   },
+   "department": "Biology",
+   "funder": "NIH (NIAID)",
+   "university": "Augustana University"
+  },
+  "barrow neurological institute at st. joseph's hospital and medical center||--||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 657088,
+      "core": "R01NS144223",
+      "label": "$657,088",
+      "pi": "Susan Criswell",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11449757"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINDS)",
+   "university": "Barrow Neurological Institute at St. Joseph's Hospital and Medical Center"
+  },
   "baylor college of medicine||--||nih (ncats)": {
    "cells": {
     "2026-09-13": [
@@ -443,6 +562,23 @@
    "funder": "NIH (NCI)",
    "university": "Baylor College of Medicine"
   },
+  "baylor college of medicine||anatomy/cell biology||nih (niaid)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 529824,
+      "core": "R01AI203180",
+      "label": "$529,824",
+      "pi": "William Harris Hudson",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11441998"
+     }
+    ]
+   },
+   "department": "Anatomy/cell Biology",
+   "funder": "NIH (NIAID)",
+   "university": "Baylor College of Medicine"
+  },
   "baylor college of medicine||genetics||nih (nhlbi)": {
    "cells": {
     "2026-09-06": [
@@ -459,6 +595,23 @@
    },
    "department": "Genetics",
    "funder": "NIH (NHLBI)",
+   "university": "Baylor College of Medicine"
+  },
+  "baylor college of medicine||genetics||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 1426599,
+      "core": "U01AG098025",
+      "label": "$1,426,599",
+      "pi": "Olivier Lichtarge",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11291023"
+     }
+    ]
+   },
+   "department": "Genetics",
+   "funder": "NIH (NIA)",
    "university": "Baylor College of Medicine"
   },
   "baylor college of medicine||genetics||nih (niams)": {
@@ -734,6 +887,23 @@
    "funder": "NIH (NHLBI)",
    "university": "Beckman Research Institute/city of Hope"
   },
+  "beckman research institute/city of hope||--||nih (niams)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 249000,
+      "core": "R00AR084575",
+      "label": "$249,000",
+      "pi": "Courtney Michele Johnson",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11617656"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIAMS)",
+   "university": "Beckman Research Institute/city of Hope"
+  },
   "bethune-cookman college||biology||nih (nia)": {
    "cells": {
     "2026-09-13": [
@@ -786,6 +956,23 @@
    },
    "department": "--",
    "funder": "NIH (NINR)",
+   "university": "Boston College"
+  },
+  "boston college||biology||nih (nigms)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 426250,
+      "core": "R35GM161545",
+      "label": "$426,250",
+      "pi": "Maitreyi Das",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11260513"
+     }
+    ]
+   },
+   "department": "Biology",
+   "funder": "NIH (NIGMS)",
    "university": "Boston College"
   },
   "boston university (charles river campus)||--||nih (nia)": {
@@ -930,6 +1117,65 @@
    "funder": "NIH (NINDS)",
    "university": "Boston University Medical Campus"
   },
+  "boston university medical campus||pharmacology||nih (nidcd)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 50114,
+      "core": "F31DC024424",
+      "label": "$50,114",
+      "pi": "Daphne Toglia",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11521982"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NIDCD)",
+   "university": "Boston University Medical Campus"
+  },
+  "boston va research institute, inc.||--||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 268800,
+      "core": "R01AG100509",
+      "label": "$268,800",
+      "pi": "Ritchie Edward Brown",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11344420"
+     },
+     {
+      "amount": 617796,
+      "core": "R56AG098813",
+      "label": "$617,796",
+      "pi": "Fumi Katsuki",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11606008"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
+   "university": "Boston Va Research Institute, Inc."
+  },
+  "brandeis university||--||nih (nidcd)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 36440,
+      "core": "F31DC024422",
+      "label": "$36,440",
+      "pi": "Rafael Gabriel",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11522461"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIDCD)",
+   "university": "Brandeis University"
+  },
   "brandeis university||chemistry||nih (nci)": {
    "cells": {
     "2026-09-13": [
@@ -968,6 +1214,16 @@
   },
   "broad institute, inc.||--||nih (nhgri)": {
    "cells": {
+    "2026-09-06": [
+     {
+      "amount": 421377,
+      "core": "R21HG014556",
+      "label": "$421,377",
+      "pi": "John Gerard Doench",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11216792"
+     }
+    ],
     "2026-09-13": [
      {
       "amount": 2220877,
@@ -1093,6 +1349,23 @@
    "funder": "NIH (FIC)",
    "university": "Brown University"
   },
+  "brown university||--||nih (nci)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 50114,
+      "core": "F31CA317806",
+      "label": "$50,114",
+      "pi": "Andrew Karam",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11461526"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NCI)",
+   "university": "Brown University"
+  },
   "brown university||--||nih (nhlbi)": {
    "cells": {
     "2026-09-06": [
@@ -1129,6 +1402,23 @@
    "funder": "NIH (NIMH)",
    "university": "Brown University"
   },
+  "brown university||--||nih (ninr)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 578821,
+      "core": "R01NR018837",
+      "label": "$578,821",
+      "pi": "Lori Uscher-pines",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11595781"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINR)",
+   "university": "Brown University"
+  },
   "brown university||microbiology/immun/virology||nih (nccih)": {
    "cells": {
     "2026-09-13": [
@@ -1146,6 +1436,23 @@
    "department": "Microbiology/immun/virology",
    "funder": "NIH (NCCIH)",
    "university": "Brown University"
+  },
+  "buck institute for research on aging||--||nih (nia)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 785081,
+      "core": "R01AG096932",
+      "label": "$785,081",
+      "pi": "Tara Tracy",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11390722"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
+   "university": "Buck Institute for Research on Aging"
   },
   "california institute of technology||--||nih (nigms)": {
    "cells": {
@@ -1176,6 +1483,16 @@
       "pi_email": "dprober@caltech.edu",
       "pi_email_via": "",
       "url": "https://reporter.nih.gov/project-details/11628917"
+     }
+    ],
+    "2026-09-13": [
+     {
+      "amount": 1190000,
+      "core": "DP1NS155489",
+      "label": "$1,190,000",
+      "pi": "Markus Meister",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11412381"
      }
     ]
    },
@@ -1338,6 +1655,16 @@
   },
   "case western reserve university||biomedical engineering||nih (nhlbi)": {
    "cells": {
+    "2026-09-06": [
+     {
+      "amount": 55114,
+      "core": "F30HL178232",
+      "label": "$55,114",
+      "pi": "Prerna Singh",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11467618"
+     }
+    ],
     "2026-09-13": [
      {
       "amount": 129396,
@@ -1447,6 +1774,14 @@
       "pi_email": "sanwar@childrensnational.org",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11454606"
+     },
+     {
+      "amount": 1194878,
+      "core": "P50HD105328",
+      "label": "$1,194,878",
+      "pi": "William Davis Gaillard",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11520943"
      }
     ]
    },
@@ -1570,6 +1905,64 @@
    "funder": "NIH (NHLBI)",
    "university": "College of Environmental Sci & Forestry"
   },
+  "college of william and mary||biology||nih (niaid)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 548932,
+      "core": "R15AI203523",
+      "label": "$548,932",
+      "pi": "Isabelle Taylor",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11444636"
+     }
+    ]
+   },
+   "department": "Biology",
+   "funder": "NIH (NIAID)",
+   "university": "College of William and Mary"
+  },
+  "colorado state university||--||nih (niaid)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 1662873,
+      "core": "U01AI190392",
+      "label": "$1,662,873",
+      "pi": "Tracey Goldstein",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11123789"
+     },
+     {
+      "amount": 54000,
+      "core": "U01AI190392",
+      "label": "$54,000",
+      "pi": "Tracey Goldstein",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11608110"
+     },
+     {
+      "amount": 15120,
+      "core": "U01AI190392",
+      "label": "$15,120",
+      "pi": "Tracey Goldstein",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11608502"
+     },
+     {
+      "amount": 33350,
+      "core": "U01AI190392",
+      "label": "$33,350",
+      "pi": "Tracey Goldstein",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11608505"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIAID)",
+   "university": "Colorado State University"
+  },
   "colorado state university||nutrition||nih (nccih)": {
    "cells": {
     "2026-09-13": [
@@ -1603,6 +1996,23 @@
    },
    "department": "Nutrition",
    "funder": "NIH (NHLBI)",
+   "university": "Colorado State University"
+  },
+  "colorado state university||veterinary sciences||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 633758,
+      "core": "R01AG099117",
+      "label": "$633,758",
+      "pi": "Seonil Kim",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11453659"
+     }
+    ]
+   },
+   "department": "Veterinary Sciences",
+   "funder": "NIH (NIA)",
    "university": "Colorado State University"
   },
   "columbia univ new york morningside||biology||nih (nia)": {
@@ -1946,6 +2356,23 @@
    "funder": "NIH (NCI)",
    "university": "Cornell University"
   },
+  "cornell university||engineering (all types)||nih (nibib)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 96102,
+      "core": "U54EB034654",
+      "label": "$96,102",
+      "pi": "David Carl Erickson",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11631157"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NIBIB)",
+   "university": "Cornell University"
+  },
   "cornell university||engineering (all types)||nih (ninds)": {
    "cells": {
     "2026-09-13": [
@@ -2052,6 +2479,23 @@
    "funder": "NIH (NIAID)",
    "university": "Cornell University"
   },
+  "cornell university||veterinary sciences||nih (nichd)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 449207,
+      "core": "R21HD118481",
+      "label": "$449,207",
+      "pi": "Alexander J Travis",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11304763"
+     }
+    ]
+   },
+   "department": "Veterinary Sciences",
+   "funder": "NIH (NICHD)",
+   "university": "Cornell University"
+  },
   "dartmouth college||microbiology/immun/virology||nih (nigms)": {
    "cells": {
     "2026-09-06": [
@@ -2150,6 +2594,23 @@
    "funder": "NIH (NIMH)",
    "university": "Drexel University"
   },
+  "drexel university||anatomy/cell biology||nih (nida)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 228750,
+      "core": "R21DA064438",
+      "label": "$228,750",
+      "pi": "Veronica Jean Tom",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11465552"
+     }
+    ]
+   },
+   "department": "Anatomy/cell Biology",
+   "funder": "NIH (NIDA)",
+   "university": "Drexel University"
+  },
   "drexel university||anatomy/cell biology||nih (ninds)": {
    "cells": {
     "2026-09-06": [
@@ -2169,6 +2630,14 @@
       "pi": "Mariah J Wulf",
       "pi_email": "",
       "url": "https://reporter.nih.gov/project-details/11386546"
+     },
+     {
+      "amount": 619937,
+      "core": "R01NS147575",
+      "label": "$619,937",
+      "pi": "Peter W. Baas",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11450314"
      }
     ],
     "2026-09-13": [
@@ -2312,6 +2781,23 @@
    "funder": "NIH (NIAID)",
    "university": "Duke University"
   },
+  "duke university||genetics||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 565250,
+      "core": "R56NS148124",
+      "label": "$565,250",
+      "pi": "Dong Yan",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11631658"
+     }
+    ]
+   },
+   "department": "Genetics",
+   "funder": "NIH (NINDS)",
+   "university": "Duke University"
+  },
   "duke university||physiology||nih (nhlbi)": {
    "cells": {
     "2026-09-06": [
@@ -2364,6 +2850,33 @@
    },
    "department": "--",
    "funder": "NIH (NHLBI)",
+   "university": "Emory University"
+  },
+  "emory university||--||nih (ninr)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 678031,
+      "core": "R01NR022430",
+      "label": "$678,031",
+      "pi": "Jacob Kigo Kariuki",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11450535"
+     }
+    ],
+    "2026-09-13": [
+     {
+      "amount": 533605,
+      "core": "R01NR022327",
+      "label": "$533,605",
+      "pi": "Jacqueline A. Nikpour",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11434118"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINR)",
    "university": "Emory University"
   },
   "emory university||anatomy/cell biology||nih (nhlbi)": {
@@ -2425,6 +2938,40 @@
    },
    "department": "Biomedical Engineering",
    "funder": "NIH (NCI)",
+   "university": "Emory University"
+  },
+  "emory university||biomedical engineering||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 765444,
+      "core": "R01AG095057",
+      "label": "$765,444",
+      "pi": "Saima Rathore",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11368866"
+     }
+    ]
+   },
+   "department": "Biomedical Engineering",
+   "funder": "NIH (NIA)",
+   "university": "Emory University"
+  },
+  "emory university||genetics||nih (nia)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 653912,
+      "core": "R01AG098817",
+      "label": "$653,912",
+      "pi": "Michael Philip Epstein",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11300437"
+     }
+    ]
+   },
+   "department": "Genetics",
+   "funder": "NIH (NIA)",
    "university": "Emory University"
   },
   "emory university||genetics||nih (nigms)": {
@@ -2536,6 +3083,16 @@
   },
   "feinstein institute for medical research||--||nih (nhlbi)": {
    "cells": {
+    "2026-09-06": [
+     {
+      "amount": 10000,
+      "core": "R13HL188629",
+      "label": "$10,000",
+      "pi": "Daniel Rolston",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11465763"
+     }
+    ],
     "2026-09-13": [
      {
       "amount": 418750,
@@ -2570,6 +3127,40 @@
    "funder": "NIH (NIA)",
    "university": "Feinstein Institute for Medical Research"
   },
+  "feinstein institute for medical research||--||nih (niaid)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 216593,
+      "core": "T32AI155392",
+      "label": "$216,593",
+      "pi": "Anne Davidson",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11263156"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIAID)",
+   "university": "Feinstein Institute for Medical Research"
+  },
+  "feinstein institute for medical research||--||nih (nichd)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 460625,
+      "core": "R21HD118372",
+      "label": "$460,625",
+      "pi": "Christine Noel Metz",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11451391"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NICHD)",
+   "university": "Feinstein Institute for Medical Research"
+  },
   "florida international university||anatomy/cell biology||nih (nhlbi)": {
    "cells": {
     "2026-09-06": [
@@ -2587,6 +3178,40 @@
    "department": "Anatomy/cell Biology",
    "funder": "NIH (NHLBI)",
    "university": "Florida International University"
+  },
+  "florida state university||--||nih (nida)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 233666,
+      "core": "R34DA067290",
+      "label": "$233,666",
+      "pi": "Umedjon Ibragimov",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11470972"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIDA)",
+   "university": "Florida State University"
+  },
+  "florida state university||--||nih (ninr)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 154000,
+      "core": "R03NR022593",
+      "label": "$154,000",
+      "pi": "Ibrahim Yigit",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11470901"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINR)",
+   "university": "Florida State University"
   },
   "george mason university||--||nih (fic)": {
    "cells": {
@@ -2623,6 +3248,57 @@
    "department": "Chemistry",
    "funder": "NIH (NIGMS)",
    "university": "Georgetown University"
+  },
+  "georgetown university||chemistry||nih (od)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 1237500,
+      "core": "S10OD040160",
+      "label": "$1,237,500",
+      "pi": "Rodrigo Alejandro Maillard",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11338621"
+     }
+    ]
+   },
+   "department": "Chemistry",
+   "funder": "NIH (OD)",
+   "university": "Georgetown University"
+  },
+  "georgetown university||pharmacology||nih (nichd)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 572237,
+      "core": "R01HD118454",
+      "label": "$572,237",
+      "pi": "Patrick Alexander Forcelli",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11367266"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NICHD)",
+   "university": "Georgetown University"
+  },
+  "georgia institute of technology||chemistry||nih (nei)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 590814,
+      "core": "R01EY021205",
+      "label": "$590,814",
+      "pi": "Raquel L Lieberman",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11448745"
+     }
+    ]
+   },
+   "department": "Chemistry",
+   "funder": "NIH (NEI)",
+   "university": "Georgia Institute of Technology"
   },
   "georgia institute of technology||engineering (all types)||nih (nhlbi)": {
    "cells": {
@@ -2760,6 +3436,14 @@
       "pi_email": "david.perlin@hmh-cdi.org",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11372864"
+     },
+     {
+      "amount": 13895048,
+      "core": "U19AI171401",
+      "label": "$13,895,048",
+      "pi": "David S Perlin",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11539939"
      }
     ]
    },
@@ -2855,6 +3539,23 @@
    },
    "department": "Biology",
    "funder": "NIH (NEI)",
+   "university": "Harvard Medical School"
+  },
+  "harvard medical school||biology||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 484953,
+      "core": "R01NS153564",
+      "label": "$484,953",
+      "pi": "Gary I Yellen",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11524645"
+     }
+    ]
+   },
+   "department": "Biology",
+   "funder": "NIH (NINDS)",
    "university": "Harvard Medical School"
   },
   "harvard medical school||genetics||nih (nia)": {
@@ -3024,6 +3725,23 @@
    "funder": "NIH (NINDS)",
    "university": "Harvard University"
   },
+  "healthpartners institute||--||nih (niddk)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 1542828,
+      "core": "U01DK143379",
+      "label": "$1,542,828",
+      "pi": "Richard Mauritz Bergenstal",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11595907"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIDDK)",
+   "university": "Healthpartners Institute"
+  },
   "henry ford health + michigan state university health sciences||--||nih (nichd)": {
    "cells": {
     "2026-09-06": [
@@ -3040,6 +3758,40 @@
    },
    "department": "--",
    "funder": "NIH (NICHD)",
+   "university": "Henry Ford Health + Michigan State University Health Sciences"
+  },
+  "henry ford health + michigan state university health sciences||--||nih (ninds)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 45891,
+      "core": "F31NS151534",
+      "label": "$45,891",
+      "pi": "Alexandra Nicole Lewis",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11461423"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINDS)",
+   "university": "Henry Ford Health + Michigan State University Health Sciences"
+  },
+  "henry ford health + michigan state university health sciences||microbiology/immun/virology||nih (nia)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 654111,
+      "core": "R01AG094132",
+      "label": "$654,111",
+      "pi": "David Morgan",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11296981"
+     }
+    ]
+   },
+   "department": "Microbiology/immun/virology",
+   "funder": "NIH (NIA)",
    "university": "Henry Ford Health + Michigan State University Health Sciences"
   },
   "henry ford health + michigan state university health sciences||physiology||nih (niams)": {
@@ -3195,6 +3947,14 @@
       "pi_email": "elena.ezhkova@mssm.edu",
       "pi_email_via": "",
       "url": "https://reporter.nih.gov/project-details/11627109"
+     },
+     {
+      "amount": 546000,
+      "core": "R56AR070231",
+      "label": "$546,000",
+      "pi": "Robert S. Krauss",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11626458"
      }
     ]
    },
@@ -3385,10 +4145,35 @@
       "pi_email": "arobling@iu.edu",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11417929"
+     },
+     {
+      "amount": 452938,
+      "core": "R01AR086597",
+      "label": "$452,938",
+      "pi": "Lilian Irene Plotkin",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11376839"
      }
     ]
    },
    "department": "Anatomy/cell Biology",
+   "funder": "NIH (NIAMS)",
+   "university": "Indiana University Indianapolis"
+  },
+  "indiana university indianapolis||biology||nih (niams)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 38628,
+      "core": "F31AR087234",
+      "label": "$38,628",
+      "pi": "Kourtney Sloan",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11461372"
+     }
+    ]
+   },
+   "department": "Biology",
    "funder": "NIH (NIAMS)",
    "university": "Indiana University Indianapolis"
   },
@@ -3445,6 +4230,23 @@
    "funder": "NIH (NCI)",
    "university": "Institute for Systems Biology"
   },
+  "institute for systems biology||--||nih (niaid)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 874085,
+      "core": "R01AI192998",
+      "label": "$874,085",
+      "pi": "Anna Kuchina",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11450793"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIAID)",
+   "university": "Institute for Systems Biology"
+  },
   "iowa state university||biochemistry||nih (nigms)": {
    "cells": {
     "2026-09-06": [
@@ -3498,6 +4300,23 @@
    "department": "Veterinary Sciences",
    "funder": "NIH (NIEHS)",
    "university": "Iowa State University"
+  },
+  "j. david gladstone institutes||--||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 845617,
+      "core": "R01AG093119",
+      "label": "$845,617",
+      "pi": "Michael Ryan Corces",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11297870"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
+   "university": "J. David Gladstone Institutes"
   },
   "j. david gladstone institutes||--||nih (ninds)": {
    "cells": {
@@ -3727,6 +4546,23 @@
    "funder": "NIH (NCI)",
    "university": "Johns Hopkins University"
   },
+  "johns hopkins university||engineering (all types)||nih (nhlbi)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 308078,
+      "core": "R01HL192731",
+      "label": "$308,078",
+      "pi": "Kimia Ghobadi",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11579177"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NHLBI)",
+   "university": "Johns Hopkins University"
+  },
   "johns hopkins university||engineering (all types)||nih (ninds)": {
    "cells": {
     "2026-09-13": [
@@ -3781,6 +4617,23 @@
    "funder": "NIH (NIAID)",
    "university": "Johns Hopkins University"
   },
+  "johns hopkins university||pharmacology||nih (nida)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 683851,
+      "core": "R01DA066503",
+      "label": "$683,851",
+      "pi": "Suky Martinez",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11425436"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NIDA)",
+   "university": "Johns Hopkins University"
+  },
   "johns hopkins university||physiology||nih (nigms)": {
    "cells": {
     "2026-09-06": [
@@ -3792,6 +4645,14 @@
       "pi_email": "barrick@jhu.edu",
       "pi_email_via": "",
       "url": "https://reporter.nih.gov/project-details/11399699"
+     },
+     {
+      "amount": 423129,
+      "core": "R35GM161347",
+      "label": "$423,129",
+      "pi": "Gregory Dean Bowman",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11259300"
      }
     ]
    },
@@ -3869,6 +4730,23 @@
    "funder": "NIH (NHLBI)",
    "university": "Kaiser Foundation Research Institute"
   },
+  "kaiser foundation research institute||--||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 256471,
+      "core": "R21AG101060",
+      "label": "$256,471",
+      "pi": "Willa Domino Brenowitz",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11353344"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
+   "university": "Kaiser Foundation Research Institute"
+  },
   "kaiser foundation research institute||--||nih (niaaa)": {
    "cells": {
     "2026-09-13": [
@@ -3906,6 +4784,14 @@
       "pi_email": "r.chehab.2@st.ul.edu.lb",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11616462"
+     },
+     {
+      "amount": 706235,
+      "core": "R01HD122839",
+      "label": "$706,235",
+      "pi": "De-kun Li",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11434804"
      }
     ]
    },
@@ -3957,6 +4843,23 @@
    "funder": "NIH (NINDS)",
    "university": "Kaiser Foundation Research Institute"
   },
+  "kaiser foundation research institute||--||nih (ninr)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 884080,
+      "core": "R01NR022266",
+      "label": "$884,080",
+      "pi": "Susan E Hickman",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11347007"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINR)",
+   "university": "Kaiser Foundation Research Institute"
+  },
   "kansas state university||anatomy/cell biology||fda": {
    "cells": {
     "2026-09-20": [
@@ -3973,6 +4876,23 @@
    },
    "department": "Anatomy/cell Biology",
    "funder": "FDA",
+   "university": "Kansas State University"
+  },
+  "kansas state university||anatomy/cell biology||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 407680,
+      "core": "R21AG098752",
+      "label": "$407,680",
+      "pi": "Judy M Delp",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11286552"
+     }
+    ]
+   },
+   "department": "Anatomy/cell Biology",
+   "funder": "NIH (NIA)",
    "university": "Kansas State University"
   },
   "kansas state university||veterinary sciences||fda": {
@@ -4010,6 +4930,23 @@
    "department": "Veterinary Sciences",
    "funder": "FDA",
    "university": "Kansas State University"
+  },
+  "kennesaw state university||engineering (all types)||nih (fic)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 179988,
+      "core": "R21TW013255",
+      "label": "$179,988",
+      "pi": "Seung Yup Lee",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11307426"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (FIC)",
+   "university": "Kennesaw State University"
   },
   "la jolla institute for immunology||--||nih (niaid)": {
    "cells": {
@@ -4081,6 +5018,23 @@
    "funder": "FDA",
    "university": "Louisiana State Univ A&m Col Baton Rouge"
   },
+  "louisiana state univ hsc shreveport||pharmacology||nih (nhlbi)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 708741,
+      "core": "R01HL176881",
+      "label": "$708,741",
+      "pi": "Jiliang Zhou",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11451008"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NHLBI)",
+   "university": "Louisiana State Univ Hsc Shreveport"
+  },
   "lovelace biomedical research institute||--||nih (ninds)": {
    "cells": {
     "2026-09-06": [
@@ -4133,6 +5087,23 @@
    },
    "department": "--",
    "funder": "NIH (NHLBI)",
+   "university": "Loyola University Chicago"
+  },
+  "loyola university chicago||biology||nih (nci)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 482764,
+      "core": "R01CA309034",
+      "label": "$482,764",
+      "pi": "Jiwang Zhang",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11447223"
+     }
+    ]
+   },
+   "department": "Biology",
+   "funder": "NIH (NCI)",
    "university": "Loyola University Chicago"
   },
   "loyola university chicago||physiology||nih (nhlbi)": {
@@ -4222,6 +5193,23 @@
    },
    "department": "--",
    "funder": "NIH (NCI)",
+   "university": "Massachusetts Institute of Technology"
+  },
+  "massachusetts institute of technology||--||nih (nia)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 682537,
+      "core": "R01AG102702",
+      "label": "$682,537",
+      "pi": "Mark Thomas Harnett",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11426980"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
    "university": "Massachusetts Institute of Technology"
   },
   "massachusetts institute of technology||engineering (all types)||nih (nci)": {
@@ -4573,6 +5561,23 @@
    "funder": "NIH (NHLBI)",
    "university": "Methodist Hospital Research Institute"
   },
+  "methodist hospital research institute||--||nih (niddk)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 439608,
+      "core": "R01DK143254",
+      "label": "$439,608",
+      "pi": "Mazen Noureddin",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11292924"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIDDK)",
+   "university": "Methodist Hospital Research Institute"
+  },
   "methodist hospital research institute||--||nih (ninds)": {
    "cells": {
     "2026-09-06": [
@@ -4608,6 +5613,40 @@
    "department": "--",
    "funder": "NIH (NICHD)",
    "university": "Mgh Institute of Health Professions"
+  },
+  "michigan state university||engineering (all types)||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 542089,
+      "core": "R56NS151724",
+      "label": "$542,089",
+      "pi": "Erin K Purcell",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11629777"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NINDS)",
+   "university": "Michigan State University"
+  },
+  "michigan state university||pharmacology||nih (nei)": {
+   "cells": {
+    "2026-09-20": [
+     {
+      "amount": 1202088,
+      "core": "R56EY037392",
+      "label": "$1,202,088",
+      "pi": "Brian C. Leonard",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11641969"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NEI)",
+   "university": "Michigan State University"
   },
   "michigan technological university||engineering (all types)||nih (ninds)": {
    "cells": {
@@ -4933,6 +5972,16 @@
   },
   "new york university||--||nih (nimh)": {
    "cells": {
+    "2026-09-06": [
+     {
+      "amount": 46714,
+      "core": "F31MH143552",
+      "label": "$46,714",
+      "pi": "Brittney D Singletary",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11461884"
+     }
+    ],
     "2026-09-13": [
      {
       "amount": 114796,
@@ -5007,6 +6056,23 @@
    "funder": "NIH (NIGMS)",
    "university": "New York University"
   },
+  "new york university||biomedical engineering||nih (nidcd)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 50114,
+      "core": "F31DC023782",
+      "label": "$50,114",
+      "pi": "Stephen Tucker",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11525428"
+     }
+    ]
+   },
+   "department": "Biomedical Engineering",
+   "funder": "NIH (NIDCD)",
+   "university": "New York University"
+  },
   "new york university||biomedical engineering||nih (ninds)": {
    "cells": {
     "2026-09-06": [
@@ -5023,6 +6089,23 @@
    "department": "Biomedical Engineering",
    "funder": "NIH (NINDS)",
    "university": "New York University"
+  },
+  "north carolina agri & tech st univ||engineering (all types)||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 410351,
+      "core": "R21AG093950",
+      "label": "$410,351",
+      "pi": "Muna Aryal",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11301468"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NIA)",
+   "university": "North Carolina Agri & Tech St Univ"
   },
   "north carolina state university raleigh||biology||nih (niehs)": {
    "cells": {
@@ -5069,6 +6152,23 @@
    "funder": "NIH (NCCIH)",
    "university": "North Carolina State University Raleigh"
   },
+  "north carolina state university raleigh||engineering (all types)||nih (nigms)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 404255,
+      "core": "R35GM161518",
+      "label": "$404,255",
+      "pi": "Chang Lu",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11260569"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NIGMS)",
+   "university": "North Carolina State University Raleigh"
+  },
   "north carolina state university raleigh||veterinary sciences||fda": {
    "cells": {
     "2026-09-20": [
@@ -5087,6 +6187,23 @@
    "funder": "FDA",
    "university": "North Carolina State University Raleigh"
   },
+  "north park university||--||nih (nci)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 162527,
+      "core": "R16CA315399",
+      "label": "$162,527",
+      "pi": "Tracy L O'connor",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11424521"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NCI)",
+   "university": "North Park University"
+  },
   "northeastern university||biology||nih (niaid)": {
    "cells": {
     "2026-09-06": [
@@ -5103,6 +6220,23 @@
    },
    "department": "Biology",
    "funder": "NIH (NIAID)",
+   "university": "Northeastern University"
+  },
+  "northeastern university||engineering (all types)||nih (nei)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 898334,
+      "core": "R01EY040335",
+      "label": "$898,334",
+      "pi": "Lorenzo Torresani",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11579074"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NEI)",
    "university": "Northeastern University"
   },
   "northeastern university||engineering (all types)||nih (nia)": {
@@ -5315,11 +6449,36 @@
       "pi": "Ali Shilatifard",
       "pi_email": "",
       "url": "https://reporter.nih.gov/project-details/11413764"
+     },
+     {
+      "amount": 99022,
+      "core": "K99CA316633",
+      "label": "$99,022",
+      "pi": "Mushtaq Nengroo",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11437647"
      }
     ]
    },
    "department": "Biochemistry",
    "funder": "NIH (NCI)",
+   "university": "Northwestern University"
+  },
+  "northwestern university||biochemistry||nih (nida)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 480000,
+      "core": "DP1DA066918",
+      "label": "$480,000",
+      "pi": "Iris Titos Vivancos",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11420831"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (NIDA)",
    "university": "Northwestern University"
   },
   "northwestern university||biochemistry||nih (nigms)": {
@@ -5376,6 +6535,23 @@
    "funder": "NIH (NEI)",
    "university": "Northwestern University"
   },
+  "northwestern university||biomedical engineering||nih (nhlbi)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 76780,
+      "core": "F32HL179832",
+      "label": "$76,780",
+      "pi": "Brandon Carl Applewhite",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11479193"
+     }
+    ]
+   },
+   "department": "Biomedical Engineering",
+   "funder": "NIH (NHLBI)",
+   "university": "Northwestern University"
+  },
   "northwestern university||engineering (all types)||nih (nci)": {
    "cells": {
     "2026-09-13": [
@@ -5409,6 +6585,23 @@
    },
    "department": "Microbiology/immun/virology",
    "funder": "NIH (NIGMS)",
+   "university": "Northwestern University"
+  },
+  "northwestern university||pharmacology||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 577784,
+      "core": "R01AG101715",
+      "label": "$577,784",
+      "pi": "Loukia Parisiadou",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11357900"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NIA)",
    "university": "Northwestern University"
   },
   "northwestern university||pharmacology||nih (nigms)": {
@@ -5464,6 +6657,23 @@
    "funder": "NIH (NIDCR)",
    "university": "Nova Southeastern University"
   },
+  "nova southeastern university||microbiology/immun/virology||nih (nidcr)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 580256,
+      "core": "R01DE036564",
+      "label": "$580,256",
+      "pi": "Maiko Suzuki",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11485603"
+     }
+    ]
+   },
+   "department": "Microbiology/immun/virology",
+   "funder": "NIH (NIDCR)",
+   "university": "Nova Southeastern University"
+  },
   "oakland university||biology||nih (nhlbi)": {
    "cells": {
     "2026-09-06": [
@@ -5498,6 +6708,23 @@
    "department": "Biology",
    "funder": "NIH (NIGMS)",
    "university": "Oakland University"
+  },
+  "ocean state research institute, inc.||--||nih (nhlbi)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 514340,
+      "core": "R01HL181104",
+      "label": "$514,340",
+      "pi": "Chris S Mantsounga",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11368569"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NHLBI)",
+   "university": "Ocean State Research Institute, Inc."
   },
   "ohio state university||--||nih (nci)": {
    "cells": {
@@ -5538,6 +6765,14 @@
       "pi": "Phillip T Yuhas",
       "pi_email": "",
       "url": "https://reporter.nih.gov/project-details/11352312"
+     },
+     {
+      "amount": 385675,
+      "core": "R01EY039432",
+      "label": "$385,675",
+      "pi": "Ann Marie Morrison",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11427121"
      }
     ]
    },
@@ -5670,6 +6905,23 @@
    "funder": "NIH (NIAID)",
    "university": "Ohio State University"
   },
+  "ohio state university||microbiology/immun/virology||nih (niams)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 84580,
+      "core": "F32AR087217",
+      "label": "$84,580",
+      "pi": "Leone Sophia Hopkins",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11464184"
+     }
+    ]
+   },
+   "department": "Microbiology/immun/virology",
+   "funder": "NIH (NIAMS)",
+   "university": "Ohio State University"
+  },
   "ohio state university||physiology||nih (nhlbi)": {
    "cells": {
     "2026-09-13": [
@@ -5776,6 +7028,23 @@
    "funder": "NIH (NIDCR)",
    "university": "Oregon Health & Science University"
   },
+  "oregon health & science university||--||nih (nimh)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 1157469,
+      "core": "R01MH146623",
+      "label": "$1,157,469",
+      "pi": "Jacob D Estes",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11472850"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIMH)",
+   "university": "Oregon Health & Science University"
+  },
   "oregon health & science university||anatomy/cell biology||nih (niddk)": {
    "cells": {
     "2026-09-06": [
@@ -5830,6 +7099,23 @@
    "funder": "NIH (OD)",
    "university": "Oregon Health & Science University"
   },
+  "oregon state university||--||nih (niehs)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 3203867,
+      "core": "R01ES039858",
+      "label": "$3,203,867",
+      "pi": "Perry W Hystad",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11344647"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIEHS)",
+   "university": "Oregon State University"
+  },
   "oregon state university||biochemistry||nih (nigms)": {
    "cells": {
     "2026-09-06": [
@@ -5866,6 +7152,40 @@
    "funder": "NIH (NICHD)",
    "university": "Oregon State University"
   },
+  "palmer college of chiropractic||--||nih (nccih)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 763975,
+      "core": "R01AT013580",
+      "label": "$763,975",
+      "pi": "Robert D Vining",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11448328"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NCCIH)",
+   "university": "Palmer College of Chiropractic"
+  },
+  "pennsylvania state univ hershey med ctr||biochemistry||nih (nci)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 633232,
+      "core": "R01CA304170",
+      "label": "$633,232",
+      "pi": "Jason C Mills",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11364346"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (NCI)",
+   "university": "Pennsylvania State Univ Hershey Med Ctr"
+  },
   "pennsylvania state university, the||--||nih (nia)": {
    "cells": {
     "2026-09-13": [
@@ -5881,6 +7201,23 @@
    },
    "department": "--",
    "funder": "NIH (NIA)",
+   "university": "Pennsylvania State University, the"
+  },
+  "pennsylvania state university, the||biochemistry||nih (nichd)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 289075,
+      "core": "R03HD120869",
+      "label": "$289,075",
+      "pi": "Santhosh Girirajan",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11453240"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (NICHD)",
    "university": "Pennsylvania State University, the"
   },
   "pennsylvania state university, the||biochemistry||nih (nigms)": {
@@ -5902,6 +7239,16 @@
   },
   "pennsylvania state university, the||biology||nih (nia)": {
    "cells": {
+    "2026-09-06": [
+     {
+      "amount": 196625,
+      "core": "R21AG090642",
+      "label": "$196,625",
+      "pi": "Janine Lynn Kwapis",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11292905"
+     }
+    ],
     "2026-09-13": [
      {
       "amount": 249000,
@@ -5932,6 +7279,23 @@
    },
    "department": "Biomedical Engineering",
    "funder": "NIH (NHLBI)",
+   "university": "Pennsylvania State University, the"
+  },
+  "pennsylvania state university, the||biomedical engineering||nih (nigms)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 271668,
+      "core": "R35GM142902",
+      "label": "$271,668",
+      "pi": "Scott Hammond Medina",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11328029"
+     }
+    ]
+   },
+   "department": "Biomedical Engineering",
+   "funder": "NIH (NIGMS)",
    "university": "Pennsylvania State University, the"
   },
   "perception dynamics institute||--||nih (ninds)": {
@@ -6104,6 +7468,23 @@
    "funder": "NIH (NHLBI)",
    "university": "Purdue University"
   },
+  "purdue university||biochemistry||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 425377,
+      "core": "R21AG098841",
+      "label": "$425,377",
+      "pi": "W. Andy Tao",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11301236"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (NIA)",
+   "university": "Purdue University"
+  },
   "purdue university||biology||nih (niaid)": {
    "cells": {
     "2026-09-13": [
@@ -6120,6 +7501,23 @@
    },
    "department": "Biology",
    "funder": "NIH (NIAID)",
+   "university": "Purdue University"
+  },
+  "purdue university||engineering (all types)||nih (niams)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 667146,
+      "core": "R01AR087365",
+      "label": "$667,146",
+      "pi": "Julie C. Liu",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11338402"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NIAMS)",
    "university": "Purdue University"
   },
   "purdue university||engineering (all types)||nih (nimh)": {
@@ -6202,6 +7600,23 @@
    },
    "department": "--",
    "funder": "NIH (NHLBI)",
+   "university": "Research Triangle Institute"
+  },
+  "research triangle institute||--||nih (niaid)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 2120982,
+      "core": "U01AI151378",
+      "label": "$2,120,982",
+      "pi": "Gregory D Sempowski",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11122002"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIAID)",
    "university": "Research Triangle Institute"
   },
   "research triangle institute||--||nih (nichd)": {
@@ -6294,6 +7709,23 @@
    "department": "--",
    "funder": "NIH (NIMH)",
    "university": "Research Triangle Institute"
+  },
+  "rice university||biochemistry||nih (nigms)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 76300,
+      "core": "F32GM167207",
+      "label": "$76,300",
+      "pi": "Alex Hamilton",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11463738"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (NIGMS)",
+   "university": "Rice University"
   },
   "rice university||biomedical engineering||nih (nci)": {
    "cells": {
@@ -6475,6 +7907,23 @@
    "funder": "NIH (NICHD)",
    "university": "Rockefeller University"
   },
+  "rockefeller university||microbiology/immun/virology||nih (niddk)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 916243,
+      "core": "R01DK113375",
+      "label": "$916,243",
+      "pi": "Daniel S Mucida",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11376706"
+     }
+    ]
+   },
+   "department": "Microbiology/immun/virology",
+   "funder": "NIH (NIDDK)",
+   "university": "Rockefeller University"
+  },
   "roswell park cancer institute corp||--||nih (nci)": {
    "cells": {
     "2026-09-06": [
@@ -6574,6 +8023,74 @@
    "funder": "NIH (NIDA)",
    "university": "Roswell Park Cancer Institute Corp"
   },
+  "rush university medical center||--||nih (nia)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 580514,
+      "core": "R01AG100372",
+      "label": "$580,514",
+      "pi": "Rupal I. Mehta",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11343302"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
+   "university": "Rush University Medical Center"
+  },
+  "rush university medical center||anatomy/cell biology||nih (niams)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 50114,
+      "core": "F31AR088599",
+      "label": "$50,114",
+      "pi": "Itzel Lazcano",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11470869"
+     }
+    ]
+   },
+   "department": "Anatomy/cell Biology",
+   "funder": "NIH (NIAMS)",
+   "university": "Rush University Medical Center"
+  },
+  "rush university medical center||anatomy/cell biology||nih (nichd)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 706298,
+      "core": "R01HD122762",
+      "label": "$706,298",
+      "pi": "D Rick Sumner",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11427030"
+     }
+    ]
+   },
+   "department": "Anatomy/cell Biology",
+   "funder": "NIH (NICHD)",
+   "university": "Rush University Medical Center"
+  },
+  "rutgers biomedical and health sciences||biology||nih (nci)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 288758,
+      "core": "R37CA277812",
+      "label": "$288,758",
+      "pi": "Lanjing Zhang",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11294029"
+     }
+    ]
+   },
+   "department": "Biology",
+   "funder": "NIH (NCI)",
+   "university": "Rutgers Biomedical and Health Sciences"
+  },
   "rutgers biomedical and health sciences||nutrition||nih (nhlbi)": {
    "cells": {
     "2026-09-13": [
@@ -6620,6 +8137,22 @@
       "pi": "Tao Yin",
       "pi_email": "",
       "url": "https://reporter.nih.gov/project-details/11451655"
+     },
+     {
+      "amount": 425971,
+      "core": "R21AG100982",
+      "label": "$425,971",
+      "pi": "Miriam E. Bocarsly",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11353442"
+     },
+     {
+      "amount": 3663975,
+      "core": "RF1AG099751",
+      "label": "$3,663,975",
+      "pi": "Chintan Dave",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11328328"
      }
     ]
    },
@@ -6680,6 +8213,23 @@
    "funder": "NIH (NINDS)",
    "university": "Rutgers, the State Univ of N.j."
   },
+  "rutgers, the state univ of n.j.||biochemistry||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 687424,
+      "core": "R01AG095099",
+      "label": "$687,424",
+      "pi": "Yang Lyu",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11448086"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (NIA)",
+   "university": "Rutgers, the State Univ of N.j."
+  },
   "saint louis university||--||nih (nci)": {
    "cells": {
     "2026-09-13": [
@@ -6691,11 +8241,36 @@
       "pi_email": "daniela.salvemini@health.slu.edu",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11336969"
+     },
+     {
+      "amount": 2541122,
+      "core": "R01CA325465",
+      "label": "$2,541,122",
+      "pi": "Richard J Dipaolo",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11448151"
      }
     ]
    },
    "department": "--",
    "funder": "NIH (NCI)",
+   "university": "Saint Louis University"
+  },
+  "saint louis university||biochemistry||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 568590,
+      "core": "R56NS114289",
+      "label": "$568,590",
+      "pi": "Yuna Ayala",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11606638"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (NINDS)",
    "university": "Saint Louis University"
   },
   "saint louis university||pharmacology||nih (nia)": {
@@ -6714,6 +8289,57 @@
    "department": "Pharmacology",
    "funder": "NIH (NIA)",
    "university": "Saint Louis University"
+  },
+  "salk institute for biological studies||--||nih (nci)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 46558,
+      "core": "F31CA294995",
+      "label": "$46,558",
+      "pi": "Hyemin Song",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11375872"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NCI)",
+   "university": "Salk Institute for Biological Studies"
+  },
+  "salk institute for biological studies||--||nih (nia)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 764927,
+      "core": "R01AG097833",
+      "label": "$764,927",
+      "pi": "Courtney Glavis-bloom",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11451124"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
+   "university": "Salk Institute for Biological Studies"
+  },
+  "salk institute for biological studies||--||nih (nimh)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 929923,
+      "core": "R37MH102441",
+      "label": "$929,923",
+      "pi": "Kay Maxine Tye",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11454754"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIMH)",
+   "university": "Salk Institute for Biological Studies"
   },
   "salk institute for biological studies||--||nih (ninds)": {
    "cells": {
@@ -6879,12 +8505,88 @@
       "pi": "Sarah Lin Ly",
       "pi_email": "",
       "url": "https://reporter.nih.gov/project-details/11437731"
+     },
+     {
+      "amount": 713861,
+      "core": "R01AG073418",
+      "label": "$713,861",
+      "pi": "Jeffery W Kelly",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11368927"
      }
     ]
    },
    "department": "--",
    "funder": "NIH (NIA)",
    "university": "Scripps Research Institute, the"
+  },
+  "scripps research institute, the||--||nih (niaid)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 16901726,
+      "core": "U19AI171443",
+      "label": "$16,901,726",
+      "pi": "Sumit K Chanda",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11542045"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIAID)",
+   "university": "Scripps Research Institute, the"
+  },
+  "scripps research institute, the||--||nih (niddk)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 860360,
+      "core": "DP1DK147864",
+      "label": "$860,360",
+      "pi": "Li Ye",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11375695"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIDDK)",
+   "university": "Scripps Research Institute, the"
+  },
+  "scripps research institute, the||--||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 687666,
+      "core": "R01NS148498",
+      "label": "$687,666",
+      "pi": "Anton Maximov",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11347963"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINDS)",
+   "university": "Scripps Research Institute, the"
+  },
+  "smith-kettlewell eye research institute||--||nih (nei)": {
+   "cells": {
+    "2026-09-20": [
+     {
+      "amount": 2353224,
+      "core": "R01EY027390",
+      "label": "$2,353,224",
+      "pi": "Preeti Verghese",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11298071"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NEI)",
+   "university": "Smith-kettlewell Eye Research Institute"
   },
   "south dakota state university||--||fda": {
    "cells": {
@@ -7061,6 +8763,23 @@
    },
    "department": "Biology",
    "funder": "NIH (NINDS)",
+   "university": "Stanford University"
+  },
+  "stanford university||biomedical engineering||nih (nichd)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 50114,
+      "core": "F31HD123411",
+      "label": "$50,114",
+      "pi": "Sophia Chengping Shen",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11459685"
+     }
+    ]
+   },
+   "department": "Biomedical Engineering",
+   "funder": "NIH (NICHD)",
    "university": "Stanford University"
   },
   "stanford university||biomedical engineering||nih (ninds)": {
@@ -7305,6 +9024,23 @@
    "funder": "NIH (NIA)",
    "university": "State University New York Stony Brook"
   },
+  "state university new york stony brook||--||nih (nichd)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 601050,
+      "core": "R01HD123106",
+      "label": "$601,050",
+      "pi": "Lauren Hale",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11429129"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NICHD)",
+   "university": "State University New York Stony Brook"
+  },
   "state university new york stony brook||biomedical engineering||nih (nidcr)": {
    "cells": {
     "2026-09-06": [
@@ -7411,6 +9147,23 @@
    "funder": "NIH (NIGMS)",
    "university": "State University of Ny,binghamton"
   },
+  "tarleton state university||--||nih (ninds)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 174383,
+      "core": "R34NS148222",
+      "label": "$174,383",
+      "pi": "Micheal Jacob Luera",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11357918"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINDS)",
+   "university": "Tarleton State University"
+  },
   "texas a&m agrilife research||biochemistry||nih (nigms)": {
    "cells": {
     "2026-09-13": [
@@ -7481,6 +9234,23 @@
    },
    "department": "--",
    "funder": "NIH (NIGMS)",
+   "university": "Texas A&m University"
+  },
+  "texas a&m university||biology||nih (nia)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 527686,
+      "core": "R01AG100365",
+      "label": "$527,686",
+      "pi": "Alex C Keene",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11344155"
+     }
+    ]
+   },
+   "department": "Biology",
+   "funder": "NIH (NIA)",
    "university": "Texas A&m University"
   },
   "texas a&m university||biology||nih (nigms)": {
@@ -7798,11 +9568,63 @@
       "pi_email": "abraham.bayer@tufts.edu",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11393067"
+     },
+     {
+      "amount": 55114,
+      "core": "F30HL175876",
+      "label": "$55,114",
+      "pi": "Nicole L. Wolter",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11457709"
      }
     ]
    },
    "department": "--",
    "funder": "NIH (NHLBI)",
+   "university": "Tufts University Boston"
+  },
+  "tufts university boston||--||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 46320,
+      "core": "F31AG104733",
+      "label": "$46,320",
+      "pi": "Lauren Lepeak",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11458785"
+     }
+    ],
+    "2026-09-13": [
+     {
+      "amount": 6074921,
+      "core": "U19AG092282",
+      "label": "$6,074,921",
+      "pi": "Daniel Edward Promislow",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11420287"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
+   "university": "Tufts University Boston"
+  },
+  "tufts university boston||--||nih (nidcr)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 125656,
+      "core": "K08DE036336",
+      "label": "$125,656",
+      "pi": "Zoe Zhu",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11438405"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIDCR)",
    "university": "Tufts University Boston"
   },
   "tufts university boston||microbiology/immun/virology||nih (niaid)": {
@@ -8265,6 +10087,23 @@
    "funder": "NIH (NHLBI)",
    "university": "Univ of North Carolina Chapel Hill"
   },
+  "univ of north carolina chapel hill||pharmacology||nih (niaaa)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 636607,
+      "core": "R01AA033526",
+      "label": "$636,607",
+      "pi": "Leon Garland Coleman",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11465406"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NIAAA)",
+   "university": "Univ of North Carolina Chapel Hill"
+  },
   "univ of north carolina chapel hill||pharmacology||nih (niaid)": {
    "cells": {
     "2026-09-13": [
@@ -8337,6 +10176,40 @@
    "funder": "NIH (NIAID)",
    "university": "University of Alabama at Birmingham"
   },
+  "university of alabama at birmingham||--||nih (nidcr)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 431365,
+      "core": "R01DE035583",
+      "label": "$431,365",
+      "pi": "Yu Shin Kim",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11376276"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIDCR)",
+   "university": "University of Alabama at Birmingham"
+  },
+  "university of alabama at birmingham||anatomy/cell biology||nih (niams)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 42036,
+      "core": "F31AR088336",
+      "label": "$42,036",
+      "pi": "Collin Ainslie",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11458564"
+     }
+    ]
+   },
+   "department": "Anatomy/cell Biology",
+   "funder": "NIH (NIAMS)",
+   "university": "University of Alabama at Birmingham"
+  },
   "university of alabama at birmingham||anatomy/cell biology||nih (ninds)": {
    "cells": {
     "2026-09-06": [
@@ -8353,6 +10226,23 @@
    },
    "department": "Anatomy/cell Biology",
    "funder": "NIH (NINDS)",
+   "university": "University of Alabama at Birmingham"
+  },
+  "university of alabama at birmingham||genetics||nih (nei)": {
+   "cells": {
+    "2026-09-20": [
+     {
+      "amount": 478880,
+      "core": "R01EY033141",
+      "label": "$478,880",
+      "pi": "Konark Mukherjee",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11641009"
+     }
+    ]
+   },
+   "department": "Genetics",
+   "funder": "NIH (NEI)",
    "university": "University of Alabama at Birmingham"
   },
   "university of alabama at birmingham||microbiology/immun/virology||nih (nhlbi)": {
@@ -8426,6 +10316,16 @@
   },
   "university of arizona||--||nih (fic)": {
    "cells": {
+    "2026-09-06": [
+     {
+      "amount": 130784,
+      "core": "R21TW013364",
+      "label": "$130,784",
+      "pi": "Rongguang Liang",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11306805"
+     }
+    ],
     "2026-09-13": [
      {
       "amount": 47928,
@@ -8457,6 +10357,23 @@
    },
    "department": "--",
    "funder": "NIH (NICHD)",
+   "university": "University of Arizona"
+  },
+  "university of arizona||--||nih (nigms)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 334505,
+      "core": "R01GM164325",
+      "label": "$334,505",
+      "pi": "Geoffrey C Gurtner",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11339293"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIGMS)",
    "university": "University of Arizona"
   },
   "university of arizona||anatomy/cell biology||nih (nhlbi)": {
@@ -8492,6 +10409,40 @@
     ]
    },
    "department": "Biochemistry",
+   "funder": "NIH (NIGMS)",
+   "university": "University of Arizona"
+  },
+  "university of arizona||biochemistry||nih (od)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 2000000,
+      "core": "S10OD040083",
+      "label": "$2,000,000",
+      "pi": "Thomas Michael Tomasiak",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11337940"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (OD)",
+   "university": "University of Arizona"
+  },
+  "university of arizona||biology||nih (nigms)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 410775,
+      "core": "R35GM163679",
+      "label": "$410,775",
+      "pi": "John Ross Buchan",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11329252"
+     }
+    ]
+   },
+   "department": "Biology",
    "funder": "NIH (NIGMS)",
    "university": "University of Arizona"
   },
@@ -8531,6 +10482,23 @@
    "funder": "NIH (NHLBI)",
    "university": "University of Arizona"
   },
+  "university of arizona||pharmacology||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 639943,
+      "core": "R56AG097418",
+      "label": "$639,943",
+      "pi": "Xinglong Wang",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11617893"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NIA)",
+   "university": "University of Arizona"
+  },
   "university of arizona||pharmacology||nih (niaid)": {
    "cells": {
     "2026-09-13": [
@@ -8547,6 +10515,40 @@
    },
    "department": "Pharmacology",
    "funder": "NIH (NIAID)",
+   "university": "University of Arizona"
+  },
+  "university of arizona||pharmacology||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 3462365,
+      "core": "RF1NS146340",
+      "label": "$3,462,365",
+      "pi": "Edita Navratilova",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11446393"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NINDS)",
+   "university": "University of Arizona"
+  },
+  "university of arizona||physiology||nih (nei)": {
+   "cells": {
+    "2026-09-20": [
+     {
+      "amount": 1005703,
+      "core": "R56EY026027",
+      "label": "$1,005,703",
+      "pi": "Erika D. Eggers",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11641965"
+     }
+    ]
+   },
+   "department": "Physiology",
+   "funder": "NIH (NEI)",
    "university": "University of Arizona"
   },
   "university of arkansas at fayetteville||engineering (all types)||nih (od)": {
@@ -8585,6 +10587,23 @@
    "funder": "NIH (NCI)",
    "university": "University of Calif-lawrenc Berkeley Lab"
   },
+  "university of calif-lawrenc berkeley lab||--||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 538456,
+      "core": "R21AG104259",
+      "label": "$538,456",
+      "pi": "Suzanne L Baker",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11442811"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
+   "university": "University of Calif-lawrenc Berkeley Lab"
+  },
   "university of calif-lawrenc berkeley lab||--||nih (nigms)": {
    "cells": {
     "2026-09-06": [
@@ -8612,6 +10631,23 @@
    "funder": "NIH (NIGMS)",
    "university": "University of Calif-lawrenc Berkeley Lab"
   },
+  "university of calif-lawrenc berkeley lab||--||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 388660,
+      "core": "R50NS148159",
+      "label": "$388,660",
+      "pi": "Ryan Ly",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11342744"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINDS)",
+   "university": "University of Calif-lawrenc Berkeley Lab"
+  },
   "university of california at davis||--||fda": {
    "cells": {
     "2026-09-20": [
@@ -8628,6 +10664,40 @@
    },
    "department": "--",
    "funder": "FDA",
+   "university": "University of California at Davis"
+  },
+  "university of california at davis||--||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 412616,
+      "core": "R01AG080591",
+      "label": "$412,616",
+      "pi": "Jennifer Hagerty Lingler",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11583871"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
+   "university": "University of California at Davis"
+  },
+  "university of california at davis||physiology||nih (nigms)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 546760,
+      "core": "R35GM161828",
+      "label": "$546,760",
+      "pi": "Jorge Enrique Contreras",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11260595"
+     }
+    ]
+   },
+   "department": "Physiology",
+   "funder": "NIH (NIGMS)",
    "university": "University of California at Davis"
   },
   "university of california at davis||physiology||nih (ninds)": {
@@ -8904,6 +10974,23 @@
    "funder": "NIH (NIGMS)",
    "university": "University of California Berkeley"
   },
+  "university of california berkeley||chemistry||nih (nigms)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 76780,
+      "core": "F32GM157931",
+      "label": "$76,780",
+      "pi": "Joseph Schneider",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11420322"
+     }
+    ]
+   },
+   "department": "Chemistry",
+   "funder": "NIH (NIGMS)",
+   "university": "University of California Berkeley"
+  },
   "university of california los angeles||--||nih (nccih)": {
    "cells": {
     "2026-09-13": [
@@ -8920,6 +11007,31 @@
    },
    "department": "--",
    "funder": "NIH (NCCIH)",
+   "university": "University of California Los Angeles"
+  },
+  "university of california los angeles||--||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 99473,
+      "core": "U54AG089335",
+      "label": "$99,473",
+      "pi": "Yvonne L Kapila",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11531229"
+     },
+     {
+      "amount": 399952,
+      "core": "U54AG089335",
+      "label": "$399,952",
+      "pi": "Yvonne L Kapila",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11531556"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
    "university": "University of California Los Angeles"
   },
   "university of california los angeles||--||nih (niaid)": {
@@ -9190,6 +11302,23 @@
    },
    "department": "--",
    "funder": "NIH (NIAID)",
+   "university": "University of California Riverside"
+  },
+  "university of california riverside||--||nih (niams)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 712693,
+      "core": "R56AR086946",
+      "label": "$712,693",
+      "pi": "Qixuan Wang",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11280319"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIAMS)",
    "university": "University of California Riverside"
   },
   "university of california riverside||anatomy/cell biology||nih (niams)": {
@@ -9503,6 +11632,14 @@
       "pi_email": "tkomiyama@ucsd.edu",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11520856"
+     },
+     {
+      "amount": 476785,
+      "core": "R56NS144209",
+      "label": "$476,785",
+      "pi": "Shelley L Halpain",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11609312"
      }
     ]
    },
@@ -9536,6 +11673,57 @@
     ]
    },
    "department": "Engineering (all Types)",
+   "funder": "NIH (NHLBI)",
+   "university": "University of California, San Diego"
+  },
+  "university of california, san diego||engineering (all types)||nih (niams)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 684113,
+      "core": "R01AR085747",
+      "label": "$684,113",
+      "pi": "Liangfang Zhang",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11296760"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NIAMS)",
+   "university": "University of California, San Diego"
+  },
+  "university of california, san diego||engineering (all types)||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 824522,
+      "core": "R18NS145987",
+      "label": "$824,522",
+      "pi": "Patrick P Mercier",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11266683"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NINDS)",
+   "university": "University of California, San Diego"
+  },
+  "university of california, san diego||pharmacology||nih (nhlbi)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 43172,
+      "core": "F31HL182106",
+      "label": "$43,172",
+      "pi": "Evan Yu-an Wen",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11458928"
+     }
+    ]
+   },
+   "department": "Pharmacology",
    "funder": "NIH (NHLBI)",
    "university": "University of California, San Diego"
   },
@@ -9600,6 +11788,23 @@
    },
    "department": "Pharmacology",
    "funder": "NIH (NCI)",
+   "university": "University of California, San Francisco"
+  },
+  "university of california, san francisco||pharmacology||nih (nia)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 700564,
+      "core": "R01AG100367",
+      "label": "$700,564",
+      "pi": "Adam R. Abate",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11343667"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NIA)",
    "university": "University of California, San Francisco"
   },
   "university of california, san francisco||pharmacology||nih (niaid)": {
@@ -9667,6 +11872,74 @@
    "funder": "NIH (NIGMS)",
    "university": "University of California, San Francisco"
   },
+  "university of california, san francisco||pharmacology||nih (ninds)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 450398,
+      "core": "R01NS059690",
+      "label": "$450,398",
+      "pi": "Jason E Gestwicki",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11386413"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NINDS)",
+   "university": "University of California, San Francisco"
+  },
+  "university of california-irvine||--||nih (ninr)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 801029,
+      "core": "R01NR022176",
+      "label": "$801,029",
+      "pi": "Michelle Fortier",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11450084"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINR)",
+   "university": "University of California-irvine"
+  },
+  "university of california-irvine||biochemistry||nih (nhlbi)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 43595,
+      "core": "F31HL182220",
+      "label": "$43,595",
+      "pi": "Miranda Emiko Kelly",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11457707"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (NHLBI)",
+   "university": "University of California-irvine"
+  },
+  "university of california-irvine||biochemistry||nih (nichd)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 435691,
+      "core": "R61HD123427",
+      "label": "$435,691",
+      "pi": "Dequina Angelina Nicholas",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11456298"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (NICHD)",
+   "university": "University of California-irvine"
+  },
   "university of california-irvine||biomedical engineering||nih (nei)": {
    "cells": {
     "2026-09-13": [
@@ -9682,6 +11955,23 @@
    },
    "department": "Biomedical Engineering",
    "funder": "NIH (NEI)",
+   "university": "University of California-irvine"
+  },
+  "university of california-irvine||physiology||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 431750,
+      "core": "R21AG101225",
+      "label": "$431,750",
+      "pi": "Lingxuan Chen",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11357280"
+     }
+    ]
+   },
+   "department": "Physiology",
+   "funder": "NIH (NIA)",
    "university": "University of California-irvine"
   },
   "university of california-irvine||physiology||nih (nigms)": {
@@ -9713,6 +12003,23 @@
    "funder": "NIH (NIGMS)",
    "university": "University of California-irvine"
   },
+  "university of california-irvine||physiology||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 549500,
+      "core": "R56NS147542",
+      "label": "$549,500",
+      "pi": "Sergio Armando Villalta",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11629772"
+     }
+    ]
+   },
+   "department": "Physiology",
+   "funder": "NIH (NINDS)",
+   "university": "University of California-irvine"
+  },
   "university of chicago||--||nih (nhlbi)": {
    "cells": {
     "2026-09-13": [
@@ -9740,6 +12047,23 @@
    "funder": "NIH (NHLBI)",
    "university": "University of Chicago"
   },
+  "university of chicago||biochemistry||nih (od)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 1238710,
+      "core": "S10OD040245",
+      "label": "$1,238,710",
+      "pi": "Eduardo A Perozo",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11339222"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (OD)",
+   "university": "University of Chicago"
+  },
   "university of chicago||biomedical engineering||nih (nci)": {
    "cells": {
     "2026-09-06": [
@@ -9756,6 +12080,23 @@
    },
    "department": "Biomedical Engineering",
    "funder": "NIH (NCI)",
+   "university": "University of Chicago"
+  },
+  "university of chicago||chemistry||nih (niaid)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 75880,
+      "core": "F32AI186429",
+      "label": "$75,880",
+      "pi": "Curt Waltmann",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11411398"
+     }
+    ]
+   },
+   "department": "Chemistry",
+   "funder": "NIH (NIAID)",
    "university": "University of Chicago"
   },
   "university of cincinnati||--||nih (nci)": {
@@ -9841,6 +12182,56 @@
    "funder": "NIH (NIDCR)",
    "university": "University of Colorado Denver"
   },
+  "university of colorado denver||pharmacology||nih (nci)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 141337,
+      "core": "K99CA315574",
+      "label": "$141,337",
+      "pi": "Sheera Rosenbaum",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11439401"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NCI)",
+   "university": "University of Colorado Denver"
+  },
+  "university of colorado denver||pharmacology||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 557084,
+      "core": "R01NS146039",
+      "label": "$557,084",
+      "pi": "K. Ulrich Bayer",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11444342"
+     },
+     {
+      "amount": 741000,
+      "core": "DP2NS155520",
+      "label": "$741,000",
+      "pi": "Alessandra Brambati",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11395934"
+     },
+     {
+      "amount": 414732,
+      "core": "R21NS152136",
+      "label": "$414,732",
+      "pi": "Won Chan Oh",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11513736"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NINDS)",
+   "university": "University of Colorado Denver"
+  },
   "university of colorado denver||physiology||nih (ninds)": {
    "cells": {
     "2026-09-06": [
@@ -9858,6 +12249,23 @@
    "department": "Physiology",
    "funder": "NIH (NINDS)",
    "university": "University of Colorado Denver"
+  },
+  "university of colorado||engineering (all types)||nih (niams)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 157521,
+      "core": "R21AR088260",
+      "label": "$157,521",
+      "pi": "Sarah Calve",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11441223"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NIAMS)",
+   "university": "University of Colorado"
   },
   "university of colorado||engineering (all types)||nih (ninds)": {
    "cells": {
@@ -9922,6 +12330,23 @@
    },
    "department": "Physiology",
    "funder": "NIH (NHLBI)",
+   "university": "University of Colorado"
+  },
+  "university of colorado||physiology||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 809971,
+      "core": "R01AG094826",
+      "label": "$809,971",
+      "pi": "Matthew J Rossman",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11365568"
+     }
+    ]
+   },
+   "department": "Physiology",
+   "funder": "NIH (NIA)",
    "university": "University of Colorado"
   },
   "university of connecticut sch of med/dnt||--||nih (nhgri)": {
@@ -10012,6 +12437,23 @@
    },
    "department": "--",
    "funder": "NIH (NHLBI)",
+   "university": "University of Connecticut Storrs"
+  },
+  "university of connecticut storrs||--||nih (nichd)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 734015,
+      "core": "R01HD123170",
+      "label": "$734,015",
+      "pi": "Fumiko Hoeft",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11433667"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NICHD)",
    "university": "University of Connecticut Storrs"
   },
   "university of connecticut storrs||biomedical engineering||nih (niams)": {
@@ -10175,6 +12617,23 @@
    "funder": "NIH (NIDCD)",
    "university": "University of Delaware"
   },
+  "university of denver (colorado seminary)||chemistry||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 99999,
+      "core": "R61NS137824",
+      "label": "$99,999",
+      "pi": "Sunil Kumar",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11641877"
+     }
+    ]
+   },
+   "department": "Chemistry",
+   "funder": "NIH (NINDS)",
+   "university": "University of Denver (colorado Seminary)"
+  },
   "university of florida||--||nih (nccih)": {
    "cells": {
     "2026-09-13": [
@@ -10191,6 +12650,40 @@
    },
    "department": "--",
    "funder": "NIH (NCCIH)",
+   "university": "University of Florida"
+  },
+  "university of florida||biochemistry||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 639860,
+      "core": "R01AG096366",
+      "label": "$639,860",
+      "pi": "Ramon C. Sun",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11444391"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (NIA)",
+   "university": "University of Florida"
+  },
+  "university of florida||biochemistry||nih (od)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 748796,
+      "core": "S10OD040232",
+      "label": "$748,796",
+      "pi": "Joanna R Long",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11338540"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (OD)",
    "university": "University of Florida"
   },
   "university of florida||biomedical engineering||nih (nci)": {
@@ -10220,6 +12713,23 @@
    },
    "department": "Biomedical Engineering",
    "funder": "NIH (NCI)",
+   "university": "University of Florida"
+  },
+  "university of florida||biomedical engineering||nih (nhlbi)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 44352,
+      "core": "F31HL182303",
+      "label": "$44,352",
+      "pi": "Julia D Withrow",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11606730"
+     }
+    ]
+   },
+   "department": "Biomedical Engineering",
+   "funder": "NIH (NHLBI)",
    "university": "University of Florida"
   },
   "university of florida||engineering (all types)||nih (nci)": {
@@ -10256,6 +12766,23 @@
    },
    "department": "Engineering (all Types)",
    "funder": "NIH (NIBIB)",
+   "university": "University of Florida"
+  },
+  "university of florida||genetics||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 743880,
+      "core": "R01AG104188",
+      "label": "$743,880",
+      "pi": "Lien Nguyen",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11431668"
+     }
+    ]
+   },
+   "department": "Genetics",
+   "funder": "NIH (NIA)",
    "university": "University of Florida"
   },
   "university of florida||microbiology/immun/virology||nih (nccih)": {
@@ -10314,6 +12841,16 @@
   },
   "university of florida||pharmacology||nih (ninds)": {
    "cells": {
+    "2026-09-06": [
+     {
+      "amount": 693755,
+      "core": "R01NS131165",
+      "label": "$693,755",
+      "pi": "Rajesh Khanna",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/10973996"
+     }
+    ],
     "2026-09-13": [
      {
       "amount": 422125,
@@ -10357,6 +12894,23 @@
    },
    "department": "Physiology",
    "funder": "NIH (NIA)",
+   "university": "University of Florida"
+  },
+  "university of florida||physiology||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 556491,
+      "core": "R56NS152087",
+      "label": "$556,491",
+      "pi": "Donald C Bolser",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11630949"
+     }
+    ]
+   },
+   "department": "Physiology",
+   "funder": "NIH (NINDS)",
    "university": "University of Florida"
   },
   "university of georgia||--||fda": {
@@ -10518,6 +13072,23 @@
    "funder": "NIH (NIAID)",
    "university": "University of Hawaii at Manoa"
   },
+  "university of hawaii at manoa||--||nih (od)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 340142,
+      "core": "S15OD042565",
+      "label": "$340,142",
+      "pi": "Christine Farrar",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11421106"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (OD)",
+   "university": "University of Hawaii at Manoa"
+  },
   "university of hawaii at manoa||nutrition||nih (nhlbi)": {
    "cells": {
     "2026-09-13": [
@@ -10660,6 +13231,33 @@
    "funder": "NIH (NIMH)",
    "university": "University of Illinois at Chicago"
   },
+  "university of illinois at chicago||anatomy/cell biology||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 664392,
+      "core": "R01AG033570",
+      "label": "$664,392",
+      "pi": "Orly Lazarov",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11449441"
+     }
+    ],
+    "2026-09-13": [
+     {
+      "amount": 240495,
+      "core": "R21AG098225",
+      "label": "$240,495",
+      "pi": "Ernesto Roque Bongarzone",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11285837"
+     }
+    ]
+   },
+   "department": "Anatomy/cell Biology",
+   "funder": "NIH (NIA)",
+   "university": "University of Illinois at Chicago"
+  },
   "university of illinois at chicago||biology||nih (niams)": {
    "cells": {
     "2026-09-13": [
@@ -10759,6 +13357,23 @@
    "funder": "FDA",
    "university": "University of Illinois at Urbana-champaign"
   },
+  "university of illinois at urbana-champaign||--||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 650450,
+      "core": "R01AG094908",
+      "label": "$650,450",
+      "pi": "Caterina Gratton",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11380604"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
+   "university": "University of Illinois at Urbana-champaign"
+  },
   "university of illinois at urbana-champaign||anatomy/cell biology||nih (nhgri)": {
    "cells": {
     "2026-09-06": [
@@ -10793,6 +13408,23 @@
    },
    "department": "Chemistry",
    "funder": "NIH (NIA)",
+   "university": "University of Illinois at Urbana-champaign"
+  },
+  "university of illinois at urbana-champaign||engineering (all types)||nih (nhlbi)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 55114,
+      "core": "F30HL178360",
+      "label": "$55,114",
+      "pi": "Pranav Dorbala",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11458917"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NHLBI)",
    "university": "University of Illinois at Urbana-champaign"
   },
   "university of illinois at urbana-champaign||engineering (all types)||nih (nibib)": {
@@ -10840,6 +13472,23 @@
    "funder": "FDA",
    "university": "University of Illinois at Urbana-champaign"
   },
+  "university of illinois at urbana-champaign||veterinary sciences||nih (nlm)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 210258,
+      "core": "R21LM015107",
+      "label": "$210,258",
+      "pi": "Bruce Southey",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11284471"
+     }
+    ]
+   },
+   "department": "Veterinary Sciences",
+   "funder": "NIH (NLM)",
+   "university": "University of Illinois at Urbana-champaign"
+  },
   "university of iowa||--||nih (nimh)": {
    "cells": {
     "2026-09-13": [
@@ -10873,6 +13522,23 @@
     ]
    },
    "department": "Anatomy/cell Biology",
+   "funder": "NIH (NHLBI)",
+   "university": "University of Iowa"
+  },
+  "university of iowa||physiology||nih (nhlbi)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 43196,
+      "core": "F30HL182065",
+      "label": "$43,196",
+      "pi": "Alex Kelly Dou",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11418860"
+     }
+    ]
+   },
+   "department": "Physiology",
    "funder": "NIH (NHLBI)",
    "university": "University of Iowa"
   },
@@ -10945,6 +13611,23 @@
    },
    "department": "Microbiology/immun/virology",
    "funder": "NIH (NIAID)",
+   "university": "University of Kansas Medical Center"
+  },
+  "university of kansas medical center||physiology||nih (nci)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 431577,
+      "core": "R25CA314971",
+      "label": "$431,577",
+      "pi": "Lisa M Harlan-williams",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11422521"
+     }
+    ]
+   },
+   "department": "Physiology",
+   "funder": "NIH (NCI)",
    "university": "University of Kansas Medical Center"
   },
   "university of kentucky||biochemistry||nih (nia)": {
@@ -11047,6 +13730,14 @@
       "pi_email": "yosra.helmy@uky.edu",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11419462"
+     },
+     {
+      "amount": 75186,
+      "core": "U18FD008567",
+      "label": "$75,186",
+      "pi": "Megan C Romano",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11422091"
      }
     ]
    },
@@ -11286,6 +13977,23 @@
    "funder": "FDA",
    "university": "University of Maryland Baltimore"
   },
+  "university of maryland baltimore||pharmacology||nih (nia)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 605028,
+      "core": "R01AG066645",
+      "label": "$605,028",
+      "pi": "Thomas A Longden",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11447038"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NIA)",
+   "university": "University of Maryland Baltimore"
+  },
   "university of maryland baltimore||pharmacology||nih (nigms)": {
    "cells": {
     "2026-09-06": [
@@ -11404,6 +14112,23 @@
    "funder": "NIH (NIAMS)",
    "university": "University of Miami Coral Gables"
   },
+  "university of miami school of medicine||--||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 116451,
+      "core": "K01AG103880",
+      "label": "$116,451",
+      "pi": "Deirdre M Oshea",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11436354"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
+   "university": "University of Miami School of Medicine"
+  },
   "university of miami school of medicine||anatomy/cell biology||nih (nci)": {
    "cells": {
     "2026-09-13": [
@@ -11433,6 +14158,14 @@
       "pi_email": "SZuchner@med.miami.edu",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11210513"
+     },
+     {
+      "amount": 378000,
+      "core": "RM1NS143831",
+      "label": "$378,000",
+      "pi": "Stephan Zuchner",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11630855"
      }
     ]
    },
@@ -11525,6 +14258,14 @@
       "pi_email": "john.rubenstein@ucsf.edu",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11292966"
+     },
+     {
+      "amount": 535943,
+      "core": "R01CA315493",
+      "label": "$535,943",
+      "pi": "Shawna Nicole Smith",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11425874"
      }
     ],
     "2026-09-20": [
@@ -11590,6 +14331,14 @@
       "pi_email": "jmdupree@med.umich.edu",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11270564"
+     },
+     {
+      "amount": 429000,
+      "core": "R21HD122186",
+      "label": "$429,000",
+      "pi": "Katie M Edwards",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11354048"
      }
     ]
    },
@@ -11678,6 +14427,23 @@
    },
    "department": "Biochemistry",
    "funder": "NIH (NIGMS)",
+   "university": "University of Michigan at Ann Arbor"
+  },
+  "university of michigan at ann arbor||biochemistry||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 1397313,
+      "core": "RF1NS146936",
+      "label": "$1,397,313",
+      "pi": "Bo Duan",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11446537"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (NINDS)",
    "university": "University of Michigan at Ann Arbor"
   },
   "university of michigan at ann arbor||biomedical engineering||nih (nigms)": {
@@ -11770,6 +14536,16 @@
   },
   "university of michigan at ann arbor||pharmacology||nih (niddk)": {
    "cells": {
+    "2026-09-06": [
+     {
+      "amount": 752267,
+      "core": "R01DK142653",
+      "label": "$752,267",
+      "pi": "Paulette B. Goforth",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11446512"
+     }
+    ],
     "2026-09-13": [
      {
       "amount": 798750,
@@ -11926,6 +14702,23 @@
    "funder": "NIH (NIAID)",
    "university": "University of Minnesota"
   },
+  "university of minnesota||biomedical engineering||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 221279,
+      "core": "R21AG100961",
+      "label": "$221,279",
+      "pi": "Jonathan N Sachs",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11356366"
+     }
+    ]
+   },
+   "department": "Biomedical Engineering",
+   "funder": "NIH (NIA)",
+   "university": "University of Minnesota"
+  },
   "university of minnesota||engineering (all types)||nih (ninds)": {
    "cells": {
     "2026-09-06": [
@@ -11941,6 +14734,40 @@
    },
    "department": "Engineering (all Types)",
    "funder": "NIH (NINDS)",
+   "university": "University of Minnesota"
+  },
+  "university of minnesota||genetics||nih (nhgri)": {
+   "cells": {
+    "2026-09-20": [
+     {
+      "amount": 50114,
+      "core": "F31HG015201",
+      "label": "$50,114",
+      "pi": "Kevin H Zhan",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11386884"
+     }
+    ]
+   },
+   "department": "Genetics",
+   "funder": "NIH (NHGRI)",
+   "university": "University of Minnesota"
+  },
+  "university of minnesota||microbiology/immun/virology||nih (nci)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 50114,
+      "core": "F31CA294586",
+      "label": "$50,114",
+      "pi": "Eduardo Cruz",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11243952"
+     }
+    ]
+   },
+   "department": "Microbiology/immun/virology",
+   "funder": "NIH (NCI)",
    "university": "University of Minnesota"
   },
   "university of minnesota||microbiology/immun/virology||nih (niaid)": {
@@ -11959,6 +14786,23 @@
    },
    "department": "Microbiology/immun/virology",
    "funder": "NIH (NIAID)",
+   "university": "University of Minnesota"
+  },
+  "university of minnesota||pharmacology||nih (nci)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 2238024,
+      "core": "R01CA305103",
+      "label": "$2,238,024",
+      "pi": "Carston R. Wagner",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11446519"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NCI)",
    "university": "University of Minnesota"
   },
   "university of minnesota||pharmacology||nih (niaid)": {
@@ -12060,6 +14904,23 @@
    "funder": "NIH (NHLBI)",
    "university": "University of Mississippi Med Ctr"
   },
+  "university of mississippi||biology||nih (niaaa)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 219812,
+      "core": "R21AA033403",
+      "label": "$219,812",
+      "pi": "Gregg W Roman",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11435652"
+     }
+    ]
+   },
+   "department": "Biology",
+   "funder": "NIH (NIAAA)",
+   "university": "University of Mississippi"
+  },
   "university of missouri kansas city||pharmacology||nih (niaaa)": {
    "cells": {
     "2026-09-13": [
@@ -12077,6 +14938,23 @@
    "department": "Pharmacology",
    "funder": "NIH (NIAAA)",
    "university": "University of Missouri Kansas City"
+  },
+  "university of missouri-columbia||--||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 539427,
+      "core": "R56NS140507",
+      "label": "$539,427",
+      "pi": "Smita Saxena",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11606636"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINDS)",
+   "university": "University of Missouri-columbia"
   },
   "university of missouri-columbia||nutrition||nih (nia)": {
    "cells": {
@@ -12111,6 +14989,31 @@
    },
    "department": "Pharmacology",
    "funder": "NIH (NIA)",
+   "university": "University of Missouri-columbia"
+  },
+  "university of missouri-columbia||veterinary sciences||nih (nei)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 708748,
+      "core": "R01EY039316",
+      "label": "$708,748",
+      "pi": "Rajiv Ravindra Mohan",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11430841"
+     },
+     {
+      "amount": 1277004,
+      "core": "R56EY039318",
+      "label": "$1,277,004",
+      "pi": "Nishant Rajiv Sinha",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11609392"
+     }
+    ]
+   },
+   "department": "Veterinary Sciences",
+   "funder": "NIH (NEI)",
    "university": "University of Missouri-columbia"
   },
   "university of montana||--||nih (nci)": {
@@ -12171,6 +15074,14 @@
       "pi_email": "ekaterina.voronina@umontana.edu",
       "pi_email_via": "",
       "url": "https://reporter.nih.gov/project-details/11347057"
+     },
+     {
+      "amount": 81580,
+      "core": "F32GM156085",
+      "label": "$81,580",
+      "pi": "Hunter James Hill",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11417882"
      }
     ]
    },
@@ -12195,6 +15106,23 @@
    "department": "Pharmacology",
    "funder": "NIH (NIGMS)",
    "university": "University of Montana"
+  },
+  "university of nebraska lincoln||--||fda": {
+   "cells": {
+    "2026-09-20": [
+     {
+      "amount": 123678,
+      "core": "U18FD008911",
+      "label": "$123,678",
+      "pi": "Duan S Loy",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11528004"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "FDA",
+   "university": "University of Nebraska Lincoln"
   },
   "university of nebraska lincoln||biochemistry||nih (nigms)": {
    "cells": {
@@ -12420,6 +15348,40 @@
    "funder": "NIH (NCI)",
    "university": "University of New Mexico Health Scis Ctr"
   },
+  "university of north carolina charlotte||biology||nih (nichd)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 248901,
+      "core": "R00HD117011",
+      "label": "$248,901",
+      "pi": "Talia Lee Hatkevich",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11627830"
+     }
+    ]
+   },
+   "department": "Biology",
+   "funder": "NIH (NICHD)",
+   "university": "University of North Carolina Charlotte"
+  },
+  "university of north carolina greensboro||nutrition||nih (niaaa)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 489447,
+      "core": "R01AA018844",
+      "label": "$489,447",
+      "pi": "Zhanxiang Zhou",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11450399"
+     }
+    ]
+   },
+   "department": "Nutrition",
+   "funder": "NIH (NIAAA)",
+   "university": "University of North Carolina Greensboro"
+  },
   "university of north texas hlth sci ctr||pharmacology||nih (nei)": {
    "cells": {
     "2026-09-06": [
@@ -12431,6 +15393,16 @@
       "pi_email": "Hongli.wu@unthsc.edu",
       "pi_email_via": "",
       "url": "https://reporter.nih.gov/project-details/11449438"
+     }
+    ],
+    "2026-09-13": [
+     {
+      "amount": 43714,
+      "core": "F31EY039571",
+      "label": "$43,714",
+      "pi": "Ying Qin",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11462135"
      }
     ]
    },
@@ -12453,6 +15425,23 @@
     ]
    },
    "department": "Pharmacology",
+   "funder": "NIH (NIA)",
+   "university": "University of North Texas Hlth Sci Ctr"
+  },
+  "university of north texas hlth sci ctr||physiology||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 228602,
+      "core": "R21AG103379",
+      "label": "$228,602",
+      "pi": "Steven A. Romero",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11437702"
+     }
+    ]
+   },
+   "department": "Physiology",
    "funder": "NIH (NIA)",
    "university": "University of North Texas Hlth Sci Ctr"
   },
@@ -12527,8 +15516,35 @@
    "funder": "NIH (NCI)",
    "university": "University of Oklahoma"
   },
+  "university of oregon||--||nih (ninr)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 726363,
+      "core": "R01NR022604",
+      "label": "$726,363",
+      "pi": "Elizabeth L Budd",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11341951"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINR)",
+   "university": "University of Oregon"
+  },
   "university of pennsylvania||--||nih (nci)": {
    "cells": {
+    "2026-09-06": [
+     {
+      "amount": 50114,
+      "core": "F31CA317809",
+      "label": "$50,114",
+      "pi": "Samuel Kim",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11461328"
+     }
+    ],
     "2026-09-13": [
      {
       "amount": 227906,
@@ -12609,6 +15625,23 @@
    "funder": "NIH (NICHD)",
    "university": "University of Pennsylvania"
   },
+  "university of pennsylvania||--||nih (ninds)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 50114,
+      "core": "F31NS147423",
+      "label": "$50,114",
+      "pi": "Margaret Mary Cassidy",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11424181"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINDS)",
+   "university": "University of Pennsylvania"
+  },
   "university of pennsylvania||anatomy/cell biology||nih (nhlbi)": {
    "cells": {
     "2026-09-13": [
@@ -12625,6 +15658,40 @@
    },
    "department": "Anatomy/cell Biology",
    "funder": "NIH (NHLBI)",
+   "university": "University of Pennsylvania"
+  },
+  "university of pennsylvania||anatomy/cell biology||nih (ninds)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 50114,
+      "core": "F31NS151548",
+      "label": "$50,114",
+      "pi": "Daniel Adam Shapiro",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11460372"
+     }
+    ]
+   },
+   "department": "Anatomy/cell Biology",
+   "funder": "NIH (NINDS)",
+   "university": "University of Pennsylvania"
+  },
+  "university of pennsylvania||biochemistry||nih (niaid)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 147166,
+      "core": "K99AI202747",
+      "label": "$147,166",
+      "pi": "Christopher Bourne",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11436878"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (NIAID)",
    "university": "University of Pennsylvania"
   },
   "university of pennsylvania||biochemistry||nih (nigms)": {
@@ -12683,6 +15750,16 @@
   },
   "university of pennsylvania||biomedical engineering||nih (nci)": {
    "cells": {
+    "2026-09-06": [
+     {
+      "amount": 50114,
+      "core": "F31CA309838",
+      "label": "$50,114",
+      "pi": "Andrea Kian",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11459377"
+     }
+    ],
     "2026-09-13": [
      {
       "amount": 377941,
@@ -12734,6 +15811,23 @@
    "funder": "NIH (NIGMS)",
    "university": "University of Pennsylvania"
   },
+  "university of pennsylvania||genetics||nih (niams)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 499813,
+      "core": "R56AR077690",
+      "label": "$499,813",
+      "pi": "Yana G Kamberov",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11628807"
+     }
+    ]
+   },
+   "department": "Genetics",
+   "funder": "NIH (NIAMS)",
+   "university": "University of Pennsylvania"
+  },
   "university of pennsylvania||genetics||nih (nigms)": {
    "cells": {
     "2026-09-13": [
@@ -12749,6 +15843,23 @@
    },
    "department": "Genetics",
    "funder": "NIH (NIGMS)",
+   "university": "University of Pennsylvania"
+  },
+  "university of pennsylvania||genetics||nih (nimh)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 79348,
+      "core": "F32MH138117",
+      "label": "$79,348",
+      "pi": "Jenna Rose Petronglo",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11384576"
+     }
+    ]
+   },
+   "department": "Genetics",
+   "funder": "NIH (NIMH)",
    "university": "University of Pennsylvania"
   },
   "university of pennsylvania||genetics||nih (ninds)": {
@@ -13006,6 +16117,23 @@
    "funder": "NIH (NIAMS)",
    "university": "University of Pittsburgh at Pittsburgh"
   },
+  "university of pittsburgh at pittsburgh||engineering (all types)||nih (ninr)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 1200000,
+      "core": "R01NR022545",
+      "label": "$1,200,000",
+      "pi": "Wei Gao",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11576378"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NINR)",
+   "university": "University of Pittsburgh at Pittsburgh"
+  },
   "university of pittsburgh at pittsburgh||microbiology/immun/virology||nih (nci)": {
    "cells": {
     "2026-09-06": [
@@ -13050,6 +16178,40 @@
    "department": "Microbiology/immun/virology",
    "funder": "NIH (NICHD)",
    "university": "University of Pittsburgh at Pittsburgh"
+  },
+  "university of pittsburgh at pittsburgh||pharmacology||nih (ninds)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 558725,
+      "core": "R01NS146435",
+      "label": "$558,725",
+      "pi": "Michael John Palladino",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11446091"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NINDS)",
+   "university": "University of Pittsburgh at Pittsburgh"
+  },
+  "university of pr cayey university coll||biology||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 620708,
+      "core": "R16NS150240",
+      "label": "$620,708",
+      "pi": "Laura Cristina Vicente-rodr\u00edguez",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11425060"
+     }
+    ]
+   },
+   "department": "Biology",
+   "funder": "NIH (NINDS)",
+   "university": "University of Pr Cayey University Coll"
   },
   "university of puerto rico med sciences||anatomy/cell biology||nih (nei)": {
    "cells": {
@@ -13331,6 +16493,23 @@
    "funder": "NIH (NIMH)",
    "university": "University of Rochester"
   },
+  "university of rochester||--||nih (ninr)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 151063,
+      "core": "R03NR022624",
+      "label": "$151,063",
+      "pi": "Chen Zhang",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11470888"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINR)",
+   "university": "University of Rochester"
+  },
   "university of rochester||biomedical engineering||nih (nia)": {
    "cells": {
     "2026-09-06": [
@@ -13363,6 +16542,23 @@
     ]
    },
    "department": "Chemistry",
+   "funder": "NIH (NIA)",
+   "university": "University of Rochester"
+  },
+  "university of rochester||pharmacology||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 560891,
+      "core": "R01AG097446",
+      "label": "$560,891",
+      "pi": "Scott Earley",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11447232"
+     }
+    ]
+   },
+   "department": "Pharmacology",
    "funder": "NIH (NIA)",
    "university": "University of Rochester"
   },
@@ -13422,6 +16618,16 @@
   },
   "university of south carolina at columbia||--||nih (nhlbi)": {
    "cells": {
+    "2026-09-06": [
+     {
+      "amount": 697431,
+      "core": "R01HL181267",
+      "label": "$697,431",
+      "pi": "Colin Edward Evans",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11363856"
+     }
+    ],
     "2026-09-13": [
      {
       "amount": 622449,
@@ -13454,6 +16660,23 @@
    },
    "department": "--",
    "funder": "NIH (NICHD)",
+   "university": "University of South Carolina at Columbia"
+  },
+  "university of south carolina at columbia||--||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 788127,
+      "core": "R01NS150051",
+      "label": "$788,127",
+      "pi": "Michael Shtutman",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11542785"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NINDS)",
    "university": "University of South Carolina at Columbia"
   },
   "university of south carolina at columbia||anatomy/cell biology||nih (nigms)": {
@@ -13560,6 +16783,31 @@
    },
    "department": "--",
    "funder": "NIH (NCI)",
+   "university": "University of Southern California"
+  },
+  "university of southern california||--||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 476238,
+      "core": "R21AG104537",
+      "label": "$476,238",
+      "pi": "Eleanor Louise Hayes-larson",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11439582"
+     },
+     {
+      "amount": 758328,
+      "core": "R01AG098523",
+      "label": "$758,328",
+      "pi": "Andrei Irimia",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11447949"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
    "university": "University of Southern California"
   },
   "university of southern california||--||nih (niams)": {
@@ -13732,6 +16980,23 @@
    "funder": "NIH (NIAID)",
    "university": "University of Southern California"
   },
+  "university of southern california||pharmacology||nih (niaid)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 518302,
+      "core": "R21AI200425",
+      "label": "$518,302",
+      "pi": "Gauri G Rao",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11392049"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NIAID)",
+   "university": "University of Southern California"
+  },
   "university of southern california||physiology||nih (nia)": {
    "cells": {
     "2026-09-13": [
@@ -13783,6 +17048,23 @@
    },
    "department": "--",
    "funder": "NIH (NICHD)",
+   "university": "University of Tennessee Health Sci Ctr"
+  },
+  "university of tennessee health sci ctr||anatomy/cell biology||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 644237,
+      "core": "R01AG105095",
+      "label": "$644,237",
+      "pi": "Lynn E Dobrunz",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11442991"
+     }
+    ]
+   },
+   "department": "Anatomy/cell Biology",
+   "funder": "NIH (NIA)",
    "university": "University of Tennessee Health Sci Ctr"
   },
   "university of tennessee health sci ctr||pharmacology||nih (ninds)": {
@@ -13838,6 +17120,23 @@
    "department": "Engineering (all Types)",
    "funder": "NIH (NICHD)",
    "university": "University of Tennessee Knoxville"
+  },
+  "university of texas arlington||--||nih (niaaa)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 701015,
+      "core": "R01AA033553",
+      "label": "$701,015",
+      "pi": "Dana M. Litt",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11429427"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIAAA)",
+   "university": "University of Texas Arlington"
   },
   "university of texas at austin||--||nih (nccih)": {
    "cells": {
@@ -14061,11 +17360,36 @@
       "pi_email": "Carolyn.E.Pickering@uth.tmc.edu",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11452105"
+     },
+     {
+      "amount": 234000,
+      "core": "R21AG099390",
+      "label": "$234,000",
+      "pi": "Hyun-eui Kim",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11319260"
      }
     ]
    },
    "department": "Biology",
    "funder": "NIH (NIA)",
+   "university": "University of Texas Hlth Sci Ctr Houston"
+  },
+  "university of texas hlth sci ctr houston||biology||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 2330525,
+      "core": "RF1NS144915",
+      "label": "$2,330,525",
+      "pi": "Edgar T. Walters",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11448110"
+     }
+    ]
+   },
+   "department": "Biology",
+   "funder": "NIH (NINDS)",
    "university": "University of Texas Hlth Sci Ctr Houston"
   },
   "university of texas hlth science center||biochemistry||nih (nci)": {
@@ -14139,6 +17463,23 @@
    "department": "Physiology",
    "funder": "NIH (NINDS)",
    "university": "University of Texas Hlth Science Center"
+  },
+  "university of texas med br galveston||--||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 2476157,
+      "core": "U01AG097469",
+      "label": "$2,476,157",
+      "pi": "Fernanda Laezza",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11275447"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
+   "university": "University of Texas Med Br Galveston"
   },
   "university of texas med br galveston||--||nih (niehs)": {
    "cells": {
@@ -14261,6 +17602,23 @@
    "funder": "NIH (NIAID)",
    "university": "University of Texas Med Br Galveston"
   },
+  "university of toledo health sci campus||physiology||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 401618,
+      "core": "R21AG098515",
+      "label": "$401,618",
+      "pi": "Tao Yang",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11286888"
+     }
+    ]
+   },
+   "department": "Physiology",
+   "funder": "NIH (NIA)",
+   "university": "University of Toledo Health Sci Campus"
+  },
   "university of toledo health sci campus||physiology||nih (niams)": {
    "cells": {
     "2026-09-20": [
@@ -14278,6 +17636,23 @@
    "department": "Physiology",
    "funder": "NIH (NIAMS)",
    "university": "University of Toledo Health Sci Campus"
+  },
+  "university of toledo||--||nih (nei)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 249000,
+      "core": "R00EY036452",
+      "label": "$249,000",
+      "pi": "Sneha Singh",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11618526"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NEI)",
+   "university": "University of Toledo"
   },
   "university of tx md anderson can ctr||--||fda": {
    "cells": {
@@ -14658,6 +18033,23 @@
    "funder": "NIH (NCI)",
    "university": "University of Virginia"
   },
+  "university of virginia||microbiology/immun/virology||nih (niaid)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 39684,
+      "core": "F30AI202860",
+      "label": "$39,684",
+      "pi": "Evan Christopher Lam",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11460105"
+     }
+    ]
+   },
+   "department": "Microbiology/immun/virology",
+   "funder": "NIH (NIAID)",
+   "university": "University of Virginia"
+  },
   "university of virginia||pharmacology||nih (nichd)": {
    "cells": {
     "2026-09-06": [
@@ -14723,6 +18115,14 @@
       "pi_email": "hsauro@uw.edu",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11238703"
+     },
+     {
+      "amount": 470987,
+      "core": "U01CA269191",
+      "label": "$470,987",
+      "pi": "Eric J Seibel",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11533014"
      }
     ],
     "2026-09-20": [
@@ -14931,6 +18331,40 @@
    "funder": "NIH (NIAID)",
    "university": "University of Washington"
   },
+  "university of washington||microbiology/immun/virology||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 838375,
+      "core": "DP2AG108923",
+      "label": "$838,375",
+      "pi": "Autumn G York",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11393954"
+     }
+    ]
+   },
+   "department": "Microbiology/immun/virology",
+   "funder": "NIH (NIA)",
+   "university": "University of Washington"
+  },
+  "university of washington||physiology||nih (nei)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 418614,
+      "core": "R01EY040101",
+      "label": "$418,614",
+      "pi": "Anitha Pasupathy",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11538472"
+     }
+    ]
+   },
+   "department": "Physiology",
+   "funder": "NIH (NEI)",
+   "university": "University of Washington"
+  },
   "university of washington||physiology||nih (nigms)": {
    "cells": {
     "2026-09-13": [
@@ -14966,6 +18400,23 @@
    "department": "Physiology",
    "funder": "NIH (NINDS)",
    "university": "University of Washington"
+  },
+  "university of wisconsin milwaukee||biology||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 576455,
+      "core": "R15NS151713",
+      "label": "$576,455",
+      "pi": "An-phu Tran",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11444650"
+     }
+    ]
+   },
+   "department": "Biology",
+   "funder": "NIH (NINDS)",
+   "university": "University of Wisconsin Milwaukee"
   },
   "university of wisconsin-madison||--||fda": {
    "cells": {
@@ -15044,6 +18495,23 @@
    },
    "department": "Biomedical Engineering",
    "funder": "NIH (NCI)",
+   "university": "University of Wisconsin-madison"
+  },
+  "university of wisconsin-madison||biomedical engineering||nih (nei)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 249000,
+      "core": "R00EY036122",
+      "label": "$249,000",
+      "pi": "Jonathan R Soucy",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11531377"
+     }
+    ]
+   },
+   "department": "Biomedical Engineering",
+   "funder": "NIH (NEI)",
    "university": "University of Wisconsin-madison"
   },
   "university of wisconsin-madison||biomedical engineering||nih (nhlbi)": {
@@ -15298,6 +18766,23 @@
    "department": "Pharmacology",
    "funder": "NIH (NCI)",
    "university": "Utah State Higher Education System--university of Utah"
+  },
+  "utah state higher education system--utah tech university||biology||nih (ninds)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 1010605,
+      "core": "RF1NS148634",
+      "label": "$1,010,605",
+      "pi": "Hung-yu Shih",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11345763"
+     }
+    ]
+   },
+   "department": "Biology",
+   "funder": "NIH (NINDS)",
+   "university": "Utah State Higher Education System--utah Tech University"
   },
   "utah state university||--||fda": {
    "cells": {
@@ -15557,6 +19042,14 @@
       "pi": "Larry W. Markham",
       "pi_email": "",
       "url": "https://reporter.nih.gov/project-details/11607308"
+     },
+     {
+      "amount": 804759,
+      "core": "R01HL180731",
+      "label": "$804,759",
+      "pi": "Bradley Winston Richmond",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11366498"
      }
     ],
     "2026-09-13": [
@@ -15613,6 +19106,14 @@
       "pi_email": "drew.peterson@duke.edu",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11459876"
+     },
+     {
+      "amount": 741851,
+      "core": "R01AG073439",
+      "label": "$741,851",
+      "pi": "Logan C Dumitrescu",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11448210"
      }
     ],
     "2026-09-13": [
@@ -15707,6 +19208,24 @@
       "pi": "Eric Milan Mukherjee",
       "pi_email": "",
       "url": "https://reporter.nih.gov/project-details/11437973"
+     },
+     {
+      "amount": 409063,
+      "core": "R21AR088317",
+      "label": "$409,063",
+      "pi": "Anna Elizabeth Patrick",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11442239"
+     }
+    ],
+    "2026-09-13": [
+     {
+      "amount": 15000,
+      "core": "R13AR089130",
+      "label": "$15,000",
+      "pi": "Roy Zent",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11527297"
      }
     ]
    },
@@ -15807,6 +19326,24 @@
       "pi": "Sarah Scheiderich Osmundson",
       "pi_email": "",
       "url": "https://reporter.nih.gov/project-details/11454846"
+     }
+    ],
+    "2026-09-13": [
+     {
+      "amount": 286799,
+      "core": "U01NS129143",
+      "label": "$286,799",
+      "pi": "Michael R. Debaun",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11417850"
+     },
+     {
+      "amount": 220455,
+      "core": "R01NS145242",
+      "label": "$220,455",
+      "pi": "Edwin Trevathan",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11418009"
      }
     ],
     "2026-09-20": [
@@ -15968,6 +19505,23 @@
    "funder": "NIH (NIGMS)",
    "university": "Vanderbilt University"
   },
+  "vanderbilt university||pharmacology||nih (nichd)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 35582,
+      "core": "F31HD121355",
+      "label": "$35,582",
+      "pi": "Addison Cavender",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11463673"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NICHD)",
+   "university": "Vanderbilt University"
+  },
   "veterans health research institute of central new york, inc.||--||nih (niaaa)": {
    "cells": {
     "2026-09-13": [
@@ -16023,6 +19577,16 @@
   },
   "virginia commonwealth university||engineering (all types)||nih (niams)": {
    "cells": {
+    "2026-09-06": [
+     {
+      "amount": 536156,
+      "core": "R56AR087784",
+      "label": "$536,156",
+      "pi": "Rene Olivares-navarrete",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11388418"
+     }
+    ],
     "2026-09-13": [
      {
       "amount": 444261,
@@ -16075,6 +19639,23 @@
    "funder": "NIH (NIAAA)",
    "university": "Virginia Commonwealth University"
   },
+  "virginia commonwealth university||pharmacology||nih (nida)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 1749495,
+      "core": "P30DA033934",
+      "label": "$1,749,495",
+      "pi": "Aron H Lichtman",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11198589"
+     }
+    ]
+   },
+   "department": "Pharmacology",
+   "funder": "NIH (NIDA)",
+   "university": "Virginia Commonwealth University"
+  },
   "virginia polytechnic inst and st univ||engineering (all types)||nih (nibib)": {
    "cells": {
     "2026-09-06": [
@@ -16110,6 +19691,23 @@
    "department": "Veterinary Sciences",
    "funder": "FDA",
    "university": "Virginia Polytechnic Inst and St Univ"
+  },
+  "wake forest university health sciences||--||nih (nia)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 117585,
+      "core": "K01AG104031",
+      "label": "$117,585",
+      "pi": "Marc D Rudolph",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11437605"
+     }
+    ]
+   },
+   "department": "--",
+   "funder": "NIH (NIA)",
+   "university": "Wake Forest University Health Sciences"
   },
   "wake forest university health sciences||biochemistry||nih (niaid)": {
    "cells": {
@@ -16212,6 +19810,39 @@
    "funder": "NIH (NCCIH)",
    "university": "Washington State University"
   },
+  "washington state university||veterinary sciences||nih (niaid)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 136200,
+      "core": "U01AI151799",
+      "label": "$136,200",
+      "pi": "M Kariuki Njenga",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11601584"
+     },
+     {
+      "amount": 91056,
+      "core": "U01AI151799",
+      "label": "$91,056",
+      "pi": "M Kariuki Njenga",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11601585"
+     },
+     {
+      "amount": 1947021,
+      "core": "U01AI151799",
+      "label": "$1,947,021",
+      "pi": "M Kariuki Njenga",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11123759"
+     }
+    ]
+   },
+   "department": "Veterinary Sciences",
+   "funder": "NIH (NIAID)",
+   "university": "Washington State University"
+  },
   "washington university||--||nih (nci)": {
    "cells": {
     "2026-09-13": [
@@ -16241,6 +19872,14 @@
       "pi_email": "catherine.oldenburg@ucsf.edu",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11623224"
+     },
+     {
+      "amount": 118828,
+      "core": "R01HD111532",
+      "label": "$118,828",
+      "pi": "Catherine Elizabeth Oldenburg",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11578609"
      }
     ],
     "2026-09-13": [
@@ -16331,6 +19970,40 @@
    "funder": "NIH (NINDS)",
    "university": "Washington University"
   },
+  "washington university||engineering (all types)||nih (nhlbi)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 313948,
+      "core": "R01HL192617",
+      "label": "$313,948",
+      "pi": "Fanwei Kong",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11578689"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NHLBI)",
+   "university": "Washington University"
+  },
+  "washington university||engineering (all types)||nih (niams)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 363481,
+      "core": "R21AR087074",
+      "label": "$363,481",
+      "pi": "Srikanth Singamaneni",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11454874"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NIAMS)",
+   "university": "Washington University"
+  },
   "washington university||engineering (all types)||nih (ninds)": {
    "cells": {
     "2026-09-06": [
@@ -16378,6 +20051,54 @@
       "pi_email": "stallings@wustl.edu",
       "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11451466"
+     },
+     {
+      "amount": 1160812,
+      "core": "U01AI151810",
+      "label": "$1,160,812",
+      "pi": "David Wang",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11123726"
+     },
+     {
+      "amount": 71820,
+      "core": "U01AI151810",
+      "label": "$71,820",
+      "pi": "David Wang",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11612504"
+     },
+     {
+      "amount": 36180,
+      "core": "U01AI151810",
+      "label": "$36,180",
+      "pi": "David Wang",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11612505"
+     },
+     {
+      "amount": 38340,
+      "core": "U01AI151810",
+      "label": "$38,340",
+      "pi": "David Wang",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11617655"
+     },
+     {
+      "amount": 58460,
+      "core": "U01AI151810",
+      "label": "$58,460",
+      "pi": "David Wang",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11632164"
+     },
+     {
+      "amount": 266274,
+      "core": "U01AI151810",
+      "label": "$266,274",
+      "pi": "David Wang",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11612507"
      }
     ]
    },
@@ -16420,6 +20141,23 @@
    "department": "Genetics",
    "funder": "NIH (NIDDK)",
    "university": "Wayne State University"
+  },
+  "weill medical coll of cornell univ||genetics||nih (nia)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 708663,
+      "core": "R56AG095450",
+      "label": "$708,663",
+      "pi": "Ronald G Crystal",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11622616"
+     }
+    ]
+   },
+   "department": "Genetics",
+   "funder": "NIH (NIA)",
+   "university": "Weill Medical Coll of Cornell Univ"
   },
   "weill medical coll of cornell univ||pharmacology||nih (nci)": {
    "cells": {
@@ -16586,6 +20324,23 @@
    "department": "Engineering (all Types)",
    "funder": "NIH (NHLBI)",
    "university": "Worcester Polytechnic Institute"
+  },
+  "wright state university||biochemistry||nih (niams)": {
+   "cells": {
+    "2026-09-06": [
+     {
+      "amount": 377077,
+      "core": "R21AR088259",
+      "label": "$377,077",
+      "pi": "Hongmei Ren",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11441231"
+     }
+    ]
+   },
+   "department": "Biochemistry",
+   "funder": "NIH (NIAMS)",
+   "university": "Wright State University"
   },
   "xavier university of louisiana||--||nih (ninds)": {
    "cells": {
@@ -16816,6 +20571,23 @@
    "funder": "NIH (NIGMS)",
    "university": "Yale University"
   },
+  "yale university||engineering (all types)||nih (nci)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 418475,
+      "core": "R33CA302629",
+      "label": "$418,475",
+      "pi": "Andre Levchenko",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11429581"
+     }
+    ]
+   },
+   "department": "Engineering (all Types)",
+   "funder": "NIH (NCI)",
+   "university": "Yale University"
+  },
   "yale university||genetics||nih (nci)": {
    "cells": {
     "2026-09-06": [
@@ -16832,6 +20604,23 @@
    },
    "department": "Genetics",
    "funder": "NIH (NCI)",
+   "university": "Yale University"
+  },
+  "yale university||genetics||nih (nhgri)": {
+   "cells": {
+    "2026-09-13": [
+     {
+      "amount": 678533,
+      "core": "R01HG015192",
+      "label": "$678,533",
+      "pi": "Bluma J Lesch",
+      "pi_email": "",
+      "url": "https://reporter.nih.gov/project-details/11375324"
+     }
+    ]
+   },
+   "department": "Genetics",
+   "funder": "NIH (NHGRI)",
    "university": "Yale University"
   },
   "yale university||genetics||nih (nichd)": {
