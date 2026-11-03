@@ -72,7 +72,8 @@
       "core": "R21AG099011",
       "label": "$205,000",
       "pi": "Antonio Paul",
-      "pi_email": "",
+      "pi_email": "paula1@amc.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11301548"
      }
     ]
@@ -179,7 +180,8 @@
       "core": "R25CA314975",
       "label": "$400,000",
       "pi": "Anne R Bresnick",
-      "pi_email": "",
+      "pi_email": "anne.bresnick@einstein.yu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11422675"
      }
     ]
@@ -322,7 +324,8 @@
       "core": "R43DK148203",
       "label": "$288,221",
       "pi": "John A. Howard",
-      "pi_email": "",
+      "pi_email": "joe.howard@yale.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11405484"
      }
     ]
@@ -367,7 +370,8 @@
       "core": "R01AG095198",
       "label": "$655,118",
       "pi": "Edward Ofori",
-      "pi_email": "",
+      "pi_email": "Edward.Ofori@asu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11366228"
      }
     ]
@@ -482,7 +486,8 @@
       "core": "R01NS144223",
       "label": "$657,088",
       "pi": "Susan Criswell",
-      "pi_email": "",
+      "pi_email": "susan.criswell@barrowneuro.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11449757"
      }
     ]
@@ -570,7 +575,8 @@
       "core": "R01AI203180",
       "label": "$529,824",
       "pi": "William Harris Hudson",
-      "pi_email": "",
+      "pi_email": "william.hudson@bcm.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11441998"
      }
     ]
@@ -605,7 +611,8 @@
       "core": "U01AG098025",
       "label": "$1,426,599",
       "pi": "Olivier Lichtarge",
-      "pi_email": "",
+      "pi_email": "lichtarge@bcm.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11291023"
      }
     ]
@@ -895,7 +902,8 @@
       "core": "R00AR084575",
       "label": "$249,000",
       "pi": "Courtney Michele Johnson",
-      "pi_email": "",
+      "pi_email": "johnson@jmhi.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11617656"
      }
     ]
@@ -1142,7 +1150,8 @@
       "core": "R01AG100509",
       "label": "$268,800",
       "pi": "Ritchie Edward Brown",
-      "pi_email": "",
+      "pi_email": "brownrebecca@mail.nih.gov",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11344420"
      },
      {
@@ -1150,7 +1159,8 @@
       "core": "R56AG098813",
       "label": "$617,796",
       "pi": "Fumi Katsuki",
-      "pi_email": "",
+      "pi_email": "Fumi_Katsuki@hms.harvard.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11606008"
      }
     ]
@@ -1167,7 +1177,8 @@
       "core": "F31DC024422",
       "label": "$36,440",
       "pi": "Rafael Gabriel",
-      "pi_email": "",
+      "pi_email": "ragabriel@health.ucsd.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11522461"
      }
     ]
@@ -1220,7 +1231,8 @@
       "core": "R21HG014556",
       "label": "$421,377",
       "pi": "John Gerard Doench",
-      "pi_email": "",
+      "pi_email": "jdoench@broadinstitute.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11216792"
      }
     ],
@@ -1357,7 +1369,8 @@
       "core": "F31CA317806",
       "label": "$50,114",
       "pi": "Andrew Karam",
-      "pi_email": "",
+      "pi_email": "adib.karam@lifespan.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11461526"
      }
     ]
@@ -1410,7 +1423,8 @@
       "core": "R01NR018837",
       "label": "$578,821",
       "pi": "Lori Uscher-pines",
-      "pi_email": "",
+      "pi_email": "luscherp@rand.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11595781"
      }
     ]
@@ -1445,7 +1459,8 @@
       "core": "R01AG096932",
       "label": "$785,081",
       "pi": "Tara Tracy",
-      "pi_email": "",
+      "pi_email": "ttracy@buckinstitute.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11390722"
      }
     ]
@@ -1491,7 +1506,8 @@
       "core": "DP1NS155489",
       "label": "$1,190,000",
       "pi": "Markus Meister",
-      "pi_email": "",
+      "pi_email": "meister@caltech.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11412381"
      }
     ]
@@ -1661,7 +1677,8 @@
       "core": "F30HL178232",
       "label": "$55,114",
       "pi": "Prerna Singh",
-      "pi_email": "",
+      "pi_email": "pankaj-singh@ouhsc.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11467618"
      }
     ],
@@ -1780,7 +1797,8 @@
       "core": "P50HD105328",
       "label": "$1,194,878",
       "pi": "William Davis Gaillard",
-      "pi_email": "",
+      "pi_email": "david.e.horvat.mil@health.mil",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11520943"
      }
     ]
@@ -1913,7 +1931,8 @@
       "core": "R15AI203523",
       "label": "$548,932",
       "pi": "Isabelle Taylor",
-      "pi_email": "",
+      "pi_email": "ian.taylor@crick.ac.uk",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11444636"
      }
     ]
@@ -1930,7 +1949,8 @@
       "core": "U01AI190392",
       "label": "$1,662,873",
       "pi": "Tracey Goldstein",
-      "pi_email": "",
+      "pi_email": "tgoldste@gmu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11123789"
      },
      {
@@ -1938,7 +1958,8 @@
       "core": "U01AI190392",
       "label": "$54,000",
       "pi": "Tracey Goldstein",
-      "pi_email": "",
+      "pi_email": "tgoldste@gmu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11608110"
      },
      {
@@ -1946,7 +1967,8 @@
       "core": "U01AI190392",
       "label": "$15,120",
       "pi": "Tracey Goldstein",
-      "pi_email": "",
+      "pi_email": "tgoldste@gmu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11608502"
      },
      {
@@ -1954,7 +1976,8 @@
       "core": "U01AI190392",
       "label": "$33,350",
       "pi": "Tracey Goldstein",
-      "pi_email": "",
+      "pi_email": "tgoldste@gmu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11608505"
      }
     ]
@@ -2006,7 +2029,8 @@
       "core": "R01AG099117",
       "label": "$633,758",
       "pi": "Seonil Kim",
-      "pi_email": "",
+      "pi_email": "sohkim@korea.ac.kr",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11453659"
      }
     ]
@@ -2636,7 +2660,8 @@
       "core": "R01NS147575",
       "label": "$619,937",
       "pi": "Peter W. Baas",
-      "pi_email": "",
+      "pi_email": "p.baas@nki.nl",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11450314"
      }
     ],
@@ -2789,7 +2814,8 @@
       "core": "R56NS148124",
       "label": "$565,250",
       "pi": "Dong Yan",
-      "pi_email": "",
+      "pi_email": "dong.yan@duke.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11631658"
      }
     ]
@@ -2860,7 +2886,8 @@
       "core": "R01NR022430",
       "label": "$678,031",
       "pi": "Jacob Kigo Kariuki",
-      "pi_email": "",
+      "pi_email": "Jacob.Kariuki@emory.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11450535"
      }
     ],
@@ -2870,7 +2897,8 @@
       "core": "R01NR022327",
       "label": "$533,605",
       "pi": "Jacqueline A. Nikpour",
-      "pi_email": "",
+      "pi_email": "janikpour@emory.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11434118"
      }
     ]
@@ -2965,7 +2993,8 @@
       "core": "R01AG098817",
       "label": "$653,912",
       "pi": "Michael Philip Epstein",
-      "pi_email": "",
+      "pi_email": "mpepste@emory.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11300437"
      }
     ]
@@ -3089,7 +3118,8 @@
       "core": "R13HL188629",
       "label": "$10,000",
       "pi": "Daniel Rolston",
-      "pi_email": "",
+      "pi_email": "drolston@northwell.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11465763"
      }
     ],
@@ -3135,7 +3165,8 @@
       "core": "T32AI155392",
       "label": "$216,593",
       "pi": "Anne Davidson",
-      "pi_email": "",
+      "pi_email": "adavidson1@northwell.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11263156"
      }
     ]
@@ -3152,7 +3183,8 @@
       "core": "R21HD118372",
       "label": "$460,625",
       "pi": "Christine Noel Metz",
-      "pi_email": "",
+      "pi_email": "cmetz@northwell.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11451391"
      }
     ]
@@ -3187,7 +3219,8 @@
       "core": "R34DA067290",
       "label": "$233,666",
       "pi": "Umedjon Ibragimov",
-      "pi_email": "",
+      "pi_email": "umed.ibragimov@emory.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11470972"
      }
     ]
@@ -3257,7 +3290,8 @@
       "core": "S10OD040160",
       "label": "$1,237,500",
       "pi": "Rodrigo Alejandro Maillard",
-      "pi_email": "",
+      "pi_email": "Rodrigo.Maillard@georgetown.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11338621"
      }
     ]
@@ -3291,7 +3325,8 @@
       "core": "R01EY021205",
       "label": "$590,814",
       "pi": "Raquel L Lieberman",
-      "pi_email": "",
+      "pi_email": "Raquel.lieberman@chemistry.gatech.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11448745"
      }
     ]
@@ -3442,7 +3477,8 @@
       "core": "U19AI171401",
       "label": "$13,895,048",
       "pi": "David S Perlin",
-      "pi_email": "",
+      "pi_email": "david.perlin@hmh-cdi.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11539939"
      }
     ]
@@ -3549,7 +3585,8 @@
       "core": "R01NS153564",
       "label": "$484,953",
       "pi": "Gary I Yellen",
-      "pi_email": "",
+      "pi_email": "gary_yellen@hms.harvard.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11524645"
      }
     ]
@@ -3733,7 +3770,8 @@
       "core": "U01DK143379",
       "label": "$1,542,828",
       "pi": "Richard Mauritz Bergenstal",
-      "pi_email": "",
+      "pi_email": "richard.bergenstal@parknicollet.com",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11595907"
      }
     ]
@@ -3768,7 +3806,8 @@
       "core": "F31NS151534",
       "label": "$45,891",
       "pi": "Alexandra Nicole Lewis",
-      "pi_email": "",
+      "pi_email": "andrew.lewis@cardiov.ox.ac.uk",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11461423"
      }
     ]
@@ -3785,7 +3824,8 @@
       "core": "R01AG094132",
       "label": "$654,111",
       "pi": "David Morgan",
-      "pi_email": "",
+      "pi_email": "d.morgan@murdoch.edu.au",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11296981"
      }
     ]
@@ -3953,7 +3993,8 @@
       "core": "R56AR070231",
       "label": "$546,000",
       "pi": "Robert S. Krauss",
-      "pi_email": "",
+      "pi_email": "robert.krauss@mssm.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11626458"
      }
     ]
@@ -4151,7 +4192,8 @@
       "core": "R01AR086597",
       "label": "$452,938",
       "pi": "Lilian Irene Plotkin",
-      "pi_email": "",
+      "pi_email": "lplotkin@iu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11376839"
      }
     ]
@@ -4168,7 +4210,8 @@
       "core": "F31AR087234",
       "label": "$38,628",
       "pi": "Kourtney Sloan",
-      "pi_email": "",
+      "pi_email": "ksloan@sccf.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11461372"
      }
     ]
@@ -4238,7 +4281,8 @@
       "core": "R01AI192998",
       "label": "$874,085",
       "pi": "Anna Kuchina",
-      "pi_email": "",
+      "pi_email": "anna.kuchina@isbscience.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11450793"
      }
     ]
@@ -4309,7 +4353,8 @@
       "core": "R01AG093119",
       "label": "$845,617",
       "pi": "Michael Ryan Corces",
-      "pi_email": "",
+      "pi_email": "ryan.corces@gladstone.ucsf.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11297870"
      }
     ]
@@ -4625,7 +4670,8 @@
       "core": "R01DA066503",
       "label": "$683,851",
       "pi": "Suky Martinez",
-      "pi_email": "",
+      "pi_email": "smart209@jh.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11425436"
      }
     ]
@@ -4651,7 +4697,8 @@
       "core": "R35GM161347",
       "label": "$423,129",
       "pi": "Gregory Dean Bowman",
-      "pi_email": "",
+      "pi_email": "gdbowman@jhu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11259300"
      }
     ]
@@ -4738,7 +4785,8 @@
       "core": "R21AG101060",
       "label": "$256,471",
       "pi": "Willa Domino Brenowitz",
-      "pi_email": "",
+      "pi_email": "willa.d.brenowitz@kpchr.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11353344"
      }
     ]
@@ -4851,7 +4899,8 @@
       "core": "R01NR022266",
       "label": "$884,080",
       "pi": "Susan E Hickman",
-      "pi_email": "",
+      "pi_email": "Susan.Hickman@kp.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11347007"
      }
     ]
@@ -4939,7 +4988,8 @@
       "core": "R21TW013255",
       "label": "$179,988",
       "pi": "Seung Yup Lee",
-      "pi_email": "",
+      "pi_email": "slee295@kennesaw.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11307426"
      }
     ]
@@ -5026,7 +5076,8 @@
       "core": "R01HL176881",
       "label": "$708,741",
       "pi": "Jiliang Zhou",
-      "pi_email": "",
+      "pi_email": "jiliang.zhou@lsuhs.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11451008"
      }
     ]
@@ -5097,7 +5148,8 @@
       "core": "R01CA309034",
       "label": "$482,764",
       "pi": "Jiwang Zhang",
-      "pi_email": "",
+      "pi_email": "jzhang@eng.uwo.ca",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11447223"
      }
     ]
@@ -5203,7 +5255,8 @@
       "core": "R01AG102702",
       "label": "$682,537",
       "pi": "Mark Thomas Harnett",
-      "pi_email": "",
+      "pi_email": "harnett@mit.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11426980"
      }
     ]
@@ -5569,7 +5622,8 @@
       "core": "R01DK143254",
       "label": "$439,608",
       "pi": "Mazen Noureddin",
-      "pi_email": "",
+      "pi_email": "NoureddinMD@houstonresearchinstitute.com",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11292924"
      }
     ]
@@ -5622,7 +5676,8 @@
       "core": "R56NS151724",
       "label": "$542,089",
       "pi": "Erin K Purcell",
-      "pi_email": "",
+      "pi_email": "epurcell@msu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11629777"
      }
     ]
@@ -5639,7 +5694,8 @@
       "core": "R56EY037392",
       "label": "$1,202,088",
       "pi": "Brian C. Leonard",
-      "pi_email": "",
+      "pi_email": "bleonard@ottawahospital.on.ca",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11641969"
      }
     ]
@@ -6064,7 +6120,8 @@
       "core": "F31DC023782",
       "label": "$50,114",
       "pi": "Stephen Tucker",
-      "pi_email": "",
+      "pi_email": "Sophie.tucker@wustl.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11525428"
      }
     ]
@@ -6098,7 +6155,8 @@
       "core": "R21AG093950",
       "label": "$410,351",
       "pi": "Muna Aryal",
-      "pi_email": "",
+      "pi_email": "maryal@ncat.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11301468"
      }
     ]
@@ -6543,7 +6601,8 @@
       "core": "F32HL179832",
       "label": "$76,780",
       "pi": "Brandon Carl Applewhite",
-      "pi_email": "",
+      "pi_email": "briana.applewhite@psych.ox.ac.uk",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11479193"
      }
     ]
@@ -6595,7 +6654,8 @@
       "core": "R01AG101715",
       "label": "$577,784",
       "pi": "Loukia Parisiadou",
-      "pi_email": "",
+      "pi_email": "loukia.parisiadou@northwestern.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11357900"
      }
     ]
@@ -6665,7 +6725,8 @@
       "core": "R01DE036564",
       "label": "$580,256",
       "pi": "Maiko Suzuki",
-      "pi_email": "",
+      "pi_email": "msuzuki@nova.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11485603"
      }
     ]
@@ -6717,7 +6778,8 @@
       "core": "R01HL181104",
       "label": "$514,340",
       "pi": "Chris S Mantsounga",
-      "pi_email": "",
+      "pi_email": "chris_mantsounga@brown.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11368569"
      }
     ]
@@ -6771,7 +6833,8 @@
       "core": "R01EY039432",
       "label": "$385,675",
       "pi": "Ann Marie Morrison",
-      "pi_email": "",
+      "pi_email": "morrison.421@osu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11427121"
      }
     ]
@@ -6913,7 +6976,8 @@
       "core": "F32AR087217",
       "label": "$84,580",
       "pi": "Leone Sophia Hopkins",
-      "pi_email": "",
+      "pi_email": "lhopkins@bw.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11464184"
      }
     ]
@@ -7107,7 +7171,8 @@
       "core": "R01ES039858",
       "label": "$3,203,867",
       "pi": "Perry W Hystad",
-      "pi_email": "",
+      "pi_email": "perry.hystad@oregonstate.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11344647"
      }
     ]
@@ -7160,7 +7225,8 @@
       "core": "R01AT013580",
       "label": "$763,975",
       "pi": "Robert D Vining",
-      "pi_email": "",
+      "pi_email": "robert.vining@palmer.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11448328"
      }
     ]
@@ -7177,7 +7243,8 @@
       "core": "R01CA304170",
       "label": "$633,232",
       "pi": "Jason C Mills",
-      "pi_email": "",
+      "pi_email": "jmills5@pennstatehealth.psu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11364346"
      }
     ]
@@ -7476,7 +7543,8 @@
       "core": "R21AG098841",
       "label": "$425,377",
       "pi": "W. Andy Tao",
-      "pi_email": "",
+      "pi_email": "taow@purdue.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11301236"
      }
     ]
@@ -7511,7 +7579,8 @@
       "core": "R01AR087365",
       "label": "$667,146",
       "pi": "Julie C. Liu",
-      "pi_email": "",
+      "pi_email": "julieliu@purdue.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11338402"
      }
     ]
@@ -7718,7 +7787,8 @@
       "core": "F32GM167207",
       "label": "$76,300",
       "pi": "Alex Hamilton",
-      "pi_email": "",
+      "pi_email": "alex.hamilton@rice.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11463738"
      }
     ]
@@ -7915,7 +7985,8 @@
       "core": "R01DK113375",
       "label": "$916,243",
       "pi": "Daniel S Mucida",
-      "pi_email": "",
+      "pi_email": "mucida@rockefeller.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11376706"
      }
     ]
@@ -8031,7 +8102,8 @@
       "core": "R01AG100372",
       "label": "$580,514",
       "pi": "Rupal I. Mehta",
-      "pi_email": "",
+      "pi_email": "rashi.mehta@hsc.wvu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11343302"
      }
     ]
@@ -8048,7 +8120,8 @@
       "core": "F31AR088599",
       "label": "$50,114",
       "pi": "Itzel Lazcano",
-      "pi_email": "",
+      "pi_email": "ivanlazcano@comunidad.unam.mx",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11470869"
      }
     ]
@@ -8065,7 +8138,8 @@
       "core": "R01HD122762",
       "label": "$706,298",
       "pi": "D Rick Sumner",
-      "pi_email": "",
+      "pi_email": "rick_sumner@rush.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11427030"
      }
     ]
@@ -8082,7 +8156,8 @@
       "core": "R37CA277812",
       "label": "$288,758",
       "pi": "Lanjing Zhang",
-      "pi_email": "",
+      "pi_email": "lanjing.zhang@rutgers.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11294029"
      }
     ]
@@ -8143,7 +8218,8 @@
       "core": "R21AG100982",
       "label": "$425,971",
       "pi": "Miriam E. Bocarsly",
-      "pi_email": "",
+      "pi_email": "bocarsme@njms.rutgers.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11353442"
      },
      {
@@ -8151,7 +8227,8 @@
       "core": "RF1AG099751",
       "label": "$3,663,975",
       "pi": "Chintan Dave",
-      "pi_email": "",
+      "pi_email": "cdave@ifh.rutgers.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11328328"
      }
     ]
@@ -8221,7 +8298,8 @@
       "core": "R01AG095099",
       "label": "$687,424",
       "pi": "Yang Lyu",
-      "pi_email": "",
+      "pi_email": "yang.lyu@rutgers.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11448086"
      }
     ]
@@ -8247,7 +8325,8 @@
       "core": "R01CA325465",
       "label": "$2,541,122",
       "pi": "Richard J Dipaolo",
-      "pi_email": "",
+      "pi_email": "richard.dipaolo@health.slu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11448151"
      }
     ]
@@ -8264,7 +8343,8 @@
       "core": "R56NS114289",
       "label": "$568,590",
       "pi": "Yuna Ayala",
-      "pi_email": "",
+      "pi_email": "yuna.ayala@health.slu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11606638"
      }
     ]
@@ -8315,7 +8395,8 @@
       "core": "R01AG097833",
       "label": "$764,927",
       "pi": "Courtney Glavis-bloom",
-      "pi_email": "",
+      "pi_email": "cglavisbloom@salk.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11451124"
      }
     ]
@@ -8332,7 +8413,8 @@
       "core": "R37MH102441",
       "label": "$929,923",
       "pi": "Kay Maxine Tye",
-      "pi_email": "",
+      "pi_email": "tye@salk.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11454754"
      }
     ]
@@ -8528,7 +8610,8 @@
       "core": "U19AI171443",
       "label": "$16,901,726",
       "pi": "Sumit K Chanda",
-      "pi_email": "",
+      "pi_email": "schanda@sbpdiscovery.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11542045"
      }
     ]
@@ -8562,7 +8645,8 @@
       "core": "R01NS148498",
       "label": "$687,666",
       "pi": "Anton Maximov",
-      "pi_email": "",
+      "pi_email": "amaximov@scripps.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11347963"
      }
     ]
@@ -8579,7 +8663,8 @@
       "core": "R01EY027390",
       "label": "$2,353,224",
       "pi": "Preeti Verghese",
-      "pi_email": "",
+      "pi_email": "pverghese@luriechildrens.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11298071"
      }
     ]
@@ -8773,7 +8858,8 @@
       "core": "F31HD123411",
       "label": "$50,114",
       "pi": "Sophia Chengping Shen",
-      "pi_email": "",
+      "pi_email": "sshen1@cmu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11459685"
      }
     ]
@@ -9032,7 +9118,8 @@
       "core": "R01HD123106",
       "label": "$601,050",
       "pi": "Lauren Hale",
-      "pi_email": "",
+      "pi_email": "lauren.hale@stonybrook.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11429129"
      }
     ]
@@ -9244,7 +9331,8 @@
       "core": "R01AG100365",
       "label": "$527,686",
       "pi": "Alex C Keene",
-      "pi_email": "",
+      "pi_email": "keenea@tamu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11344155"
      }
     ]
@@ -9574,7 +9662,8 @@
       "core": "F30HL175876",
       "label": "$55,114",
       "pi": "Nicole L. Wolter",
-      "pi_email": "",
+      "pi_email": "nikolaus.wolter@sickkids.ca",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11457709"
      }
     ]
@@ -9601,7 +9690,8 @@
       "core": "U19AG092282",
       "label": "$6,074,921",
       "pi": "Daniel Edward Promislow",
-      "pi_email": "",
+      "pi_email": "daniel.promislow@tufts.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11420287"
      }
     ]
@@ -9618,7 +9708,8 @@
       "core": "K08DE036336",
       "label": "$125,656",
       "pi": "Zoe Zhu",
-      "pi_email": "",
+      "pi_email": "zhichuan_zhu@med.unc.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11438405"
      }
     ]
@@ -10095,7 +10186,8 @@
       "core": "R01AA033526",
       "label": "$636,607",
       "pi": "Leon Garland Coleman",
-      "pi_email": "",
+      "pi_email": "leon_coleman@med.unc.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11465406"
      }
     ]
@@ -10184,7 +10276,8 @@
       "core": "R01DE035583",
       "label": "$431,365",
       "pi": "Yu Shin Kim",
-      "pi_email": "",
+      "pi_email": "ykim28@uab.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11376276"
      }
     ]
@@ -10236,7 +10329,8 @@
       "core": "R01EY033141",
       "label": "$478,880",
       "pi": "Konark Mukherjee",
-      "pi_email": "",
+      "pi_email": "kmukherj@uab.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11641009"
      }
     ]
@@ -10322,7 +10416,8 @@
       "core": "R21TW013364",
       "label": "$130,784",
       "pi": "Rongguang Liang",
-      "pi_email": "",
+      "pi_email": "rliang@optics.arizona.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11306805"
      }
     ],
@@ -10367,7 +10462,8 @@
       "core": "R01GM164325",
       "label": "$334,505",
       "pi": "Geoffrey C Gurtner",
-      "pi_email": "",
+      "pi_email": "gurtner@surgery.arizona.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11339293"
      }
     ]
@@ -10420,7 +10516,8 @@
       "core": "S10OD040083",
       "label": "$2,000,000",
       "pi": "Thomas Michael Tomasiak",
-      "pi_email": "",
+      "pi_email": "tomasiak@arizona.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11337940"
      }
     ]
@@ -10437,7 +10534,8 @@
       "core": "R35GM163679",
       "label": "$410,775",
       "pi": "John Ross Buchan",
-      "pi_email": "",
+      "pi_email": "rbuchan@arizona.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11329252"
      }
     ]
@@ -10490,7 +10588,8 @@
       "core": "R56AG097418",
       "label": "$639,943",
       "pi": "Xinglong Wang",
-      "pi_email": "",
+      "pi_email": "xiawang@nwafu.edu.cn",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11617893"
      }
     ]
@@ -10542,7 +10641,8 @@
       "core": "R56EY026027",
       "label": "$1,005,703",
       "pi": "Erika D. Eggers",
-      "pi_email": "",
+      "pi_email": "eeggers@arizona.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11641965"
      }
     ]
@@ -10674,7 +10774,8 @@
       "core": "R01AG080591",
       "label": "$412,616",
       "pi": "Jennifer Hagerty Lingler",
-      "pi_email": "",
+      "pi_email": "jlingler@health.ucdavis.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11583871"
      }
     ]
@@ -10691,7 +10792,8 @@
       "core": "R35GM161828",
       "label": "$546,760",
       "pi": "Jorge Enrique Contreras",
-      "pi_email": "",
+      "pi_email": "johanna.contreras@mountsinai.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11260595"
      }
     ]
@@ -10982,7 +11084,8 @@
       "core": "F32GM157931",
       "label": "$76,780",
       "pi": "Joseph Schneider",
-      "pi_email": "",
+      "pi_email": "jcschneider@mgh.harvard.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11420322"
      }
     ]
@@ -11017,7 +11120,8 @@
       "core": "U54AG089335",
       "label": "$99,473",
       "pi": "Yvonne L Kapila",
-      "pi_email": "",
+      "pi_email": "ykapila@dentistry.ucla.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11531229"
      },
      {
@@ -11025,7 +11129,8 @@
       "core": "U54AG089335",
       "label": "$399,952",
       "pi": "Yvonne L Kapila",
-      "pi_email": "",
+      "pi_email": "ykapila@dentistry.ucla.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11531556"
      }
     ]
@@ -11312,7 +11417,8 @@
       "core": "R56AR086946",
       "label": "$712,693",
       "pi": "Qixuan Wang",
-      "pi_email": "",
+      "pi_email": "xu.wang@pku-iaas.edu.cn",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11280319"
      }
     ]
@@ -11638,7 +11744,8 @@
       "core": "R56NS144209",
       "label": "$476,785",
       "pi": "Shelley L Halpain",
-      "pi_email": "",
+      "pi_email": "shalpain@ucsd.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11609312"
      }
     ]
@@ -11684,7 +11791,8 @@
       "core": "R01AR085747",
       "label": "$684,113",
       "pi": "Liangfang Zhang",
-      "pi_email": "",
+      "pi_email": "zhen_zhang@fudan.edu.cn",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11296760"
      }
     ]
@@ -11701,7 +11809,8 @@
       "core": "R18NS145987",
       "label": "$824,522",
       "pi": "Patrick P Mercier",
-      "pi_email": "",
+      "pi_email": "pmercier@ucsd.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11266683"
      }
     ]
@@ -11718,7 +11827,8 @@
       "core": "F31HL182106",
       "label": "$43,172",
       "pi": "Evan Yu-an Wen",
-      "pi_email": "",
+      "pi_email": "ewen@ucsd.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11458928"
      }
     ]
@@ -11880,7 +11990,8 @@
       "core": "R01NS059690",
       "label": "$450,398",
       "pi": "Jason E Gestwicki",
-      "pi_email": "",
+      "pi_email": "jason.gestwicki@ucsf.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11386413"
      }
     ]
@@ -11897,7 +12008,8 @@
       "core": "R01NR022176",
       "label": "$801,029",
       "pi": "Michelle Fortier",
-      "pi_email": "",
+      "pi_email": "marie-odile.fortier@unlv.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11450084"
      }
     ]
@@ -11914,7 +12026,8 @@
       "core": "F31HL182220",
       "label": "$43,595",
       "pi": "Miranda Emiko Kelly",
-      "pi_email": "",
+      "pi_email": "Michelle.m.kelly@villanova.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11457707"
      }
     ]
@@ -11931,7 +12044,8 @@
       "core": "R61HD123427",
       "label": "$435,691",
       "pi": "Dequina Angelina Nicholas",
-      "pi_email": "",
+      "pi_email": "nicholas@ucalgary.ca",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11456298"
      }
     ]
@@ -11965,7 +12079,8 @@
       "core": "R21AG101225",
       "label": "$431,750",
       "pi": "Lingxuan Chen",
-      "pi_email": "",
+      "pi_email": "chenlimeng@pumch.cn",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11357280"
      }
     ]
@@ -12011,7 +12126,8 @@
       "core": "R56NS147542",
       "label": "$549,500",
       "pi": "Sergio Armando Villalta",
-      "pi_email": "",
+      "pi_email": "villalts@uci.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11629772"
      }
     ]
@@ -12055,7 +12171,8 @@
       "core": "S10OD040245",
       "label": "$1,238,710",
       "pi": "Eduardo A Perozo",
-      "pi_email": "",
+      "pi_email": "eperozo@uchicago.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11339222"
      }
     ]
@@ -12207,7 +12324,8 @@
       "core": "R01NS146039",
       "label": "$557,084",
       "pi": "K. Ulrich Bayer",
-      "pi_email": "",
+      "pi_email": "ulli.bayer@cuanschutz.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11444342"
      },
      {
@@ -12215,7 +12333,8 @@
       "core": "DP2NS155520",
       "label": "$741,000",
       "pi": "Alessandra Brambati",
-      "pi_email": "",
+      "pi_email": "alessandra.brambati@nyulangone.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11395934"
      },
      {
@@ -12223,7 +12342,8 @@
       "core": "R21NS152136",
       "label": "$414,732",
       "pi": "Won Chan Oh",
-      "pi_email": "",
+      "pi_email": "wonchan.oh@cuanschutz.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11513736"
      }
     ]
@@ -12258,7 +12378,8 @@
       "core": "R21AR088260",
       "label": "$157,521",
       "pi": "Sarah Calve",
-      "pi_email": "",
+      "pi_email": "sarah.calve@colorado.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11441223"
      }
     ]
@@ -12447,7 +12568,8 @@
       "core": "R01HD123170",
       "label": "$734,015",
       "pi": "Fumiko Hoeft",
-      "pi_email": "",
+      "pi_email": "fumiko.hoeft@uconn.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11433667"
      }
     ]
@@ -12625,7 +12747,8 @@
       "core": "R61NS137824",
       "label": "$99,999",
       "pi": "Sunil Kumar",
-      "pi_email": "",
+      "pi_email": "susheel.kumar.nbri@csir.res.in",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11641877"
      }
     ]
@@ -12660,7 +12783,8 @@
       "core": "R01AG096366",
       "label": "$639,860",
       "pi": "Ramon C. Sun",
-      "pi_email": "",
+      "pi_email": "ramonsun@ufl.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11444391"
      }
     ]
@@ -12677,7 +12801,8 @@
       "core": "S10OD040232",
       "label": "$748,796",
       "pi": "Joanna R Long",
-      "pi_email": "",
+      "pi_email": "jzlong@stanford.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11338540"
      }
     ]
@@ -12776,7 +12901,8 @@
       "core": "R01AG104188",
       "label": "$743,880",
       "pi": "Lien Nguyen",
-      "pi_email": "",
+      "pi_email": "lien.nguyen@ufl.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11431668"
      }
     ]
@@ -12847,7 +12973,8 @@
       "core": "R01NS131165",
       "label": "$693,755",
       "pi": "Rajesh Khanna",
-      "pi_email": "",
+      "pi_email": "r.khanna@ufl.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/10973996"
      }
     ],
@@ -12904,7 +13031,8 @@
       "core": "R56NS152087",
       "label": "$556,491",
       "pi": "Donald C Bolser",
-      "pi_email": "",
+      "pi_email": "bolser@ufl.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11630949"
      }
     ]
@@ -13239,7 +13367,8 @@
       "core": "R01AG033570",
       "label": "$664,392",
       "pi": "Orly Lazarov",
-      "pi_email": "",
+      "pi_email": "olazarov@uic.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11449441"
      }
     ],
@@ -13249,7 +13378,8 @@
       "core": "R21AG098225",
       "label": "$240,495",
       "pi": "Ernesto Roque Bongarzone",
-      "pi_email": "",
+      "pi_email": "ebongarz@uic.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11285837"
      }
     ]
@@ -13365,7 +13495,8 @@
       "core": "R01AG094908",
       "label": "$650,450",
       "pi": "Caterina Gratton",
-      "pi_email": "",
+      "pi_email": "cgratton@illinois.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11380604"
      }
     ]
@@ -13736,7 +13867,8 @@
       "core": "U18FD008567",
       "label": "$75,186",
       "pi": "Megan C Romano",
-      "pi_email": "",
+      "pi_email": "megan.romano@uky.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11422091"
      }
     ]
@@ -13985,7 +14117,8 @@
       "core": "R01AG066645",
       "label": "$605,028",
       "pi": "Thomas A Longden",
-      "pi_email": "",
+      "pi_email": "thomas.longden@som.umaryland.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11447038"
      }
     ]
@@ -14164,7 +14297,8 @@
       "core": "RM1NS143831",
       "label": "$378,000",
       "pi": "Stephan Zuchner",
-      "pi_email": "",
+      "pi_email": "SZuchner@med.miami.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11630855"
      }
     ]
@@ -14437,7 +14571,8 @@
       "core": "RF1NS146936",
       "label": "$1,397,313",
       "pi": "Bo Duan",
-      "pi_email": "",
+      "pi_email": "bduan@umich.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11446537"
      }
     ]
@@ -14542,7 +14677,8 @@
       "core": "R01DK142653",
       "label": "$752,267",
       "pi": "Paulette B. Goforth",
-      "pi_email": "",
+      "pi_email": "pgoforth@umich.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11446512"
      }
     ],
@@ -14710,7 +14846,8 @@
       "core": "R21AG100961",
       "label": "$221,279",
       "pi": "Jonathan N Sachs",
-      "pi_email": "",
+      "pi_email": "jnsachs@umn.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11356366"
      }
     ]
@@ -14744,7 +14881,8 @@
       "core": "F31HG015201",
       "label": "$50,114",
       "pi": "Kevin H Zhan",
-      "pi_email": "",
+      "pi_email": "zhan8663@umn.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11386884"
      }
     ]
@@ -14761,7 +14899,8 @@
       "core": "F31CA294586",
       "label": "$50,114",
       "pi": "Eduardo Cruz",
-      "pi_email": "",
+      "pi_email": "enrique.delacruz@yale.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11243952"
      }
     ]
@@ -14796,7 +14935,8 @@
       "core": "R01CA305103",
       "label": "$2,238,024",
       "pi": "Carston R. Wagner",
-      "pi_email": "",
+      "pi_email": "wagne003@umn.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11446519"
      }
     ]
@@ -14912,7 +15052,8 @@
       "core": "R21AA033403",
       "label": "$219,812",
       "pi": "Gregg W Roman",
-      "pi_email": "",
+      "pi_email": "groman@olemiss.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11435652"
      }
     ]
@@ -14947,7 +15088,8 @@
       "core": "R56NS140507",
       "label": "$539,427",
       "pi": "Smita Saxena",
-      "pi_email": "",
+      "pi_email": "smitasaxena@missouri.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11606636"
      }
     ]
@@ -14999,7 +15141,8 @@
       "core": "R01EY039316",
       "label": "$708,748",
       "pi": "Rajiv Ravindra Mohan",
-      "pi_email": "",
+      "pi_email": "mohanr@missouri.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11430841"
      },
      {
@@ -15007,7 +15150,8 @@
       "core": "R56EY039318",
       "label": "$1,277,004",
       "pi": "Nishant Rajiv Sinha",
-      "pi_email": "",
+      "pi_email": "n-sinha@tti.tamu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11609392"
      }
     ]
@@ -15080,7 +15224,8 @@
       "core": "F32GM156085",
       "label": "$81,580",
       "pi": "Hunter James Hill",
-      "pi_email": "",
+      "pi_email": "hunter.hill@umt.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11417882"
      }
     ]
@@ -15115,7 +15260,8 @@
       "core": "U18FD008911",
       "label": "$123,678",
       "pi": "Duan S Loy",
-      "pi_email": "",
+      "pi_email": "dloy2@unl.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11528004"
      }
     ]
@@ -15356,7 +15502,8 @@
       "core": "R00HD117011",
       "label": "$248,901",
       "pi": "Talia Lee Hatkevich",
-      "pi_email": "",
+      "pi_email": "hatkevic@email.unc.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11627830"
      }
     ]
@@ -15373,7 +15520,8 @@
       "core": "R01AA018844",
       "label": "$489,447",
       "pi": "Zhanxiang Zhou",
-      "pi_email": "",
+      "pi_email": "z_zhou@uncg.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11450399"
      }
     ]
@@ -15436,7 +15584,8 @@
       "core": "R21AG103379",
       "label": "$228,602",
       "pi": "Steven A. Romero",
-      "pi_email": "",
+      "pi_email": "sharon.pochron@stonybrook.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11437702"
      }
     ]
@@ -15524,7 +15673,8 @@
       "core": "R01NR022604",
       "label": "$726,363",
       "pi": "Elizabeth L Budd",
-      "pi_email": "",
+      "pi_email": "ebudd@uoregon.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11341951"
      }
     ]
@@ -15541,7 +15691,8 @@
       "core": "F31CA317809",
       "label": "$50,114",
       "pi": "Samuel Kim",
-      "pi_email": "",
+      "pi_email": "sooyoungkim@korea.ac.kr",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11461328"
      }
     ],
@@ -15633,7 +15784,8 @@
       "core": "F31NS147423",
       "label": "$50,114",
       "pi": "Margaret Mary Cassidy",
-      "pi_email": "",
+      "pi_email": "maggie.cassidy@pennmedicine.upenn.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11424181"
      }
     ]
@@ -15668,7 +15820,8 @@
       "core": "F31NS151548",
       "label": "$50,114",
       "pi": "Daniel Adam Shapiro",
-      "pi_email": "",
+      "pi_email": "ddshapiro@wisc.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11460372"
      }
     ]
@@ -16125,7 +16278,8 @@
       "core": "R01NR022545",
       "label": "$1,200,000",
       "pi": "Wei Gao",
-      "pi_email": "",
+      "pi_email": "gao.weiqiang@sjtu.edu.cn",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11576378"
      }
     ]
@@ -16187,7 +16341,8 @@
       "core": "R01NS146435",
       "label": "$558,725",
       "pi": "Michael John Palladino",
-      "pi_email": "",
+      "pi_email": "mariangelapaladino@tiscali.it",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11446091"
      }
     ]
@@ -16553,7 +16708,8 @@
       "core": "R01AG097446",
       "label": "$560,891",
       "pi": "Scott Earley",
-      "pi_email": "",
+      "pi_email": "scott_earley@urmc.rochester.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11447232"
      }
     ]
@@ -16624,7 +16780,8 @@
       "core": "R01HL181267",
       "label": "$697,431",
       "pi": "Colin Edward Evans",
-      "pi_email": "",
+      "pi_email": "colin.evans@sc.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11363856"
      }
     ],
@@ -16670,7 +16827,8 @@
       "core": "R01NS150051",
       "label": "$788,127",
       "pi": "Michael Shtutman",
-      "pi_email": "",
+      "pi_email": "shtutmanm@cop.sc.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11542785"
      }
     ]
@@ -16793,7 +16951,8 @@
       "core": "R21AG104537",
       "label": "$476,238",
       "pi": "Eleanor Louise Hayes-larson",
-      "pi_email": "",
+      "pi_email": "hayeslar@usc.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11439582"
      },
      {
@@ -16801,7 +16960,8 @@
       "core": "R01AG098523",
       "label": "$758,328",
       "pi": "Andrei Irimia",
-      "pi_email": "",
+      "pi_email": "irimia@usc.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11447949"
      }
     ]
@@ -16988,7 +17148,8 @@
       "core": "R21AI200425",
       "label": "$518,302",
       "pi": "Gauri G Rao",
-      "pi_email": "",
+      "pi_email": "gaurirao@usc.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11392049"
      }
     ]
@@ -17058,7 +17219,8 @@
       "core": "R01AG105095",
       "label": "$644,237",
       "pi": "Lynn E Dobrunz",
-      "pi_email": "",
+      "pi_email": "ldobrunz@uthsc.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11442991"
      }
     ]
@@ -17129,7 +17291,8 @@
       "core": "R01AA033553",
       "label": "$701,015",
       "pi": "Dana M. Litt",
-      "pi_email": "",
+      "pi_email": "dana.litt@uta.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11429427"
      }
     ]
@@ -17366,7 +17529,8 @@
       "core": "R21AG099390",
       "label": "$234,000",
       "pi": "Hyun-eui Kim",
-      "pi_email": "",
+      "pi_email": "kimhyunki@yuhs.ac",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11319260"
      }
     ]
@@ -17383,7 +17547,8 @@
       "core": "RF1NS144915",
       "label": "$2,330,525",
       "pi": "Edgar T. Walters",
-      "pi_email": "",
+      "pi_email": "edgar.t.walters@uth.tmc.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11448110"
      }
     ]
@@ -17472,7 +17637,8 @@
       "core": "U01AG097469",
       "label": "$2,476,157",
       "pi": "Fernanda Laezza",
-      "pi_email": "",
+      "pi_email": "felaezza@utmb.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11275447"
      }
     ]
@@ -17610,7 +17776,8 @@
       "core": "R21AG098515",
       "label": "$401,618",
       "pi": "Tao Yang",
-      "pi_email": "",
+      "pi_email": "Tao.yang2@utoledo.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11286888"
      }
     ]
@@ -17645,7 +17812,8 @@
       "core": "R00EY036452",
       "label": "$249,000",
       "pi": "Sneha Singh",
-      "pi_email": "",
+      "pi_email": "Shipra.singh2@utoledo.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11618526"
      }
     ]
@@ -18041,7 +18209,8 @@
       "core": "F30AI202860",
       "label": "$39,684",
       "pi": "Evan Christopher Lam",
-      "pi_email": "",
+      "pi_email": "eric.lam@rutgers.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11460105"
      }
     ]
@@ -18121,7 +18290,8 @@
       "core": "U01CA269191",
       "label": "$470,987",
       "pi": "Eric J Seibel",
-      "pi_email": "",
+      "pi_email": "eseibel@uw.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11533014"
      }
     ],
@@ -18339,7 +18509,8 @@
       "core": "DP2AG108923",
       "label": "$838,375",
       "pi": "Autumn G York",
-      "pi_email": "",
+      "pi_email": "AGYork@UW.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11393954"
      }
     ]
@@ -18356,7 +18527,8 @@
       "core": "R01EY040101",
       "label": "$418,614",
       "pi": "Anitha Pasupathy",
-      "pi_email": "",
+      "pi_email": "pasupat@u.washington.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11538472"
      }
     ]
@@ -18409,7 +18581,8 @@
       "core": "R15NS151713",
       "label": "$576,455",
       "pi": "An-phu Tran",
-      "pi_email": "",
+      "pi_email": "ann.tran@mssm.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11444650"
      }
     ]
@@ -18505,7 +18678,8 @@
       "core": "R00EY036122",
       "label": "$249,000",
       "pi": "Jonathan R Soucy",
-      "pi_email": "",
+      "pi_email": "jonathan_soucy@meei.harvard.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11531377"
      }
     ]
@@ -18775,7 +18949,8 @@
       "core": "RF1NS148634",
       "label": "$1,010,605",
       "pi": "Hung-yu Shih",
-      "pi_email": "",
+      "pi_email": "htshih@dragon.nchu.edu.tw",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11345763"
      }
     ]
@@ -19112,7 +19287,8 @@
       "core": "R01AG073439",
       "label": "$741,851",
       "pi": "Logan C Dumitrescu",
-      "pi_email": "",
+      "pi_email": "Logan.C.Dumitrescu@vumc.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11448210"
      }
     ],
@@ -19214,7 +19390,8 @@
       "core": "R21AR088317",
       "label": "$409,063",
       "pi": "Anna Elizabeth Patrick",
-      "pi_email": "",
+      "pi_email": "anna.e.patrick@vumc.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11442239"
      }
     ],
@@ -19224,7 +19401,8 @@
       "core": "R13AR089130",
       "label": "$15,000",
       "pi": "Roy Zent",
-      "pi_email": "",
+      "pi_email": "roy.zent@vumc.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11527297"
      }
     ]
@@ -19334,7 +19512,8 @@
       "core": "U01NS129143",
       "label": "$286,799",
       "pi": "Michael R. Debaun",
-      "pi_email": "",
+      "pi_email": "m.debaun@vumc.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11417850"
      },
      {
@@ -19342,7 +19521,8 @@
       "core": "R01NS145242",
       "label": "$220,455",
       "pi": "Edwin Trevathan",
-      "pi_email": "",
+      "pi_email": "edwin.trevathan@vumc.org",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11418009"
      }
     ],
@@ -19647,7 +19827,8 @@
       "core": "P30DA033934",
       "label": "$1,749,495",
       "pi": "Aron H Lichtman",
-      "pi_email": "",
+      "pi_email": "alichtma@vcu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11198589"
      }
     ]
@@ -19700,7 +19881,8 @@
       "core": "K01AG104031",
       "label": "$117,585",
       "pi": "Marc D Rudolph",
-      "pi_email": "",
+      "pi_email": "mdrudolp@wakehealth.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11437605"
      }
     ]
@@ -19818,7 +20000,8 @@
       "core": "U01AI151799",
       "label": "$136,200",
       "pi": "M Kariuki Njenga",
-      "pi_email": "",
+      "pi_email": "Mkariuki.njenga@wsu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11601584"
      },
      {
@@ -19826,7 +20009,8 @@
       "core": "U01AI151799",
       "label": "$91,056",
       "pi": "M Kariuki Njenga",
-      "pi_email": "",
+      "pi_email": "Mkariuki.njenga@wsu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11601585"
      },
      {
@@ -19834,7 +20018,8 @@
       "core": "U01AI151799",
       "label": "$1,947,021",
       "pi": "M Kariuki Njenga",
-      "pi_email": "",
+      "pi_email": "Mkariuki.njenga@wsu.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11123759"
      }
     ]
@@ -19878,7 +20063,8 @@
       "core": "R01HD111532",
       "label": "$118,828",
       "pi": "Catherine Elizabeth Oldenburg",
-      "pi_email": "",
+      "pi_email": "catherine.oldenburg@ucsf.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11578609"
      }
     ],
@@ -19978,7 +20164,8 @@
       "core": "R01HL192617",
       "label": "$313,948",
       "pi": "Fanwei Kong",
-      "pi_email": "",
+      "pi_email": "fkong@uga.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11578689"
      }
     ]
@@ -20057,7 +20244,8 @@
       "core": "U01AI151810",
       "label": "$1,160,812",
       "pi": "David Wang",
-      "pi_email": "",
+      "pi_email": "davewang@wustl.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11123726"
      },
      {
@@ -20065,7 +20253,8 @@
       "core": "U01AI151810",
       "label": "$71,820",
       "pi": "David Wang",
-      "pi_email": "",
+      "pi_email": "davewang@wustl.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11612504"
      },
      {
@@ -20073,7 +20262,8 @@
       "core": "U01AI151810",
       "label": "$36,180",
       "pi": "David Wang",
-      "pi_email": "",
+      "pi_email": "davewang@wustl.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11612505"
      },
      {
@@ -20081,7 +20271,8 @@
       "core": "U01AI151810",
       "label": "$38,340",
       "pi": "David Wang",
-      "pi_email": "",
+      "pi_email": "davewang@wustl.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11617655"
      },
      {
@@ -20089,7 +20280,8 @@
       "core": "U01AI151810",
       "label": "$58,460",
       "pi": "David Wang",
-      "pi_email": "",
+      "pi_email": "davewang@wustl.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11632164"
      },
      {
@@ -20097,7 +20289,8 @@
       "core": "U01AI151810",
       "label": "$266,274",
       "pi": "David Wang",
-      "pi_email": "",
+      "pi_email": "davewang@wustl.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11612507"
      }
     ]
@@ -20333,7 +20526,8 @@
       "core": "R21AR088259",
       "label": "$377,077",
       "pi": "Hongmei Ren",
-      "pi_email": "",
+      "pi_email": "hongmei.ren@wright.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11441231"
      }
     ]
@@ -20579,7 +20773,8 @@
       "core": "R33CA302629",
       "label": "$418,475",
       "pi": "Andre Levchenko",
-      "pi_email": "",
+      "pi_email": "andre.levchenko@yale.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11429581"
      }
     ]
@@ -20614,7 +20809,8 @@
       "core": "R01HG015192",
       "label": "$678,533",
       "pi": "Bluma J Lesch",
-      "pi_email": "",
+      "pi_email": "bluma.lesch@yale.edu",
+      "pi_email_via": "PubMed",
       "url": "https://reporter.nih.gov/project-details/11375324"
      }
     ]
