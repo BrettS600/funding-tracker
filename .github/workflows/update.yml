@@ -6,15 +6,28 @@ on:
   schedule:
     - cron: "17 13 * * 1"  # Mondays 13:17 UTC (~9:17 AM ET), after NIH's Sunday-night refresh
   workflow_dispatch: {}     # manual run button stays available
+  push:                     # a code change rebuilds the page right away
+    branches: [main]
+    paths:
+      - "funding_tracker.py"
+      - "requirements.txt"
+      - ".github/workflows/update.yml"
 
 permissions:
   contents: write
+
+# one run at a time: a code change during the Monday run waits its turn
+concurrency:
+  group: funding-tracker
+  cancel-in-progress: false
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main                # latest main, so this run's commit lands on top of the last one
 
       - uses: actions/setup-python@v5
         with:
