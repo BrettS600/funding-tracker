@@ -241,7 +241,7 @@ def last_completed_week(today: date):
 def wlabel(week_start_iso: str) -> str:
     s = datetime.strptime(week_start_iso, "%Y-%m-%d").date()
     e = s + timedelta(days=6)
-    return f"{s:%b} {s.day} \u2013 {e:%b} {e.day}"
+    return f"{s:%b} {s.day} – {e:%b} {e.day}"
 
 
 # ----------------------------------------------------------------------------
@@ -1470,13 +1470,13 @@ POPUP_CSS = """
 #pubtable th { position:sticky; top:0; background:#fff; z-index:2; font-weight:600;
   user-select:none; white-space:nowrap; border-bottom:2px solid var(--gridstrong); }
 #pubtable th.sortable { cursor:pointer; }
-#pubtable th.sortable .thwrap::after { content:"\u21C5"; margin-left:6px;
+#pubtable th.sortable .thwrap::after { content:"⇅"; margin-left:6px;
   font-size:11px; color:var(--mut); }
-#pubtable th.sorted.asc .thwrap::after { content:"\u25B2"; color:var(--grow); }
-#pubtable th.sorted.desc .thwrap::after { content:"\u25BC"; color:var(--grow); }
-#pubtable th.sorted.c-first .thwrap::after { content:"\u25A0"; color:#A32D2D; }
-#pubtable th.sorted.c-middle .thwrap::after { content:"\u25A0"; color:#8A6A00; }
-#pubtable th.sorted.c-last .thwrap::after { content:"\u25A0"; color:#1B7A43; }
+#pubtable th.sorted.asc .thwrap::after { content:"▲"; color:var(--grow); }
+#pubtable th.sorted.desc .thwrap::after { content:"▼"; color:var(--grow); }
+#pubtable th.sorted.c-first .thwrap::after { content:"■"; color:#A32D2D; }
+#pubtable th.sorted.c-middle .thwrap::after { content:"■"; color:#8A6A00; }
+#pubtable th.sorted.c-last .thwrap::after { content:"■"; color:#1B7A43; }
 #pubtable td.num { color:var(--mut); text-align:right; }
 #pubtable td.year { font-variant-numeric:tabular-nums; }
 #pubtable td.pos-first { background:#F9DAD8; color:#7A1F1F; }
@@ -1505,6 +1505,51 @@ POPUP_CSS = """
 .absbody .wait, .absbody .err { color:var(--mut); }
 .absfoot { padding:10px 20px 14px; border-top:1px solid var(--grid); font-size:12.5px;
   color:var(--mut); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+"""
+
+MOBILE_CSS = """
+/* ---- phones: pin only # + Institution so the week columns have room ---- */
+@media (max-width: 700px) {
+  .mast { padding:16px 14px 12px; gap:12px; }
+  .mast h1 { font-size:19px; }
+  .todaybox { text-align:left; width:100%; }
+  .todaybox .fig { font-size:24px; }
+  .emailchk { justify-content:flex-start; margin-top:2px; padding:4px 0; font-size:13.5px; }
+  .emailchk:first-of-type { margin-top:6px; }
+  .emailchk input { width:18px; height:18px; flex:none; }
+  .controls { padding:0 14px 10px; gap:6px; }
+  .controls input { width:100%; font-size:16px; }  /* 16px stops iOS zooming in on focus */
+  .controls span { font-size:12px; }
+  .wrap { max-height:calc(100vh - 16px); max-height:calc(100svh - 16px); }
+  #t th, #t td { padding:7px 8px; font-size:13px; }
+  #t th:nth-child(1), #t td.rownum { width:30px; min-width:30px; max-width:30px;
+    font-size:11.5px; }
+  #t th:nth-child(2), #t td.uni { left:30px; width:118px; min-width:118px; max-width:118px;
+    font-size:12.5px; box-shadow:2px 0 0 var(--line); }
+  #t th:nth-child(3), #t th:nth-child(4) { left:auto; }
+  #t td.dept, #t td.funder { position:static; }
+  #t th:nth-child(3), #t td.dept { width:112px; min-width:112px; max-width:112px;
+    font-size:12.5px; }
+  #t th:nth-child(4), #t td.funder { width:88px; min-width:88px; max-width:88px;
+    font-size:12.5px; box-shadow:none; }
+  #t td[data-v] { white-space:normal; width:172px; min-width:172px; max-width:172px; }
+  .aline, .tot { white-space:nowrap; }
+  .pib { font-size:11.5px; overflow-wrap:anywhere; }
+  .legend { padding:12px 14px 32px; }
+  #pubmodal, #absmodal { padding:8px; }
+  .pubhead { padding:12px 12px 8px; }
+  .pubscroll { padding:0 8px 12px; }
+  #pubtable { min-width:0; }
+  #pubtable col:nth-child(1) { width:28px !important; }
+  #pubtable col:nth-child(2) { width:46px !important; }
+  #pubtable col:nth-child(3) { width:70px !important; }
+  #pubtable col:nth-child(5) { width:68px !important; }
+  #pubtable th, #pubtable td { padding:6px 5px; font-size:12.5px; }
+  #pubtable th { white-space:normal; overflow-wrap:normal; font-size:12px; }
+  .abshead { padding:12px 12px 8px; }
+  .absbody { padding:10px 12px; }
+  .absfoot { padding:8px 12px 10px; }
+}
 """
 
 POPUP_HTML = """
@@ -1587,14 +1632,14 @@ POPUP_JS = """
   function esc(s) { return String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
   function open(slug) {
     modal.hidden = false;
-    document.getElementById('pubtitle').textContent = 'Loading\u2026';
+    document.getElementById('pubtitle').textContent = 'Loading…';
     sub.textContent = ''; tb.innerHTML = ''; empty.hidden = true;
     fetch('pubs/' + slug + '.json').then(r => r.json()).then(d => {
       rows = d.rows || [];
       document.getElementById('pubtitle').textContent = d.pi || 'Publications';
       sub.innerHTML = `Publication Linked To Grant (Yes/No): <b>${d.linked ? 'Yes' : 'No'}</b>` +
         (d.linked ? '' : ` &middot; journal articles, last 5 years &middot; <b>${rows.length}</b> found`) +
-        (d.match === 'uncertain' ? ' &middot; <b style="color:#A5670A">match uncertain</b> \u2014 verify affiliation' : '') +
+        (d.match === 'uncertain' ? ' &middot; <b style="color:#A5670A">match uncertain</b> — verify affiliation' : '') +
         (d.match === 'merged' ? ' &middot; merged from two OpenAlex profiles' : '');
       sortState = { k: null, dir: 1, cyc: -1 };
       tbl.querySelectorAll('th').forEach(h => h.className = h.className.replace(/\\bsorted\\b|\\basc\\b|\\bdesc\\b|\\bc-\\w+/g, '').trim());
@@ -1754,7 +1799,7 @@ def render_html(data, pubs=None, linked=None) -> str:
             f'<td class="rownum">{i}</td>'
             f'<td class="uni">{html_lib.escape(r["university"])}</td>'
             f'<td class="dept">{html_lib.escape(r["department"])}</td>'
-            f'<td class="funder">{html_lib.escape(r.get("funder", "\u2014"))}</td>'
+            f'<td class="funder">{html_lib.escape(r.get("funder", "—"))}</td>'
             f"{cells}</tr>"
         )
 
@@ -1815,12 +1860,12 @@ a:hover {{ border-bottom-color:var(--grow); }}
 .pib a {{ color:var(--grow); border-bottom-color:#BFE0CC; }}
 #t th {{ position:sticky; top:0; background:var(--bg); z-index:3; cursor:pointer;
   font-weight:500; user-select:none; }}
-#t th::after {{ content:"\u21C5"; margin-left:6px; font-size:11px; color:var(--mut); }}
+#t th::after {{ content:"⇅"; margin-left:6px; font-size:11px; color:var(--mut); }}
 #t th:first-child {{ cursor:default; }}
 #t th:first-child::after {{ content:""; }}
 #t th.sorted {{ box-shadow:inset 0 -2px 0 var(--grow); color:var(--grow); }}
-#t th.sorted.asc::after {{ content:"\u25B2"; color:var(--grow); }}
-#t th.sorted.desc::after {{ content:"\u25BC"; color:var(--grow); }}
+#t th.sorted.asc::after {{ content:"▲"; color:var(--grow); }}
+#t th.sorted.desc::after {{ content:"▼"; color:var(--grow); }}
 #t th:hover {{ color:var(--grow); }}
 #t th.sel {{ background:var(--broth); }}
 #t th:nth-child(1), #t td.rownum {{ position:sticky; left:0; background:var(--bg);
@@ -1841,6 +1886,7 @@ a:hover {{ border-bottom-color:var(--grow); }}
 .zero {{ color:var(--mut); }}
 .legend {{ padding:12px 32px 40px; color:var(--mut); font-size:12.5px; }}
 {POPUP_CSS}
+{MOBILE_CSS}
 </style></head><body>
 
 <div class="mast">
@@ -1872,7 +1918,7 @@ a:hover {{ border-bottom-color:var(--grow); }}
 <div class="controls">
   <input id="q" type="search" placeholder="Filter by institution, department or funder"
     aria-label="Filter rows">
-  <span>The \u21C5 arrows mean a column is sortable &mdash; click to sort,
+  <span>The ⇅ arrows mean a column is sortable &mdash; click to sort,
     click again to reverse</span>
 </div>
 
@@ -1914,6 +1960,11 @@ const onlyLinked = document.getElementById('onlylinked');
 const onlyRecent = document.getElementById('onlyrecent');
 const countEl = document.getElementById('colcount');
 let cur = {{ i:-1, dir:1 }};
+// search text per row, read once: reading innerText inside the filter loop
+// forced a full page re-layout for every row (seconds per keystroke)
+const hayOf = new Map([...tbody.rows].map(r => [r,
+  (r.cells[1].textContent + ' ' + r.cells[2].textContent + ' '
+   + r.cells[3].textContent).toLowerCase()]));
 
 function renumber() {{
   let n = 0;
@@ -1940,8 +1991,7 @@ function applyFilter() {{
   const sel = ths.findIndex(h => h.classList.contains('sel'));
   const anyPub = onlyLinked.checked || onlyRecent.checked;
   [...tbody.rows].forEach(r => {{
-    const hay = (r.cells[1].innerText + ' ' + r.cells[2].innerText + ' '
-                 + r.cells[3].innerText).toLowerCase();
+    const hay = hayOf.get(r);
     const c = sel >= 0 ? r.cells[sel] : null;
     const has = k => !!c && c.dataset[k] === '1';
     const ok = hay.includes(v)
@@ -1982,13 +2032,20 @@ ths.forEach((th, i) => {{
     if (num) applyFilter(); else updateCount();
   }});
 }});
-q.addEventListener('input', applyFilter);
+let qTimer;
+q.addEventListener('input', () => {{ clearTimeout(qTimer); qTimer = setTimeout(applyFilter, 150); }});
 only.addEventListener('change', applyFilter);
 onlyName.addEventListener('change', applyFilter);
 onlyInst.addEventListener('change', applyFilter);
 onlyLinked.addEventListener('change', applyFilter);
 onlyRecent.addEventListener('change', applyFilter);
 applyFilter();
+// phones: open with the highlighted (newest) week next to the pinned Institution column
+if (window.matchMedia('(max-width: 700px)').matches) {{
+  const sel = ths.find(h => h.classList.contains('sel'));
+  if (sel) document.querySelector('.wrap').scrollLeft +=
+    sel.getBoundingClientRect().left - ths[1].getBoundingClientRect().right;
+}}
 {POPUP_JS}
 </script>
 </body></html>"""
@@ -2019,8 +2076,8 @@ def selftest() -> int:
     assert last_completed_week(date(2026, 9, 16)) == (date(2026, 9, 6), date(2026, 9, 12))
     assert last_completed_week(date(2026, 9, 21)) == (date(2026, 9, 13), date(2026, 9, 19))
     assert last_completed_week(date(2026, 9, 20)) == (date(2026, 9, 13), date(2026, 9, 19))
-    assert wlabel("2026-09-06") == "Sep 6 \u2013 Sep 12"
-    assert wlabel("2026-09-27") == "Sep 27 \u2013 Oct 3"
+    assert wlabel("2026-09-06") == "Sep 6 – Sep 12"
+    assert wlabel("2026-09-27") == "Sep 27 – Oct 3"
 
     # automatic fresh start from old daily-format data
     save_json(DATA_FILE, {"dates": ["2026-09-16"], "rows": {
@@ -2132,7 +2189,7 @@ def selftest() -> int:
     page = (DOCS_DIR / "index.html").read_text()
     main_head = page.split('<table id="t">')[1].split("</thead>")[0]
     assert main_head.count("<th ") == 5, "expected 3 label ths + 2 week ths (# th has no attrs)"
-    assert "Sep 6 \u2013 Sep 12" in page and "Sep 13 \u2013 Sep 19" in page
+    assert "Sep 6 – Sep 12" in page and "Sep 13 – Sep 19" in page
     assert '<td class="rownum">1</td>' in page and '<td class="rownum">3</td>' in page
     assert 'id="onlyemail"' in page and 'data-he="1"' in page and 'data-he="0"' in page
     assert 'id="onlyname"' in page and 'id="onlyinst"' in page, "new checkboxes"
@@ -2140,7 +2197,7 @@ def selftest() -> int:
     assert 'Total Count For Column = <b id="colcount">' in page, "column count"
     assert ">Author Order<" in page and "Author Contribution" not in page, "renamed header"
     assert '<th data-t="text">Institution</th>' in page, "Institution column"
-    assert "\u21C5" in page and "1C5" not in page, "popup arrows must be real glyphs"
+    assert "⇅" in page and "1C5" not in page, "popup arrows must be real glyphs"
     css = page.split("<style>")[1].split("</style>")[0]
     leaks = [ln.strip() for ln in css.splitlines()
              if re.match(r"^(table|th|td|tr)[\s,{:.\[]", ln.strip())]
@@ -2181,9 +2238,13 @@ def selftest() -> int:
     assert "renumber" in page and "r.cells[0].textContent" in page
     assert 'data-total="5850000"' in page, \
         "week header must carry its own total (4.6M + 0.5M + 0.75M)"
-    assert 'data-label="Sep 6 \u2013 Sep 12"' in page, "week header label missing"
+    assert 'data-label="Sep 6 – Sep 12"' in page, "week header label missing"
     assert 'id="fig"' in page and 'id="cap"' in page, "summary ids missing"
     assert page.count('class="num sel"') == 1, "exactly one week highlighted"
+    assert "@media (max-width: 700px)" in page and "#t td.dept, #t td.funder { position:static; }" in page, \
+        "phone layout must unpin Department and Funder"
+    assert "hayOf.get(r)" in js and "innerText + ' ' + r.cells[2]" not in js, \
+        "filter must use cached row text (innerText per row froze the page)"
 
     data, n3 = ingest([wk1[0]], "2026-09-13")
     assert n3 == 0 and data["dates"].count("2026-09-13") == 1, "rerun broke"
