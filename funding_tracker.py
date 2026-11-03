@@ -6,6 +6,10 @@ Runs once a week (GitHub Actions, Monday morning, right after NIH RePORTER's
 Sunday-night refresh) and maintains a ledger of NIH awards GRANTED during the
 just-completed week to biotech-adjacent university departments.
 
+  Each run also re-checks the previous weeks (RECHECK_WEEKS in total), because
+  RePORTER often posts an award, or its dollar amount, weeks after the notice
+  date; awards already recorded are skipped, so nothing is counted twice.
+
   Column A = #   B = University   C = Department   D = Funder (NIH institute)
   Every completed Sunday-Saturday week = one column, labeled like
   "Sep 6 - Sep 12". An award appears only once, in the week of its NIH award
@@ -88,6 +92,11 @@ UNIVERSITY_MARKERS = ("UNIVERSITY", "COLLEGE", "INSTITUTE", "POLYTECH",
                       "SCHOOL OF", "ACADEMY OF")
 
 SCHEMA = "nih-weekly-1"  # ledger format tag; older data is reset automatically
+
+# Every run re-asks NIH about this many recent weeks, so awards RePORTER posts
+# (or gives a dollar amount) after their week's Monday run are still added.
+# Awards already recorded are skipped, so nothing is counted twice.
+RECHECK_WEEKS = 8
 
 # --- PI email lookup --------------------------------------------------------
 ENABLE_EMAIL_LOOKUP = True
@@ -238,10 +247,31 @@ def last_completed_week(today: date):
     return start, start + timedelta(days=6)
 
 
+def recheck_weeks(today: date):
+    """The last RECHECK_WEEKS completed weeks, oldest first. Each run asks NIH
+    about all of them again, because RePORTER often posts an award (or its
+    dollar amount) weeks after its notice date."""
+    start, _ = last_completed_week(today)
+    out = []
+    for k in range(RECHECK_WEEKS - 1, -1, -1):
+        s = start - timedelta(days=7 * k)
+        out.append((s, s + timedelta(days=6)))
+    return out
+
+
 def wlabel(week_start_iso: str) -> str:
     s = datetime.strptime(week_start_iso, "%Y-%m-%d").date()
     e = s + timedelta(days=6)
     return f"{s:%b} {s.day} – {e:%b} {e.day}"
+
+
+def wshort(week_start_iso: str) -> str:
+    """Compact label for phone tabs: 'Sep 20–26', or 'Sep 27–Oct 3' across months."""
+    s = datetime.strptime(week_start_iso, "%Y-%m-%d").date()
+    e = s + timedelta(days=6)
+    if s.month == e.month:
+        return f"{s:%b} {s.day}–{e.day}"
+    return f"{s:%b} {s.day}–{e:%b} {e.day}"
 
 
 # ----------------------------------------------------------------------------
@@ -1262,6 +1292,9 @@ def make_award(key, university, department, amount, url, funder, pi,
     }
 
 
+_DIAG_LOGGED = [False]
+
+
 def fetch_nih_week(week_start: date, week_end: date):
     awards, offset = [], 0
     while offset <= 9500:
@@ -1285,8 +1318,9 @@ def fetch_nih_week(week_start: date, week_end: date):
                          json=payload, timeout=TIMEOUT)
         r.raise_for_status()
         results = r.json().get("results", [])
-        if offset == 0 and results:
+        if offset == 0 and results and not _DIAG_LOGGED[0]:
             # One-time diagnostic: does the public API carry PI emails at all?
+            _DIAG_LOGGED[0] = True
             p0 = results[0]
             pis0 = p0.get("principal_investigators") or []
             log(f"  NIH PI object keys: "
@@ -1431,8 +1465,9 @@ def _cell_html(entries, institution="", pubs=None, linked=None):
         pub_line = "Publications Within The Past 5 Years? No"
     else:
         pub_line = '<span class="pend">Publications: not checked yet</span>'
-    lines += (f'<div class="pib">PI Name: {pi_name}<br>PI Email: {pi_mail}'
-              f'<br>Institution: {inst}<br>{pub_line}</div>')
+    # one line each; cards hide the Institution line because the card's title names it
+    lines += (f'<div class="pib"><div>PI Name: {pi_name}</div><div>PI Email: {pi_mail}</div>'
+              f'<div class="pinst">Institution: {inst}</div><div>{pub_line}</div></div>')
     # per-cell flags: the checkboxes and the count apply to the selected week
     flags = (f' data-he="{1 if email else 0}"'
              f' data-hn="{1 if (top.get("pi") or "").strip() else 0}"'
@@ -1507,19 +1542,215 @@ POPUP_CSS = """
   color:var(--mut); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
 """
 
+BASE_CSS = """
+:root {
+  --bg:#FBFBFD; --ink:#101418; --line:#CDD3DA; --mut:#5B636B;
+  --grow:#1B7A43; --broth:#EAF6EF; --grid:#C3CAD2; --gridstrong:#8F98A3;
+  --caution:#A5670A; --card:#D5DAE0; --soft:#E6E9ED;
+}
+* { box-sizing:border-box; }
+[hidden] { display:none !important; }
+body { margin:0; background:var(--bg); color:var(--ink);
+  font:15px/1.45 "IBM Plex Sans", system-ui, sans-serif; }
+a { color:var(--grow); text-decoration:none; border-bottom:1px solid #BFE0CC; }
+a:hover { border-bottom-color:var(--grow); }
+.mast { display:flex; flex-wrap:wrap; gap:24px; align-items:flex-end;
+  justify-content:space-between; padding:28px 32px 18px; }
+.mast h1 { margin:0; font-size:22px; font-weight:600; letter-spacing:-.01em; }
+.mast .sub { color:var(--mut); font-size:13px; margin-top:4px; }
+.todaybox { text-align:right; }
+.todaybox .fig { font-size:28px; font-weight:600; color:var(--grow);
+  font-variant-numeric:tabular-nums; }
+.todaybox .cap { font-size:12.5px; color:var(--mut); }
+
+/* toolbar: weeks menu, search, filters, sort, active-filter chips */
+.toolbar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; padding:0 32px 18px; }
+.tbtn { height:44px; display:inline-flex; align-items:center; gap:8px; padding:0 14px;
+  border:1px solid var(--grid); border-radius:8px; background:#fff; font:inherit;
+  font-size:14px; color:var(--ink); cursor:pointer; white-space:nowrap; }
+.tbtn:hover { border-color:var(--gridstrong); }
+.tbtn .lab { color:var(--mut); }
+.tbtn svg { flex:none; }
+.badge { min-width:20px; height:20px; padding:0 6px; border-radius:10px; background:var(--grow);
+  color:#fff; font-size:12px; font-weight:600; display:inline-flex; align-items:center;
+  justify-content:center; }
+.search { height:44px; display:flex; align-items:center; gap:8px; padding:0 12px;
+  border:1px solid var(--grid); border-radius:8px; background:#fff; width:340px; max-width:100%; }
+.search:focus-within { border-color:var(--grow); outline:2px solid var(--broth); }
+.search input { border:0; outline:0; background:transparent; font:inherit; font-size:14px;
+  color:var(--ink); width:100%; }
+.sortwrap select { border:0; outline:0; background:transparent; font:inherit; font-size:14px;
+  color:var(--ink); cursor:pointer; }
+.chips { display:flex; flex-wrap:wrap; gap:8px; }
+.chip { display:inline-flex; align-items:center; gap:2px; height:36px; padding:0 2px 0 12px;
+  border-radius:18px; background:var(--broth); color:#124D2B; font-size:13px; }
+.chip button { width:32px; height:32px; border:0; border-radius:16px; background:transparent;
+  color:#124D2B; display:inline-flex; align-items:center; justify-content:center;
+  cursor:pointer; font:inherit; font-size:17px; line-height:1; }
+.chip button:hover { background:#D3ECDD; }
+
+/* weeks menu */
+.menuwrap { position:relative; }
+.menu { position:absolute; top:calc(100% + 6px); left:0; z-index:40; width:380px;
+  max-width:calc(100vw - 28px); background:#fff; border:1px solid var(--grid);
+  border-radius:10px; box-shadow:0 16px 40px rgba(16,20,24,.18);
+  display:flex; flex-direction:column; }
+.quick { display:flex; flex-wrap:wrap; gap:8px; padding:14px 14px 12px;
+  border-bottom:1px solid var(--soft); }
+.quick button { height:36px; padding:0 14px; border:1px solid var(--grid); border-radius:18px;
+  background:#fff; font:inherit; font-size:13.5px; color:var(--ink); cursor:pointer; }
+.quick button.on { border-color:var(--grow); background:var(--broth); color:#124D2B;
+  font-weight:500; }
+.wklist { display:flex; flex-direction:column; padding:6px 0; max-height:min(420px, 60vh);
+  overflow:auto; }
+.wk { display:flex; align-items:center; gap:12px; min-height:44px; padding:0 16px;
+  cursor:pointer; font-size:14px; }
+.wk:hover { background:#F3F7F4; }
+.wk input, .fopt input { width:18px; height:18px; margin:0; accent-color:var(--grow);
+  cursor:pointer; flex:none; }
+.wk .wkl { flex:1; }
+.wk .wkn { font-size:12.5px; color:var(--mut); font-variant-numeric:tabular-nums; }
+.menufoot { display:flex; justify-content:space-between; align-items:center; gap:12px;
+  padding:10px 14px; border-top:1px solid var(--soft); font-size:12.5px; color:var(--mut); }
+.primary { height:40px; padding:0 18px; border:0; border-radius:8px; background:var(--grow);
+  color:#fff; font:inherit; font-size:14px; font-weight:500; cursor:pointer; }
+.linkbtn { height:44px; padding:0 4px; border:0; background:transparent; font:inherit;
+  font-size:14px; color:var(--grow); cursor:pointer; }
+.iconbtn { width:44px; height:44px; border:0; border-radius:22px; background:transparent;
+  display:inline-flex; align-items:center; justify-content:center; cursor:pointer;
+  color:var(--mut); }
+.iconbtn:hover { background:#F1F2F4; color:var(--ink); }
+
+/* filters popup */
+#filtermodal { position:fixed; inset:0; background:rgba(16,20,24,.45); z-index:50;
+  display:flex; align-items:flex-start; justify-content:center; padding:84px 16px 16px; }
+.fbox { background:#fff; color:var(--ink); border-radius:12px; width:min(520px,100%);
+  max-height:calc(100vh - 100px); overflow:auto; box-shadow:0 20px 60px rgba(0,0,0,.25);
+  display:flex; flex-direction:column; }
+.fhead { display:flex; justify-content:space-between; align-items:flex-start; gap:16px;
+  padding:18px 14px 12px 22px; border-bottom:1px solid var(--soft); }
+.fhead h2 { margin:0; font-size:18px; font-weight:600; }
+.fhead .sub { font-size:12.5px; color:var(--mut); }
+.fbody { display:flex; flex-direction:column; padding:0 22px; }
+.fswitch { display:flex; align-items:flex-start; justify-content:space-between; gap:20px;
+  padding:16px 0; border-bottom:1px solid var(--soft); cursor:pointer; }
+.fswitch .t { display:block; font-size:15px; font-weight:500; }
+.fswitch .d { display:block; margin-top:3px; font-size:12.5px; color:var(--mut); line-height:1.45; }
+.switch { position:relative; flex:none; width:44px; height:26px; margin-top:2px; }
+.switch input { position:absolute; inset:0; width:44px; height:26px; margin:0; opacity:0;
+  cursor:pointer; z-index:1; }
+.switch .track { position:absolute; inset:0; border-radius:13px; background:#8F98A3; }
+.switch .knob { position:absolute; top:3px; left:3px; width:20px; height:20px;
+  border-radius:10px; background:#fff; }
+.switch input:checked ~ .track { background:var(--grow); }
+.switch input:checked ~ .knob { left:21px; }
+.switch input:focus-visible ~ .track { outline:2px solid var(--grow); outline-offset:2px; }
+.fgroup { display:flex; flex-direction:column; padding:14px 0 8px; border-bottom:1px solid var(--soft); }
+.fgroup:last-child { border-bottom:0; padding-bottom:12px; }
+.fgroup h3 { margin:0 0 2px; font-size:12.5px; font-weight:600; letter-spacing:.04em;
+  text-transform:uppercase; color:var(--mut); }
+.fopt { display:flex; align-items:center; gap:12px; min-height:44px; cursor:pointer; font-size:14.5px; }
+.fhint { font-size:12.5px; color:var(--mut); }
+.ffoot { display:flex; justify-content:space-between; align-items:center; gap:12px;
+  padding:12px 22px 16px; border-top:1px solid var(--soft); }
+.ffoot .saved { font-size:12.5px; color:var(--mut); }
+.ffoot .right { display:flex; align-items:center; gap:14px; }
+
+/* card view: each selected week is its own list of funded institutions */
+.tabs { display:none; }
+.cards { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(280px, 1fr); gap:16px;
+  padding:0 32px 32px; overflow-x:auto; align-items:start; }
+.col { display:flex; flex-direction:column; gap:10px; min-width:0; }
+.colhead { display:flex; flex-direction:column; gap:2px; padding:0 4px 10px;
+  border-bottom:2px solid var(--grow); }
+.colhead h2 { margin:0; font-size:15px; font-weight:600; }
+.colhead span { font-size:12.5px; color:var(--mut); font-variant-numeric:tabular-nums; }
+.card { background:#fff; border:1px solid var(--card); border-radius:8px; padding:14px 16px;
+  display:flex; flex-direction:column; gap:10px; }
+.chead { display:flex; gap:10px; align-items:baseline; }
+.cnum { font-size:12px; color:var(--mut); min-width:16px; font-variant-numeric:tabular-nums; }
+.ctitle { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.ctitle h3 { margin:0; font-size:14.5px; font-weight:600; line-height:1.3; }
+.cmeta { font-size:12.5px; color:var(--mut); }
+.cbody { padding-left:26px; font-variant-numeric:tabular-nums; }
+.cbody .aline a { font-size:15px; font-weight:500; }
+.cbody .tot { font-size:15px; }
+.cbody .pib { border-top:1px solid var(--soft); margin-top:10px; padding-top:10px;
+  font-size:12.5px; overflow-wrap:anywhere; }
+.cbody .pinst { display:none; }
+.empty { border:1px dashed var(--grid); border-radius:8px; padding:18px 16px;
+  display:flex; flex-direction:column; gap:4px; }
+.empty b { font-size:14px; font-weight:500; }
+.empty span { font-size:12.5px; color:var(--mut); line-height:1.45; }
+.more { height:44px; border:1px solid var(--card); border-radius:8px; background:#fff;
+  font:inherit; font-size:13.5px; color:var(--grow); cursor:pointer; }
+
+/* table view (rows with no award shown): every rule is scoped to #t so none of it
+   leaks into the popup table */
+.wrap { overflow:auto; max-height:calc(100vh - 150px); border-top:1px solid var(--line); }
+#t { border-collapse:separate; border-spacing:0; min-width:100%;
+  font-variant-numeric:tabular-nums; }
+#t th, #t td { padding:9px 14px; border-bottom:1px solid var(--line);
+  white-space:nowrap; text-align:right; font-size:14px; vertical-align:top; }
+.aline { display:block; line-height:1.6; }
+.tot { display:inline-block; border-top:1px solid var(--ink); margin-top:3px;
+  padding-top:3px; font-weight:600; }
+.pib { margin-top:7px; font-size:12px; color:var(--mut); font-weight:400; line-height:1.5; }
+.pib a { color:var(--grow); border-bottom-color:#BFE0CC; }
+#t th { position:sticky; top:0; background:var(--bg); z-index:3; font-weight:500; }
+#t th:nth-child(1), #t td.rownum { position:sticky; left:0; background:var(--bg);
+  text-align:right; min-width:48px; max-width:48px; z-index:2;
+  color:var(--mut); font-size:12.5px; }
+#t th:nth-child(2), #t td.uni { position:sticky; left:48px; background:var(--bg);
+  text-align:left; min-width:220px; max-width:220px; white-space:normal;
+  z-index:2; font-weight:500; }
+#t th:nth-child(3), #t td.dept { position:sticky; left:268px; background:var(--bg);
+  text-align:left; min-width:200px; max-width:200px; white-space:normal;
+  z-index:2; color:#3C444C; }
+#t th:nth-child(4), #t td.funder { position:sticky; left:468px; background:var(--bg);
+  text-align:left; min-width:130px; max-width:170px; white-space:normal;
+  z-index:2; box-shadow:2px 0 0 var(--line); }
+#t th:nth-child(-n+4) { z-index:4; }
+#t td[data-v]:not(.zero) { background:#fff; }
+#t tr:hover td { background:#F3F7F4; }
+.zero { color:var(--mut); }
+.legend { padding:12px 32px 40px; color:var(--mut); font-size:12.5px; max-width:1100px; }
+"""
+
 MOBILE_CSS = """
-/* ---- phones: pin only # + Institution so the week columns have room ---- */
+/* ---- phones ---- */
 @media (max-width: 700px) {
-  .mast { padding:16px 14px 12px; gap:12px; }
+  .mast { padding:16px 14px 12px; gap:10px; }
   .mast h1 { font-size:19px; }
   .todaybox { text-align:left; width:100%; }
   .todaybox .fig { font-size:24px; }
-  .emailchk { justify-content:flex-start; margin-top:2px; padding:4px 0; font-size:13.5px; }
-  .emailchk:first-of-type { margin-top:6px; }
-  .emailchk input { width:18px; height:18px; flex:none; }
-  .controls { padding:0 14px 10px; gap:6px; }
-  .controls input { width:100%; font-size:16px; }  /* 16px stops iOS zooming in on focus */
-  .controls span { font-size:12px; }
+  .toolbar { padding:0 14px 12px; gap:8px; }
+  .menuwrap, #filtersbtn { flex:1 1 calc(50% - 4px); }
+  .menuwrap .tbtn, #filtersbtn { width:100%; justify-content:center; }
+  #weeksbtn .lab { display:none; }
+  .search { order:3; width:100%; }
+  .search input { font-size:16px; }  /* 16px stops iOS zooming in on focus */
+  .sortwrap { order:4; flex:1 1 100%; }
+  .chips { order:5; width:100%; }
+  .menu { position:fixed; top:auto; left:8px; right:8px; bottom:8px; width:auto;
+    max-width:none; max-height:85vh; z-index:60; }
+  .wklist { max-height:50vh; }
+  #filtermodal { align-items:flex-end; padding:8px; }
+  .fbox { max-height:88vh; }
+  .tabs { display:flex; gap:8px; overflow-x:auto; padding:0 14px 12px; margin-bottom:12px;
+    border-bottom:1px solid var(--card); }
+  .tabs button { flex:none; height:40px; padding:0 14px; border:1px solid var(--grid);
+    border-radius:20px; background:#fff; font:inherit; font-size:13.5px; color:var(--ink);
+    white-space:nowrap; cursor:pointer; }
+  .tabs button.on { background:var(--grow); border-color:var(--grow); color:#fff; font-weight:500; }
+  .cards { display:block; padding:0 14px 24px; overflow:visible; }
+  .col { display:none; }
+  .col.on { display:flex; }
+  .colhead { flex-direction:row; justify-content:space-between; align-items:baseline;
+    gap:8px; border-bottom:0; padding:0 0 2px; }
+  .card { padding:14px; }
+  .cbody { padding-left:24px; }
+  .legend { padding:12px 14px 32px; }
   .wrap { max-height:calc(100vh - 16px); max-height:calc(100svh - 16px); }
   #t th, #t td { padding:7px 8px; font-size:13px; }
   #t th:nth-child(1), #t td.rownum { width:30px; min-width:30px; max-width:30px;
@@ -1535,7 +1766,6 @@ MOBILE_CSS = """
   #t td[data-v] { white-space:normal; width:172px; min-width:172px; max-width:172px; }
   .aline, .tot { white-space:nowrap; }
   .pib { font-size:11.5px; overflow-wrap:anywhere; }
-  .legend { padding:12px 14px 32px; }
   #pubmodal, #absmodal { padding:8px; }
   .pubhead { padding:12px 12px 8px; }
   .pubscroll { padding:0 8px 12px; }
@@ -1550,6 +1780,268 @@ MOBILE_CSS = """
   .absbody { padding:10px 12px; }
   .absfoot { padding:8px 12px 10px; }
 }
+"""
+
+LEDGER_JS = """
+// ---- the ledger: weeks menu, filters popup, card view and table view ----
+(function () {
+  const $ = id => document.getElementById(id);
+  const table = $('t');
+  const tbody = table.tBodies[0];
+  const ths = [...table.tHead.rows[0].cells];
+  const WEEKS = ths.filter(th => th.dataset.w).map(th => ({
+    iso: th.dataset.w, label: th.dataset.label, short: th.dataset.short,
+    i: ths.indexOf(th), th: th, funded: 0 }));
+  const NEWEST = WEEKS.slice().reverse();
+  // every row's text is read once here; reading it inside a loop that also hides
+  // rows forces a page re-layout per row (seconds per keystroke)
+  const ROWS = [...tbody.rows].map(tr => {
+    const inst = tr.cells[1].textContent, dept = tr.cells[2].textContent,
+          funder = tr.cells[3].textContent;
+    return { tr, inst, dept, funder, hay: (inst + ' ' + dept + ' ' + funder).toLowerCase() };
+  });
+  const val = (r, w) => +r.tr.cells[w.i].dataset.v || 0;
+  WEEKS.forEach(w => { w.funded = ROWS.filter(r => val(r, w) > 0).length; });
+
+  const q = $('q'), sortSel = $('sort'), cardsEl = $('cards'), tabsEl = $('tabs');
+  const tableWrap = $('tablewrap'), hideBox = $('hidezero');
+  const BOX = { email: $('onlyemail'), name: $('onlyname'), inst: $('onlyinst'),
+                linked: $('onlylinked'), recent: $('onlyrecent') };
+  const PAGE = 25;                          // cards per week before "Show all"
+  const KEY = 'funding-ledger-view-v1';     // choices remembered on this device
+  const DEFAULTS = { mode: 'last4', weeks: [], hide: true, sort: 'amount',
+    f: { email: false, name: false, inst: false, linked: false, recent: false } };
+  let S = load();
+  let expanded = {};
+  let activeTab = null;
+
+  function load() {
+    const out = JSON.parse(JSON.stringify(DEFAULTS));
+    let s = null;
+    try { s = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+    if (s && typeof s === 'object') {
+      if (['latest', 'last4', 'all', 'custom'].includes(s.mode)) out.mode = s.mode;
+      if (Array.isArray(s.weeks)) out.weeks = s.weeks.filter(x => WEEKS.some(w => w.iso === x));
+      if (typeof s.hide === 'boolean') out.hide = s.hide;
+      if (s.sort === 'name' || s.sort === 'amount') out.sort = s.sort;
+      if (s.f && typeof s.f === 'object') for (const k in out.f) out.f[k] = !!s.f[k];
+    }
+    if (out.mode === 'custom' && !out.weeks.length) out.mode = 'last4';
+    return out;
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+  function selected() {                     // the weeks shown, newest first
+    if (S.mode === 'latest') return NEWEST.slice(0, 1);
+    if (S.mode === 'last4') return NEWEST.slice(0, 4);
+    if (S.mode === 'all') return NEWEST.slice();
+    return NEWEST.filter(w => S.weeks.includes(w.iso));
+  }
+  function anyCellFilter() {
+    const f = S.f;
+    return f.email || f.name || f.inst || f.linked || f.recent;
+  }
+  function passes(c) {
+    // email / name / institution must all hold; the two publication boxes combine as OR
+    const f = S.f, d = c.dataset;
+    if (f.email && d.he !== '1') return false;
+    if (f.name && d.hn !== '1') return false;
+    if (f.inst && d.hi !== '1') return false;
+    if ((f.linked || f.recent) && !((f.linked && d.pl === '1') || (f.recent && d.pr === '1'))) return false;
+    return true;
+  }
+  const money = n => '$' + Math.round(n).toLocaleString('en-US');
+  const count = n => n.toLocaleString('en-US');
+  const el = (tag, cls, text) => {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  };
+
+  function render() {
+    const sel = selected(), qv = q.value.trim().toLowerCase();
+    const res = S.hide ? renderCards(sel, qv) : renderTable(sel, qv);
+    cardsEl.hidden = !S.hide;
+    tabsEl.hidden = !S.hide;
+    tableWrap.hidden = S.hide;
+    $('fig').textContent = money(res.grand);
+    $('cap').textContent = 'granted in the ' + (sel.length === 1 ? 'week' : sel.length + ' weeks')
+      + ' shown · ' + count(res.funded) + (res.funded === 1 ? ' funded row' : ' funded rows');
+    renderControls(sel);
+  }
+
+  function renderCards(sel, qv) {
+    cardsEl.textContent = '';
+    tabsEl.textContent = '';
+    if (!sel.some(w => w.iso === activeTab)) activeTab = sel.length ? sel[0].iso : null;
+    let grand = 0, funded = 0;
+    sel.forEach(w => {
+      const list = ROWS.filter(r => val(r, w) > 0 && r.hay.includes(qv) && passes(r.tr.cells[w.i]));
+      if (S.sort === 'name') list.sort((a, b) => a.inst.localeCompare(b.inst));
+      else list.sort((a, b) => val(b, w) - val(a, w) || a.inst.localeCompare(b.inst));
+      const sum = list.reduce((s, r) => s + val(r, w), 0);
+      grand += sum;
+      funded += list.length;
+
+      const col = el('section', w.iso === activeTab ? 'col on' : 'col');
+      const head = el('div', 'colhead');
+      head.append(el('h2', '', w.label),
+                  el('span', '', count(list.length) + ' funded' + (list.length ? ' · ' + money(sum) : '')));
+      col.append(head);
+      if (!list.length) {
+        const e = el('div', 'empty');
+        if (w.funded) e.append(el('b', '', 'No rows match'),
+                               el('span', '', 'Nothing this week fits the search or filters.'));
+        else e.append(el('b', '', 'No awards recorded for this week'),
+                      el('span', '', 'Every Monday the last 8 weeks are checked again, so awards NIH posts late are still added.'));
+        col.append(e);
+      }
+      const show = expanded[w.iso] ? list : list.slice(0, PAGE);
+      show.forEach((r, k) => col.append(card(r, r.tr.cells[w.i], k + 1)));
+      if (list.length > show.length) {
+        const more = el('button', 'more', 'Show all ' + count(list.length));
+        more.type = 'button';
+        more.addEventListener('click', () => { expanded[w.iso] = true; render(); });
+        col.append(more);
+      }
+      cardsEl.append(col);
+
+      const tab = el('button', w.iso === activeTab ? 'on' : '', w.short + ' · ' + count(list.length));
+      tab.type = 'button';
+      tab.setAttribute('aria-pressed', w.iso === activeTab ? 'true' : 'false');
+      tab.addEventListener('click', () => { activeTab = w.iso; render(); });
+      tabsEl.append(tab);
+    });
+    return { grand, funded };
+  }
+
+  function card(r, cell, n) {
+    const a = el('article', 'card');
+    const head = el('div', 'chead');
+    const title = el('div', 'ctitle');
+    title.append(el('h3', '', r.inst),
+                 el('div', 'cmeta', (r.dept === '--' ? 'No department listed' : r.dept) + ' · ' + r.funder));
+    head.append(el('span', 'cnum', String(n)), title);
+    const body = el('div', 'cbody');
+    body.innerHTML = cell.innerHTML;   // the cell's own markup: amounts, total, PI lines, publications
+    a.append(head, body);
+    return a;
+  }
+
+  function renderTable(sel, qv) {
+    const on = new Set(sel.map(w => w.iso));
+    WEEKS.forEach(w => {
+      const d = on.has(w.iso) ? '' : 'none';
+      w.th.style.display = d;
+      ROWS.forEach(r => { r.tr.cells[w.i].style.display = d; });
+    });
+    const filt = anyCellFilter();
+    const keep = c => +c.dataset.v > 0 && passes(c);
+    ROWS.forEach(r => {
+      const ok = r.hay.includes(qv) && (!filt || sel.some(w => keep(r.tr.cells[w.i])));
+      r.tr.style.display = ok ? '' : 'none';
+    });
+    const tot = r => sel.reduce((s, w) => s + val(r, w), 0);
+    const order = ROWS.slice();
+    if (S.sort === 'name') order.sort((a, b) => a.inst.localeCompare(b.inst));
+    else order.sort((a, b) => tot(b) - tot(a) || a.inst.localeCompare(b.inst));
+    order.forEach(r => tbody.appendChild(r.tr));
+    let n = 0, grand = 0, funded = 0;
+    order.forEach(r => {
+      if (r.tr.style.display === 'none') return;
+      r.tr.cells[0].textContent = ++n;
+      sel.forEach(w => {
+        const c = r.tr.cells[w.i];
+        if (+c.dataset.v > 0 && (!filt || passes(c))) { grand += +c.dataset.v; funded++; }
+      });
+    });
+    return { grand, funded };
+  }
+
+  const NAMES = { email: 'Has a PI email', name: 'Has a PI name', inst: 'Has an institution',
+                  linked: 'Publication linked to grant', recent: 'Publications in last 5 years' };
+  function renderControls(sel) {
+    const labels = { latest: 'Latest week', last4: 'Last 4 weeks', all: 'All weeks' };
+    $('weekslabel').textContent = labels[S.mode]
+      || (sel.length === 1 ? sel[0].label : sel.length + ' picked');
+    document.querySelectorAll('#weeksmenu [data-quick]').forEach(b => {
+      b.classList.toggle('on', b.dataset.quick === S.mode);
+      b.setAttribute('aria-pressed', b.dataset.quick === S.mode ? 'true' : 'false');
+    });
+    const on = new Set(sel.map(w => w.iso));
+    document.querySelectorAll('#weeksmenu input[type=checkbox]').forEach(cb => { cb.checked = on.has(cb.value); });
+    $('wkcount').textContent = sel.length + (sel.length === 1 ? ' week' : ' weeks') + ' selected';
+    hideBox.checked = S.hide;
+    for (const k in BOX) BOX[k].checked = S.f[k];
+    sortSel.value = S.sort;
+
+    const chips = [];
+    if (S.hide) chips.push(['Rows with no award hidden', () => { S.hide = false; }]);
+    for (const k in NAMES) if (S.f[k]) chips.push([NAMES[k], () => { S.f[k] = false; }]);
+    const badge = $('fbadge');
+    badge.textContent = chips.length;
+    badge.hidden = !chips.length;
+    const box = $('chips');
+    box.textContent = '';
+    chips.forEach(([text, off]) => {
+      const chip = el('span', 'chip');
+      const x = el('button', '', '×');
+      x.type = 'button';
+      x.setAttribute('aria-label', 'Remove filter: ' + text);
+      x.addEventListener('click', () => { off(); changed(); });
+      chip.append(el('span', '', text), x);
+      box.append(chip);
+    });
+  }
+  function changed() { save(); render(); }
+
+  // weeks menu
+  const wbtn = $('weeksbtn'), wmenu = $('weeksmenu');
+  function openWeeks(open) {
+    wmenu.hidden = !open;
+    wbtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  wbtn.addEventListener('click', e => { e.stopPropagation(); openWeeks(wmenu.hidden); });
+  wmenu.addEventListener('click', e => e.stopPropagation());
+  document.addEventListener('click', () => { if (!wmenu.hidden) openWeeks(false); });
+  $('weeksdone').addEventListener('click', () => openWeeks(false));
+  wmenu.querySelectorAll('[data-quick]').forEach(b => b.addEventListener('click', () => {
+    S.mode = b.dataset.quick; S.weeks = []; expanded = {}; changed();
+  }));
+  wmenu.querySelectorAll('input[type=checkbox]').forEach(cb => cb.addEventListener('change', () => {
+    const cur = new Set(selected().map(w => w.iso));
+    if (cb.checked) cur.add(cb.value); else cur.delete(cb.value);
+    if (!cur.size) { cb.checked = true; return; }   // always keep at least one week
+    S.mode = 'custom'; S.weeks = [...cur]; changed();
+  }));
+
+  // filters popup
+  const fmodal = $('filtermodal');
+  const closeFilters = () => { fmodal.hidden = true; };
+  $('filtersbtn').addEventListener('click', () => { openWeeks(false); fmodal.hidden = false; });
+  $('filterclose').addEventListener('click', closeFilters);
+  $('filterdone').addEventListener('click', closeFilters);
+  fmodal.addEventListener('click', e => { if (e.target === fmodal) closeFilters(); });
+  hideBox.addEventListener('change', () => { S.hide = hideBox.checked; changed(); });
+  for (const k in BOX) BOX[k].addEventListener('change', () => { S.f[k] = BOX[k].checked; changed(); });
+  $('filterreset').addEventListener('click', () => {
+    S.hide = true;
+    for (const k in S.f) S.f[k] = false;
+    changed();
+  });
+
+  sortSel.addEventListener('change', () => { S.sort = sortSel.value; changed(); });
+  let qTimer;
+  q.addEventListener('input', () => { clearTimeout(qTimer); qTimer = setTimeout(render, 150); });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (!wmenu.hidden) openWeeks(false);
+    else if (!fmodal.hidden) closeFilters();
+  });
+
+  render();
+})();
 """
 
 POPUP_HTML = """
@@ -1768,10 +2260,28 @@ POPUP_JS = """
 """
 
 
+ICON_CAL = ('<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" '
+            'stroke="#5B636B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'
+            '<rect x="3" y="5" width="18" height="16" rx="2"></rect>'
+            '<path d="M3 10h18M8 3v4M16 3v4"></path></svg>')
+ICON_CHEVRON = ('<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" '
+                'stroke="#5B636B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+                '<path d="M6 9l6 6 6-6"></path></svg>')
+ICON_SEARCH = ('<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" '
+               'stroke="#5B636B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'
+               '<circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>')
+ICON_SLIDERS = ('<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" '
+                'stroke="#5B636B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'
+                '<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"></path><circle cx="16" cy="6" r="2">'
+                '</circle><circle cx="10" cy="12" r="2"></circle><circle cx="18" cy="18" r="2"></circle></svg>')
+ICON_CLOSE = ('<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" '
+              'stroke="currentColor" stroke-width="2" stroke-linecap="round">'
+              '<path d="M6 6l12 12M18 6L6 18"></path></svg>')
+
+
 def render_html(data, pubs=None, linked=None) -> str:
     pubs, linked = pubs or {}, linked or {}
     weeks = data["dates"]
-    latest = weeks[-1] if weeks else None
     rows = sorted(
         data["rows"].values(),
         key=lambda r: (r["university"].lower(), r.get("funder", "").lower(),
@@ -1781,13 +2291,19 @@ def render_html(data, pubs=None, linked=None) -> str:
     week_totals = {
         w: sum(e["amount"] for r in rows for e in r["cells"].get(w, []))
         for w in weeks}
-    total_latest = week_totals.get(latest, 0)
+    week_funded = {w: sum(1 for r in rows if r["cells"].get(w)) for w in weeks}
     n_awards = sum(len(v) for r in rows for v in r["cells"].values())
 
     head_cells = "".join(
-        f'<th class="num{" sel" if w == latest else ""}" data-t="num" '
-        f'data-total="{week_totals[w]}" data-label="{wlabel(w)}" '
-        f'title="{w}">{wlabel(w)}</th>' for w in weeks)
+        f'<th class="num" data-w="{w}" data-total="{week_totals[w]}" '
+        f'data-label="{wlabel(w)}" data-short="{wshort(w)}" title="{w}">{wlabel(w)}</th>'
+        for w in weeks)
+    # the weeks menu lists the newest week first
+    week_items = "".join(
+        f'<label class="wk"><input type="checkbox" value="{w}">'
+        f'<span class="wkl">{wlabel(w)}</span>'
+        f'<span class="wkn">{week_funded[w]:,} funded</span></label>'
+        for w in reversed(weeks))
 
     body = []
     for i, r in enumerate(rows, start=1):
@@ -1812,79 +2328,7 @@ def render_html(data, pubs=None, linked=None) -> str:
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {{
-  --bg:#FBFBFD; --ink:#101418; --line:#CDD3DA; --mut:#8A939C;
-  --grow:#1B7A43; --broth:#EAF6EF; --grid:#C3CAD2; --gridstrong:#8F98A3;
-  --caution:#A5670A;
-}}
-* {{ box-sizing:border-box; }}
-body {{ margin:0; background:var(--bg); color:var(--ink);
-  font:15px/1.45 "IBM Plex Sans", system-ui, sans-serif; }}
-a {{ color:var(--grow); text-decoration:none; border-bottom:1px solid #BFE0CC; }}
-a:hover {{ border-bottom-color:var(--grow); }}
-.mast {{ display:flex; flex-wrap:wrap; gap:24px; align-items:flex-end;
-  justify-content:space-between; padding:28px 32px 18px; }}
-.mast h1 {{ margin:0; font-size:22px; font-weight:600; letter-spacing:-.01em; }}
-.mast .sub {{ color:var(--mut); font-size:13px; margin-top:4px; }}
-.todaybox {{ text-align:right; }}
-.todaybox .fig {{ font-size:26px; font-weight:600; color:var(--grow);
-  font-variant-numeric:tabular-nums; }}
-.todaybox .cap {{ font-size:12px; color:var(--mut); }}
-.emailchk {{ display:flex; gap:7px; align-items:center; justify-content:flex-end;
-  margin-top:6px; font-size:13px; color:var(--ink); cursor:pointer;
-  user-select:none; }}
-.emailchk:first-of-type {{ margin-top:9px; }}
-.colcount {{ margin-top:10px; padding-top:8px; font-size:13px; color:var(--mut);
-  border-top:1px solid var(--line); }}
-.colcount b {{ color:var(--ink); font-variant-numeric:tabular-nums; }}
-.colhint {{ font-size:11.5px; color:var(--mut); margin-top:3px; }}
-.emailchk input {{ width:15px; height:15px; accent-color:var(--grow);
-  cursor:pointer; }}
-.controls {{ display:flex; gap:16px; align-items:center; flex-wrap:wrap;
-  padding:0 32px 14px; font-size:13px; color:var(--mut); }}
-.controls input {{ font:inherit; color:var(--ink); padding:7px 10px;
-  border:1px solid var(--line); border-radius:6px; background:#fff; width:260px; }}
-.controls input:focus {{ outline:2px solid var(--broth); border-color:var(--grow); }}
-.wrap {{ overflow:auto; max-height:calc(100vh - 150px);
-  border-top:1px solid var(--line); }}
-/* every rule below is scoped to #t so none of it leaks into the popup table */
-#t {{ border-collapse:separate; border-spacing:0; min-width:100%;
-  font-variant-numeric:tabular-nums; }}
-#t th, #t td {{ padding:9px 14px; border-bottom:1px solid var(--line);
-  white-space:nowrap; text-align:right; font-size:14px; vertical-align:top; }}
-.aline {{ display:block; line-height:1.6; }}
-.tot {{ display:inline-block; border-top:1px solid var(--ink); margin-top:3px;
-  padding-top:3px; font-weight:600; }}
-.pib {{ margin-top:7px; font-size:12px; color:var(--mut); font-weight:400;
-  line-height:1.5; }}
-.pib a {{ color:var(--grow); border-bottom-color:#BFE0CC; }}
-#t th {{ position:sticky; top:0; background:var(--bg); z-index:3; cursor:pointer;
-  font-weight:500; user-select:none; }}
-#t th::after {{ content:"⇅"; margin-left:6px; font-size:11px; color:var(--mut); }}
-#t th:first-child {{ cursor:default; }}
-#t th:first-child::after {{ content:""; }}
-#t th.sorted {{ box-shadow:inset 0 -2px 0 var(--grow); color:var(--grow); }}
-#t th.sorted.asc::after {{ content:"▲"; color:var(--grow); }}
-#t th.sorted.desc::after {{ content:"▼"; color:var(--grow); }}
-#t th:hover {{ color:var(--grow); }}
-#t th.sel {{ background:var(--broth); }}
-#t th:nth-child(1), #t td.rownum {{ position:sticky; left:0; background:var(--bg);
-  text-align:right; min-width:48px; max-width:48px; z-index:2;
-  color:var(--mut); font-size:12.5px; }}
-#t th:nth-child(2), #t td.uni {{ position:sticky; left:48px; background:var(--bg);
-  text-align:left; min-width:220px; max-width:220px; white-space:normal;
-  z-index:2; font-weight:500; }}
-#t th:nth-child(3), #t td.dept {{ position:sticky; left:268px; background:var(--bg);
-  text-align:left; min-width:200px; max-width:200px; white-space:normal;
-  z-index:2; color:#3C444C; }}
-#t th:nth-child(4), #t td.funder {{ position:sticky; left:468px; background:var(--bg);
-  text-align:left; min-width:130px; max-width:170px; white-space:normal;
-  z-index:2; box-shadow:2px 0 0 var(--line); }}
-#t th:nth-child(-n+4) {{ z-index:4; }}
-#t td[data-v]:not(.zero) {{ background:#fff; }}
-#t tr:hover td {{ background:#F3F7F4; }}
-.zero {{ color:var(--mut); }}
-.legend {{ padding:12px 32px 40px; color:var(--mut); font-size:12.5px; }}
+{BASE_CSS}
 {POPUP_CSS}
 {MOBILE_CSS}
 </style></head><body>
@@ -1897,32 +2341,43 @@ a:hover {{ border-bottom-color:var(--grow); }}
       {len(rows)} rows &middot; {n_awards} awards tracked</div>
   </div>
   <div class="todaybox">
-    <div class="fig" id="fig">{fmt_money(total_latest)}</div>
-    <div class="cap">granted <span id="cap">{wlabel(latest) if latest else "-"}</span></div>
-    <label class="emailchk"><input type="checkbox" id="onlyemail">
-      Only show rows with a PI email</label>
-    <label class="emailchk"><input type="checkbox" id="onlyname">
-      Only show rows with a PI name</label>
-    <label class="emailchk"><input type="checkbox" id="onlyinst">
-      Only show rows with an institution</label>
-    <label class="emailchk"><input type="checkbox" id="onlylinked">
-      Only rows with publication linked to grant</label>
-    <label class="emailchk"><input type="checkbox" id="onlyrecent">
-      Only rows with publications within the last 5 years</label>
-    <div class="colcount">Total Count For Column = <b id="colcount">0</b>
-      <div class="colhint">Checkboxes and count apply to the highlighted week
-        &mdash; click a week header to switch</div></div>
+    <div class="fig" id="fig">$0</div>
+    <div class="cap" id="cap">granted in the weeks shown</div>
   </div>
 </div>
 
-<div class="controls">
-  <input id="q" type="search" placeholder="Filter by institution, department or funder"
-    aria-label="Filter rows">
-  <span>The ⇅ arrows mean a column is sortable &mdash; click to sort,
-    click again to reverse</span>
+<div class="toolbar">
+  <div class="menuwrap">
+    <button type="button" class="tbtn" id="weeksbtn" aria-haspopup="dialog" aria-expanded="false"
+      aria-controls="weeksmenu">{ICON_CAL}<span><span class="lab">Weeks:</span>
+      <span id="weekslabel">Last 4 weeks</span></span>{ICON_CHEVRON}</button>
+    <div class="menu" id="weeksmenu" role="dialog" aria-label="Choose weeks" hidden>
+      <div class="quick">
+        <button type="button" data-quick="latest">Latest week</button>
+        <button type="button" data-quick="last4">Last 4 weeks</button>
+        <button type="button" data-quick="all">All weeks</button>
+      </div>
+      <div class="wklist" role="group" aria-label="Weeks">{week_items}</div>
+      <div class="menufoot"><span id="wkcount"></span>
+        <button type="button" class="primary" id="weeksdone">Done</button></div>
+    </div>
+  </div>
+  <label class="search">{ICON_SEARCH}<input id="q" type="search"
+    placeholder="Search institution, dept or funder" aria-label="Search rows"></label>
+  <button type="button" class="tbtn" id="filtersbtn" aria-haspopup="dialog">{ICON_SLIDERS}
+    <span>Filters</span><span class="badge" id="fbadge" hidden>0</span></button>
+  <label class="tbtn sortwrap"><span class="lab">Sort:</span>
+    <select id="sort" aria-label="Sort">
+      <option value="amount">Largest award first</option>
+      <option value="name">Institution A–Z</option>
+    </select></label>
+  <div class="chips" id="chips"></div>
 </div>
 
-<div class="wrap"><table id="t">
+<div class="tabs" id="tabs" role="group" aria-label="Week shown"></div>
+<div class="cards" id="cards"></div>
+
+<div class="wrap" id="tablewrap" hidden><table id="t">
 <thead><tr>
   <th>#</th>
   <th data-t="text">Institution</th>
@@ -1934,118 +2389,55 @@ a:hover {{ border-bottom-color:var(--grow); }}
 {chr(10).join(body)}
 </tbody></table></div>
 
-<div class="legend">Each column is one completed Sunday&ndash;Saturday week;
-an award appears in the week of its NIH award-notice date, once, so amounts
-are never double-counted. 0 = no award granted to that row that week. Cells
-with several awards list each one and end with a ruled, unlinked
-<b>= total</b>. A <b>--</b> Department means NIH reported no department for
-that keyword-matched award. PI lines show the contact PI of the cell's
-largest award; emails come from NIH's own project record when available,
-otherwise from the PI's recent PubMed publications (hover an email to see
-which), and -- means neither source had one yet. Row numbers always follow
-the current sort and filter. Source: NIH RePORTER (refreshes Sunday nights;
-this page updates every Monday morning).</div>
+<div class="legend">Each week is one completed Sunday&ndash;Saturday week. An award
+appears once, in the week of its NIH award-notice date, so amounts are never
+double-counted; every Monday the last 8 weeks are checked again, so awards NIH
+posts late are still added. Cards with several awards list each one and end with
+a ruled <b>= total</b>. &ldquo;No department listed&rdquo; (-- in the table) means
+NIH reported none for that keyword-matched award. PI lines show the contact PI of
+the largest award; emails come from the PI&rsquo;s own recent publications (PubMed
+and Europe PMC), and -- means none was found yet. Source: NIH RePORTER (refreshes
+Sunday nights; this page updates every Monday morning).</div>
+
+<div id="filtermodal" hidden>
+  <div class="fbox" role="dialog" aria-modal="true" aria-labelledby="ftitle">
+    <div class="fhead">
+      <div><h2 id="ftitle">Filters</h2><div class="sub">Applies to every week shown</div></div>
+      <button type="button" class="iconbtn" id="filterclose" aria-label="Close filters">{ICON_CLOSE}</button>
+    </div>
+    <div class="fbody">
+      <label class="fswitch">
+        <span><span class="t">Hide rows with no award</span>
+          <span class="d">Each week lists only the institutions it funded. Turn off to see
+          the full table, with every row lined up across weeks.</span></span>
+        <span class="switch"><input type="checkbox" role="switch" id="hidezero">
+          <span class="track" aria-hidden="true"></span><span class="knob" aria-hidden="true"></span></span>
+      </label>
+      <div class="fgroup" role="group" aria-labelledby="fonly">
+        <h3 id="fonly">Only show rows with</h3>
+        <label class="fopt"><input type="checkbox" id="onlyemail">A PI email</label>
+        <label class="fopt"><input type="checkbox" id="onlyname">A PI name</label>
+        <label class="fopt"><input type="checkbox" id="onlyinst">An institution</label>
+      </div>
+      <div class="fgroup" role="group" aria-labelledby="fpubs">
+        <h3 id="fpubs">Publications</h3>
+        <label class="fopt"><input type="checkbox" id="onlylinked">Publication linked to the grant</label>
+        <label class="fopt"><input type="checkbox" id="onlyrecent">Publications in the last 5 years</label>
+        <span class="fhint">Check both to see rows with either.</span>
+      </div>
+    </div>
+    <div class="ffoot">
+      <button type="button" class="linkbtn" id="filterreset">Reset to default</button>
+      <span class="right"><span class="saved">Saved on this device</span>
+        <button type="button" class="primary" id="filterdone">Done</button></span>
+    </div>
+  </div>
+</div>
 
 {POPUP_HTML}
 
 <script>
-const table = document.getElementById('t');
-const tbody = table.tBodies[0];
-const ths = [...table.tHead.rows[0].cells];
-const q = document.getElementById('q');
-const only = document.getElementById('onlyemail');
-const onlyName = document.getElementById('onlyname');
-const onlyInst = document.getElementById('onlyinst');
-const onlyLinked = document.getElementById('onlylinked');
-const onlyRecent = document.getElementById('onlyrecent');
-const countEl = document.getElementById('colcount');
-let cur = {{ i:-1, dir:1 }};
-// search text per row, read once: reading innerText inside the filter loop
-// forced a full page re-layout for every row (seconds per keystroke)
-const hayOf = new Map([...tbody.rows].map(r => [r,
-  (r.cells[1].textContent + ' ' + r.cells[2].textContent + ' '
-   + r.cells[3].textContent).toLowerCase()]));
-
-function renumber() {{
-  let n = 0;
-  [...tbody.rows].forEach(r => {{
-    if (r.style.display !== 'none') r.cells[0].textContent = ++n;
-  }});
-}}
-function updateCount() {{
-  // cells with funding in the currently selected week, among visible rows
-  const sel = ths.findIndex(h => h.classList.contains('sel'));
-  let n = 0;
-  if (sel >= 0) {{
-    [...tbody.rows].forEach(r => {{
-      if (r.style.display === 'none') return;
-      const c = r.cells[sel];
-      if (c && +c.dataset.v > 0) n++;
-    }});
-  }}
-  countEl.textContent = n.toLocaleString('en-US');
-}}
-function applyFilter() {{
-  // every checkbox is evaluated against the SELECTED (highlighted) week column
-  const v = q.value.toLowerCase();
-  const sel = ths.findIndex(h => h.classList.contains('sel'));
-  const anyPub = onlyLinked.checked || onlyRecent.checked;
-  [...tbody.rows].forEach(r => {{
-    const hay = hayOf.get(r);
-    const c = sel >= 0 ? r.cells[sel] : null;
-    const has = k => !!c && c.dataset[k] === '1';
-    const ok = hay.includes(v)
-      && (!only.checked || has('he'))
-      && (!onlyName.checked || has('hn'))
-      && (!onlyInst.checked || has('hi'))
-      // linked + recent combine as OR, so both boxes = linked count + recent count
-      && (!anyPub || (onlyLinked.checked && has('pl')) || (onlyRecent.checked && has('pr')));
-    r.style.display = ok ? '' : 'none';
-  }});
-  renumber();
-  updateCount();
-}}
-ths.forEach((th, i) => {{
-  if (i === 0) return; // the # column reflects position, it never sorts
-  th.addEventListener('click', () => {{
-    const num = th.dataset.t === 'num';
-    cur.dir = (cur.i === i) ? -cur.dir : (num ? -1 : 1);
-    cur.i = i;
-    ths.forEach(h => h.classList.remove('sorted', 'asc', 'desc'));
-    th.classList.add('sorted', cur.dir === 1 ? 'asc' : 'desc');
-    if (num && th.dataset.total !== undefined) {{
-      ths.forEach(h => h.classList.remove('sel'));
-      th.classList.add('sel');
-      document.getElementById('fig').textContent =
-        '$' + (+th.dataset.total).toLocaleString('en-US');
-      document.getElementById('cap').textContent = th.dataset.label;
-    }}
-    const rows = [...tbody.rows];
-    rows.sort((a, b) => {{
-      if (num) {{
-        return ((+a.cells[i].dataset.v || 0) - (+b.cells[i].dataset.v || 0)) * cur.dir;
-      }}
-      return a.cells[i].innerText.localeCompare(b.cells[i].innerText) * cur.dir;
-    }});
-    rows.forEach(r => tbody.appendChild(r));
-    renumber();
-    if (num) applyFilter(); else updateCount();
-  }});
-}});
-let qTimer;
-q.addEventListener('input', () => {{ clearTimeout(qTimer); qTimer = setTimeout(applyFilter, 150); }});
-only.addEventListener('change', applyFilter);
-onlyName.addEventListener('change', applyFilter);
-onlyInst.addEventListener('change', applyFilter);
-onlyLinked.addEventListener('change', applyFilter);
-onlyRecent.addEventListener('change', applyFilter);
-applyFilter();
-// phones: open with the highlighted (newest) week next to the pinned Institution column
-if (window.matchMedia('(max-width: 700px)').matches) {{
-  const sel = ths.find(h => h.classList.contains('sel'));
-  if (sel) document.querySelector('.wrap').scrollLeft +=
-    sel.getBoundingClientRect().left - ths[1].getBoundingClientRect().right;
-}}
+{LEDGER_JS}
 {POPUP_JS}
 </script>
 </body></html>"""
@@ -2078,6 +2470,11 @@ def selftest() -> int:
     assert last_completed_week(date(2026, 9, 20)) == (date(2026, 9, 13), date(2026, 9, 19))
     assert wlabel("2026-09-06") == "Sep 6 – Sep 12"
     assert wlabel("2026-09-27") == "Sep 27 – Oct 3"
+    assert wshort("2026-09-20") == "Sep 20–26" and wshort("2026-09-27") == "Sep 27–Oct 3"
+    span = recheck_weeks(date(2026, 11, 3))
+    assert len(span) == RECHECK_WEEKS == 8, "re-check covers 8 weeks"
+    assert span[-1] == (date(2026, 10, 25), date(2026, 10, 31)), "newest = last completed week"
+    assert span[0] == (date(2026, 9, 6), date(2026, 9, 12)), "oldest first, 7 weeks back"
 
     # automatic fresh start from old daily-format data
     save_json(DATA_FILE, {"dates": ["2026-09-16"], "rows": {
@@ -2194,7 +2591,11 @@ def selftest() -> int:
     assert 'id="onlyemail"' in page and 'data-he="1"' in page and 'data-he="0"' in page
     assert 'id="onlyname"' in page and 'id="onlyinst"' in page, "new checkboxes"
     assert 'id="onlylinked"' in page and 'id="onlyrecent"' in page, "publication checkboxes"
-    assert 'Total Count For Column = <b id="colcount">' in page, "column count"
+    assert 'id="weeksmenu"' in page and 'data-quick="last4"' in page, "weeks menu"
+    assert page.index('value="2026-09-13"') < page.index('value="2026-09-06"'), \
+        "weeks menu lists the newest week first"
+    assert 'id="filtermodal"' in page and 'id="hidezero"' in page, "filters popup"
+    assert 'id="cards"' in page and 'id="tablewrap"' in page, "card view + table view"
     assert ">Author Order<" in page and "Author Contribution" not in page, "renamed header"
     assert '<th data-t="text">Institution</th>' in page, "Institution column"
     assert "⇅" in page and "1C5" not in page, "popup arrows must be real glyphs"
@@ -2203,10 +2604,15 @@ def selftest() -> int:
              if re.match(r"^(table|th|td|tr)[\s,{:.\[]", ln.strip())]
     assert not leaks, f"unscoped table CSS would leak into the popup: {leaks}"
     js = page.split("<script>")[1]
-    assert "(onlyLinked.checked && has('pl')) || (onlyRecent.checked && has('pr'))" in js, \
+    assert "((f.linked && d.pl === '1') || (f.recent && d.pr === '1'))" in js, \
         "the two publication filters must combine as OR"
-    assert "ths.findIndex(h => h.classList.contains('sel'))" in js.split("function applyFilter")[1], \
-        "filters must be evaluated against the selected week column"
+    assert "f.email && d.he !== '1'" in js and "f.name && d.hn !== '1'" in js \
+        and "f.inst && d.hi !== '1'" in js, "email / name / institution filters"
+    assert "mode: 'last4'" in js and "hide: true" in js, \
+        "defaults: last 4 weeks, rows with no award hidden"
+    assert "localStorage" in js and "PAGE = 25" in js, "remembered choices, top 25 per week"
+    ledger_js = js.split("// ---- publication popup ----")[0]
+    assert "innerText" not in ledger_js, "row text must be read once (innerText per row froze the page)"
     assert "<tr data-he=" not in page and ' data-pl="' in page.split("<tbody>")[1] \
         and ' data-he="1"' in page, "flags must live on cells, not rows"
     demo = _cell_html([{"amount": 1, "label": "$1", "url": "u", "pi": "Amy New",
@@ -2228,26 +2634,36 @@ def selftest() -> int:
     assert _pmid_from_ids({"ids": {"pmid": "https://pubmed.ncbi.nlm.nih.gov/77"}}) == "77"
     assert ' data-pr="1"' in demo and ' data-pl="0"' in demo, "cell flags for a recent cell"
     assert 'data-hn="1"' in page and 'data-hi="1"' in page, "row flags"
-    assert "Institution: Brown University" in page, "institution line"
-    assert "onlyName.checked" in page and "onlyInst.checked" in page, "combined filter"
+    assert '<div class="pinst">Institution: Brown University</div>' in page, "institution line"
     assert '<div class="tot">= $5,100,000</div>' in page
     assert "PI Name: Jane Big" in page and 'href="mailto:jbig@brown.edu"' in page
     assert 'title="source: PubMed"' in page
     assert "PI Email: --" in page
     assert 'data-v="0">0<' in page
-    assert "renumber" in page and "r.cells[0].textContent" in page
+    assert "r.tr.cells[0].textContent = ++n" in js, "table rows renumber after sort/filter"
     assert 'data-total="5850000"' in page, \
         "week header must carry its own total (4.6M + 0.5M + 0.75M)"
     assert 'data-label="Sep 6 – Sep 12"' in page, "week header label missing"
     assert 'id="fig"' in page and 'id="cap"' in page, "summary ids missing"
-    assert page.count('class="num sel"') == 1, "exactly one week highlighted"
+    assert page.count('<th class="num" data-w="') == 2, "one header per week"
+    assert 'data-short="Sep 6–12"' in page, "short week label for phone tabs"
     assert "@media (max-width: 700px)" in page and "#t td.dept, #t td.funder { position:static; }" in page, \
         "phone layout must unpin Department and Funder"
-    assert "hayOf.get(r)" in js and "innerText + ' ' + r.cells[2]" not in js, \
-        "filter must use cached row text (innerText per row froze the page)"
 
     data, n3 = ingest([wk1[0]], "2026-09-13")
     assert n3 == 0 and data["dates"].count("2026-09-13") == 1, "rerun broke"
+
+    # re-check: an award NIH posts late lands in its own (older) week, once
+    late = make_award("NIH:444", "Tufts University", NO_DEPT_LABEL, 250_000,
+                      "https://reporter.nih.gov/project-details/444", "NIH (NIAID)",
+                      "Ada Lovelace")
+    data, n4 = ingest([wk1[0], late], "2026-09-06")
+    assert n4 == 1, "only the late award is new"
+    tufts = data["rows"]["tufts university||--||nih (niaid)"]["cells"]["2026-09-06"]
+    assert [e["amount"] for e in tufts] == [750_000, 250_000], "late award joins its own week"
+    assert data["dates"] == ["2026-09-06", "2026-09-13"], "no extra columns"
+    data, n5 = ingest([late], "2026-09-06")
+    assert n5 == 0, "re-checking the same week again adds nothing"
 
     print(f"SELFTEST PASSED  (artifacts in {tmp})")
     return 0
@@ -2280,11 +2696,17 @@ def main() -> int:
         write_site(data)
         return 0
 
-    start, end = last_completed_week(date.today())
-    log(f"target week: {start} .. {end} (awards by NIH award-notice date)")
-    awards = fetch_nih_week(start, end)
-    log(f"NIH RePORTER: {len(awards)} award(s) matched filters")
-    data, _ = ingest(awards, start.isoformat())
+    span = recheck_weeks(date.today())
+    log(f"checking the last {len(span)} weeks: {span[0][0]} .. {span[-1][1]} "
+        f"(awards by NIH award-notice date; ones already recorded are skipped)")
+    data, added = None, 0
+    for start, end in span:
+        awards = fetch_nih_week(start, end)
+        data, new = ingest(awards, start.isoformat())
+        added += new
+        log(f"  week of {start}: {len(awards)} award(s) matched filters, {new} new")
+        time.sleep(1)
+    log(f"NIH RePORTER: {added} new award(s) across {len(span)} weeks")
     data = sweep_pi_emails(data)
     if ENABLE_EMAIL_LOOKUP and not args.skip_pubs:
         data = sweep_publications(data)
