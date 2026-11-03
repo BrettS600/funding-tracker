@@ -1,0 +1,7 @@
+{
+  "about": "Rebuilt from this repo's commit history on 2026-11-03: the day each week was first checked, and the awards (RePORTER appl ids) that were added after that, by the day they were added. Read once by funding_tracker.py to fill in Added dates for awards recorded before those were kept.",
+  "week_first_checked": {"2026-09-06": "2026-09-16", "2026-09-13": "2026-09-21", "2026-09-20": "2026-09-28", "2026-09-27": "2026-10-05", "2026-10-04": "2026-10-12", "2026-10-11": "2026-10-19", "2026-10-18": "2026-10-26", "2026-10-25": "2026-11-02"},
+  "late": {
+    "2026-11-03": PLACEHOLDER
+  }
+}
