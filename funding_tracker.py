@@ -34,6 +34,8 @@ Outputs
   data/tracker_data.json   the ledger (source of truth, committed to repo)
   data/seen_awards.json    every award id ever emitted (dedup memory)
   data/pi_email_cache.json PI email lookup cache
+  data/nih_emails.csv      emails revealed on NIH's project pages (you add these;
+                           docs/nih-email-helper.user.js collects them in Chrome)
   docs/index.html          sortable/filterable page served by GitHub Pages
 
 Usage
@@ -1496,6 +1498,56 @@ def apply_added_history(data) -> None:
                     e["late"] = False
 
 
+def nih_emails_path() -> Path:
+    return DATA_DIR / "nih_emails.csv"
+
+
+def load_nih_emails() -> dict:
+    """{RePORTER appl id: email} from data/nih_emails.csv - the lines the email
+    helper copies (appl_id,email,pi,date). A header, blank lines and anything
+    that isn't an id plus a valid email are skipped; a later line for the same
+    project wins."""
+    import csv
+    path = nih_emails_path()
+    out = {}
+    if not path.exists():
+        return out
+    for rec in csv.reader(path.read_text(encoding="utf-8").splitlines()):
+        if len(rec) >= 2:
+            appl, email = rec[0].strip(), rec[1].strip()
+            if appl.isdigit() and EMAIL_RE.fullmatch(email):
+                out[appl] = email
+    return out
+
+
+def apply_nih_emails(data) -> int:
+    """Puts each NIH email on its award and on the same PI's other awards at
+    the same university (entry["nih_email"], used ahead of paper-found
+    emails). Recomputed on every render, so removing a line removes it.
+    Returns the number of awards with one."""
+    nih = load_nih_emails()
+    by_pi = {}
+    for row in data["rows"].values():
+        for entries in row["cells"].values():
+            for e in entries:
+                e.pop("nih_email", None)
+                email = nih.get(_appl_id(e))
+                if email:
+                    e["nih_email"] = email
+                    if e.get("pi"):
+                        by_pi[f"{e['pi']}|{row['university']}".lower()] = email
+    n = 0
+    for row in data["rows"].values():
+        for entries in row["cells"].values():
+            for e in entries:
+                if "nih_email" not in e and e.get("pi"):
+                    email = by_pi.get(f"{e['pi']}|{row['university']}".lower())
+                    if email:
+                        e["nih_email"] = email
+                n += "nih_email" in e
+    return n
+
+
 def ingest(awards, week_start_iso: str, today: date | None = None):
     today = today or date.today()
     data = load_json(DATA_FILE, {"dates": [], "rows": {}, "meta": {}})
@@ -1581,14 +1633,22 @@ def _cell_html(entries, institution="", pubs=None, linked=None):
         lines += f'<div class="tot">= {fmt_money(total)}</div>'
     top = max(entries, key=lambda e: e["amount"])
     pi_name = html_lib.escape(top.get("pi") or "--")
-    email = (top.get("pi_email") or "").strip()
+    nih_email = (top.get("nih_email") or "").strip()
+    email = nih_email or (top.get("pi_email") or "").strip()
     if email:
-        via = html_lib.escape(top.get("pi_email_via") or "")
-        t = f' title="source: {via}"' if via else ""
-        pi_mail = (f'<a href="mailto:{html_lib.escape(email, quote=True)}"{t}>'
-                   f"{html_lib.escape(email)}</a>")
+        tag = ('<span class="esrc nih" title="Revealed on NIH&rsquo;s project page (View Email)">NIH</span>'
+               if nih_email else
+               '<span class="esrc paper" title="Found in a published paper, not from NIH: it may '
+               'belong to someone with a similar name">from a paper</span>')
+        pi_mail = (f'<a href="mailto:{html_lib.escape(email, quote=True)}">'
+                   f"{html_lib.escape(email)}</a> {tag}")
     else:
         pi_mail = "--"
+    appl = _appl_id(top)
+    if appl and not nih_email:
+        # opens the PI's NIH page at the View Email button (the email helper presses it)
+        pi_mail += (f' <a class="nihlink" href="https://reporter.nih.gov/project-details/{appl}#details" '
+                    f'target="_blank" rel="noopener">View email on NIH</a>')
     inst = html_lib.escape(institution.strip() or "--")
     kind, slug, match = _pub_status(top, institution, pubs or {}, linked or {})
     if kind == "linked":
@@ -1607,7 +1667,7 @@ def _cell_html(entries, institution="", pubs=None, linked=None):
     lines += (f'<div class="pib"><div>PI Name: {pi_name}</div><div>PI Email: {pi_mail}</div>'
               f'<div class="pinst">Institution: {inst}</div><div>{pub_line}</div></div>')
     # per-cell flags: the checkboxes and the count apply to the selected week
-    flags = (f' data-he="{1 if email else 0}"'
+    flags = (f' data-he="{1 if email else 0}" data-nih="{1 if nih_email else 0}"'
              f' data-hn="{1 if (top.get("pi") or "").strip() else 0}"'
              f' data-hi="{1 if institution.strip() else 0}"'
              f' data-pl="{1 if kind == "linked" else 0}"'
@@ -1858,6 +1918,12 @@ a:hover { border-bottom-color:var(--grow); }
   padding-top:3px; font-weight:600; }
 .pib { margin-top:7px; font-size:12px; color:var(--mut); font-weight:400; line-height:1.5; }
 .pib a { color:var(--grow); border-bottom-color:#BFE0CC; }
+.esrc { display:inline-block; padding:0 5px; border-radius:4px; font-size:11px; line-height:17px;
+  font-weight:500; }
+.esrc.nih { background:var(--broth); color:#124D2B; }
+.esrc.paper { background:#F1F2F4; color:var(--mut); font-weight:400; }
+.pib a.nihlink { white-space:nowrap; font-weight:500; }
+.nihline { margin-top:4px; font-size:13px; color:var(--mut); }
 #t th { position:sticky; top:0; background:var(--bg); z-index:3; font-weight:500; }
 .thsub { font-size:11.5px; font-weight:400; color:var(--mut); }
 .thsub.done { color:var(--grow); }
@@ -1977,11 +2043,13 @@ LEDGER_JS = """
   const NLABEL = {};
   if (rf) [...rf.options].forEach(o => { if (o.value) NLABEL[o.value] = o.textContent; });
   const BOX = { email: $('onlyemail'), name: $('onlyname'), inst: $('onlyinst'),
-                linked: $('onlylinked'), recent: $('onlyrecent'), late: $('onlylate') };
+                linked: $('onlylinked'), recent: $('onlyrecent'), late: $('onlylate'),
+                nonih: $('onlynonih') };
   const PAGE = 25;                          // cards per week before "Show all"
   const KEY = 'funding-ledger-view-v1';     // choices remembered on this device
   const DEFAULTS = { mode: 'last4', weeks: [], from: '', to: '', hide: true, sort: 'amount',
-    f: { email: false, name: false, inst: false, linked: false, recent: false, late: false } };
+    f: { email: false, name: false, inst: false, linked: false, recent: false, late: false,
+         nonih: false } };
   let S = load();
   let expanded = {};
   let activeTab = null;
@@ -2017,7 +2085,7 @@ LEDGER_JS = """
     : NLABEL[S.from] + ' – ' + NLABEL[S.to];
   function anyCellFilter() {
     const f = S.f;
-    return f.email || f.name || f.inst || f.linked || f.recent;
+    return f.email || f.name || f.inst || f.linked || f.recent || f.nonih;
   }
   // the date range and "added late" pick out single awards inside a cell
   const awardFilterOn = () => S.mode === 'range' || S.f.late;
@@ -2027,6 +2095,7 @@ LEDGER_JS = """
     if (f.email && d.he !== '1') return false;
     if (f.name && d.hn !== '1') return false;
     if (f.inst && d.hi !== '1') return false;
+    if (f.nonih && d.nih === '1') return false;
     if ((f.linked || f.recent) && !((f.linked && d.pl === '1') || (f.recent && d.pr === '1'))) return false;
     return true;
   }
@@ -2194,7 +2263,7 @@ LEDGER_JS = """
 
   const NAMES = { email: 'Has a PI email', name: 'Has a PI name', inst: 'Has an institution',
                   linked: 'Publication linked to grant', recent: 'Publications in last 5 years',
-                  late: 'Only awards added late' };
+                  late: 'Only awards added late', nonih: 'No NIH email yet' };
   function renderControls(sel) {
     const labels = { latest: 'Latest week', last4: 'Last 4 weeks', all: 'All weeks' };
     $('weekslabel').textContent = S.mode === 'range' ? rangeText() : labels[S.mode]
@@ -2622,6 +2691,19 @@ def render_html(data, pubs=None, linked=None) -> str:
     else:
         late_html = ""
 
+    # NIH emails collected so far (data/nih_emails.csv), counted per PI
+    pis, pis_nih = set(), set()
+    for r in rows:
+        for v in r["cells"].values():
+            for e in v:
+                if e.get("pi"):
+                    k = f"{e['pi']}|{r['university']}".lower()
+                    pis.add(k)
+                    if e.get("nih_email"):
+                        pis_nih.add(k)
+    nih_html = (f'<div class="nihline">NIH emails collected for {len(pis_nih):,} of {len(pis):,} PIs '
+                f'&middot; <a href="nih-email-helper.user.js">Get the Chrome email helper</a></div>')
+
     body = []
     for i, r in enumerate(rows, start=1):
         cells = "".join(_cell_html(r["cells"].get(w, []), r.get("university", ""),
@@ -2657,6 +2739,7 @@ def render_html(data, pubs=None, linked=None) -> str:
       university departments &middot; updated {generated} &middot;
       {len(rows)} rows &middot; {n_awards} awards tracked</div>
     {late_html}
+    {nih_html}
   </div>
   <div class="todaybox">
     <div class="fig" id="fig">$0</div>
@@ -2718,8 +2801,14 @@ if anything turns up. Every award shows its <b>Award Notice Date</b>; awards tha
 after their week was first checked carry an amber <span class="late">Added: date</span>
 tag. Cards with several awards list each one and end with a ruled <b>= total</b>. &ldquo;No department listed&rdquo; (-- in the table) means
 NIH reported none for that keyword-matched award. PI lines show the contact PI of
-the largest award; emails come from the PI&rsquo;s own recent publications (PubMed
-and Europe PMC), and -- means none was found yet. Source: NIH RePORTER (refreshes
+the largest award. Emails tagged <span class="esrc nih">NIH</span> were revealed on
+NIH&rsquo;s own project page and saved in data/nih_emails.csv; emails tagged
+<span class="esrc paper">from a paper</span> were found in the PI&rsquo;s recent
+publications (PubMed and Europe PMC) and may belong to someone with a similar name.
+&ldquo;View email on NIH&rdquo; opens the PI&rsquo;s NIH page at its View Email button;
+the <a href="nih-email-helper.user.js">Chrome email helper</a> (needs the Tampermonkey
+extension) presses it once on the page you open and keeps a list to paste into
+data/nih_emails.csv. Source: NIH RePORTER (refreshes
 Sunday nights; this page updates every Monday morning).</div>
 
 <div id="filtermodal" hidden>
@@ -2741,6 +2830,11 @@ Sunday nights; this page updates every Monday morning).</div>
         <label class="fopt"><input type="checkbox" id="onlyemail">A PI email</label>
         <label class="fopt"><input type="checkbox" id="onlyname">A PI name</label>
         <label class="fopt"><input type="checkbox" id="onlyinst">An institution</label>
+      </div>
+      <div class="fgroup" role="group" aria-labelledby="fnih">
+        <h3 id="fnih">NIH email</h3>
+        <label class="fopt"><input type="checkbox" id="onlynonih">No NIH email yet</label>
+        <span class="fhint">The PIs still to collect with the email helper.</span>
       </div>
       <div class="fgroup" role="group" aria-labelledby="fpubs">
         <h3 id="fpubs">Publications</h3>
@@ -2774,6 +2868,8 @@ Sunday nights; this page updates every Monday morning).</div>
 
 def write_site(data) -> None:
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
+    n_nih = apply_nih_emails(data)
+    log(f"NIH emails (data/nih_emails.csv) on {n_nih} award(s)")
     pubs = load_json(pubs_cache_path(), {})
     linked = load_json(linked_cache_path(), {})
     n = write_pub_files(data, pubs, linked)
@@ -2972,6 +3068,13 @@ def selftest() -> int:
     assert hist_led["meta"]["weeks"]["2026-09-06"]["first_checked"] == "2026-09-16"
     history_path().unlink()
 
+    # emails revealed on NIH's pages (data/nih_emails.csv) win over paper-found ones;
+    # junk lines are ignored
+    nih_emails_path().write_text(
+        'appl_id,email,pi,date\n222,ada@tufts.edu,"LOVELACE, ADA",2026-11-04\n'
+        'not-an-id,x@y.edu\n111,not an email\n\n', encoding="utf-8")
+    assert load_nih_emails() == {"222": "ada@tufts.edu"}
+
     write_site(data)
     page = (DOCS_DIR / "index.html").read_text()
     main_head = page.split('<table id="t">')[1].split("</thead>")[0]
@@ -3039,7 +3142,19 @@ def selftest() -> int:
     assert '<div class="pinst">Institution: Brown University</div>' in page, "institution line"
     assert '<div class="tot">= $5,100,000</div>' in page
     assert "PI Name: Jane Big" in page and 'href="mailto:jbig@brown.edu"' in page
-    assert 'title="source: PubMed"' in page
+    assert 'href="mailto:jbig@brown.edu">jbig@brown.edu</a> <span class="esrc paper"' in page, \
+        "paper-found emails are labelled"
+    assert 'href="mailto:ada@tufts.edu">ada@tufts.edu</a> <span class="esrc nih"' in page, \
+        "an NIH email wins and is tagged NIH"
+    assert 'href="https://reporter.nih.gov/project-details/111#details"' in page, \
+        "PIs without an NIH email get the View email on NIH link"
+    assert "project-details/222#details" not in page, "no NIH link once the NIH email is in"
+    assert 'data-nih="1"' in page and 'data-nih="0"' in page and 'id="onlynonih"' in page
+    assert "NIH emails collected for 1 of 4 PIs" in page, "progress line"
+    assert all(e.get("nih_email") == "ada@tufts.edu"
+               for e in data["rows"]["tufts university||--||nih (niaid)"]["cells"]["2026-09-06"]), \
+        "the PI's other award at the same university gets the NIH email too"
+    assert "f.nonih && d.nih === '1'" in js, "No NIH email yet filter"
     assert "PI Email: --" in page
     assert 'data-v="0">0<' in page
     assert "r.tr.cells[0].textContent = ++n" in js, "table rows renumber after sort/filter"
