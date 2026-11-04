@@ -4,7 +4,7 @@ name: Weekly funding tracker
 
 on:
   schedule:
-    - cron: "17 13 * * 1"  # Mondays 13:17 UTC (~9:17 AM ET), after NIH's Sunday-night refresh
+    - cron: "16 13 * * 1"  # Mondays 13:16 UTC (~9:16 AM ET), after NIH's Sunday-night refresh
   workflow_dispatch: {}     # manual run button stays available
   push:                     # a code change rebuilds the page right away
     branches: [main]
@@ -12,6 +12,8 @@ on:
       - "funding_tracker.py"
       - "requirements.txt"
       - ".github/workflows/update.yml"
+      - "data/nih_emails.csv"   # emails you record update the site right away
+      - "data/nih_links.csv"
 
 permissions:
   contents: write
