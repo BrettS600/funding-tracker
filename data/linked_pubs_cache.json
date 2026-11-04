@@ -39,6 +39,10 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "C06OD042706": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "C06OD042707": {
   "checked": "2026-10-26",
   "pmid": null
@@ -338,6 +342,10 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "F30HL178163": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "F30HL178232": {
   "abs": true,
   "checked": "2026-11-03",
@@ -473,6 +481,10 @@
   "checked": "2026-11-03",
   "pmid": null
  },
+ "F31GM150235": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "F31HD121355": {
   "checked": "2026-11-03",
   "pmid": null
@@ -545,6 +557,10 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "F31NS139676": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "F31NS147423": {
   "checked": "2026-11-03",
   "pmid": null
@@ -556,6 +572,15 @@
  "F31NS151548": {
   "checked": "2026-11-03",
   "pmid": null
+ },
+ "F32AG085703": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "41270125",
+  "position": "middle",
+  "title": "The efficacy of longevity interventions in Caenorhabditis elegans is determined by the early life activity of RNA splicing factors",
+  "url": "https://doi.org/10.1371/journal.pbio.3003504",
+  "year": 2025
  },
  "F32AI186429": {
   "abs": true,
@@ -573,6 +598,15 @@
  "F32AR087217": {
   "checked": "2026-11-03",
   "pmid": null
+ },
+ "F32GM156085": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42367988",
+  "position": "first",
+  "title": "Wolbachia -induced cytoplasmic incompatibility produces heritable chromatin modifications that suppress position-effect variegation",
+  "url": "https://doi.org/10.64898/2026.06.12.731975",
+  "year": 2026
  },
  "F32GM157931": {
   "checked": "2026-11-03",
@@ -629,6 +663,10 @@
   "url": "https://doi.org/10.1021/jacs.6c00080",
   "year": 2026
  },
+ "K00CA294065": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "K00CA294168": {
   "abs": true,
   "checked": "2026-09-23",
@@ -677,6 +715,10 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "K01AG098112": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "K01AG103880": {
   "checked": "2026-11-03",
   "pmid": null
@@ -719,6 +761,10 @@
   "title": "Limitations in PPAR\u03b1-dependent mitochondrial programming restrain the differentiation of human stem cell-derived \u03b2 cells",
   "url": "https://doi.org/10.1038/s41467-025-66022-1",
   "year": 2025
+ },
+ "K01HD120749": {
+  "checked": "2026-11-04",
+  "pmid": null
  },
  "K01HD123165": {
   "checked": "2026-10-26",
@@ -764,6 +810,15 @@
   "url": "https://doi.org/10.1007/s11524-026-01132-9",
   "year": 2026
  },
+ "K01MH128117": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42602291",
+  "position": "middle",
+  "title": "Remote training of behavioral intervention facilitators: model development and lessons learned",
+  "url": "https://doi.org/10.3389/fdgth.2026.1768119",
+  "year": 2026
+ },
  "K01MH137518": {
   "abs": true,
   "checked": "2026-09-23",
@@ -795,6 +850,10 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "K08AG088493": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "K08AR088287": {
   "abs": true,
   "checked": "2026-10-26",
@@ -819,6 +878,10 @@
  },
  "K08DE036336": {
   "checked": "2026-11-03",
+  "pmid": null
+ },
+ "K08HD119291": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "K08HL177275": {
@@ -846,8 +909,20 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "K23AG093154": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "K23AG100993": {
   "checked": "2026-10-26",
+  "pmid": null
+ },
+ "K23AG103158": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
+ "K23AG103833": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "K23AI182453": {
@@ -885,6 +960,15 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "K23MH126078": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42418608",
+  "position": "last",
+  "title": "Predicting and Preventing Suicide at Entry to Mental Health Care: A Community-Engaged, Machine Learning Model Implementation",
+  "url": "https://doi.org/10.1056/cat.25.0298",
+  "year": 2026
+ },
  "K23MH138666": {
   "checked": "2026-10-26",
   "pmid": null
@@ -902,6 +986,15 @@
   "url": "https://doi.org/10.1093/ijpp/riag120",
   "year": 2026
  },
+ "K24HL166951": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42186266",
+  "position": "first",
+  "title": "Optimizing Diets for the Prevention of Cardiovascular Diseases and the Promotion of Cardiometabolic Health",
+  "url": "https://doi.org/10.1093/nutrit/nuag054",
+  "year": 2026
+ },
  "K25CA270079": {
   "abs": false,
   "checked": "2026-09-23",
@@ -910,6 +1003,10 @@
   "title": "Special Issue: 13th International Conference on Computational Advances in Bio and Medical Sciences",
   "url": "https://doi.org/10.1177/15578666261451662",
   "year": 2026
+ },
+ "K25DE035216": {
+  "checked": "2026-11-04",
+  "pmid": null
  },
  "K38HL181374": {
   "checked": "2026-10-26",
@@ -975,6 +1072,10 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "K99AI184679": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "K99AI202747": {
   "checked": "2026-11-03",
   "pmid": null
@@ -999,8 +1100,20 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "K99CA312828": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
+ "K99CA315571": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "K99CA315574": {
   "checked": "2026-11-03",
+  "pmid": null
+ },
+ "K99CA316633": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "K99DE034831": {
@@ -1074,6 +1187,10 @@
   "url": "https://doi.org/10.21203/rs.3.rs-9917568/v1",
   "year": 2026
  },
+ "P01AI199402": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "P01AI201081": {
   "checked": "2026-10-26",
   "pmid": null
@@ -1090,6 +1207,15 @@
   "title": "A Defined Human System That Supports Bidirectional Mismatch-Provoked Excision",
   "url": "https://doi.org/10.1016/j.molcel.2004.06.016",
   "year": 2004
+ },
+ "P01CA234228": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42644388",
+  "position": "last",
+  "title": "Genetic studies with a uracil DNA glycosylase biosensor support a role for mitochondrial UNG1 in nuclear uracil repair",
+  "url": "https://doi.org/10.1093/nar/gkag852",
+  "year": 2026
  },
  "P01CA275717": {
   "abs": true,
@@ -1125,6 +1251,15 @@
  "P01CA302582": {
   "checked": "2026-10-26",
   "pmid": null
+ },
+ "P20AI186093": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "40501929",
+  "position": "unknown",
+  "title": "WITHDRAWN: A Comprehensive Hybrid Capture Sequencing Platform for Tick-borne Disease Detection Reveals Zoonotic Emerging Pathogens in a Weather and Vector Transition Zone",
+  "url": "https://doi.org/10.1101/2025.06.08.658352",
+  "year": 2025
  },
  "P20GM103440": {
   "abs": true,
@@ -1205,6 +1340,24 @@
   "position": "unknown",
   "title": "Recurrent and De Novo Cirrhosis After Liver Transplantation",
   "url": "https://doi.org/10.1002/poh2.70068",
+  "year": 2026
+ },
+ "P20GM148324": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42326527",
+  "position": "last",
+  "title": "Cellular effects of outer membrane vesicles isolated from pks-positive strains of bacteria",
+  "url": "https://doi.org/10.21203/rs.3.rs-9818453/v1",
+  "year": 2026
+ },
+ "P30AI110527": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42893971",
+  "position": "unknown",
+  "title": "Changes in cardiometabolic biomarkers 1 year after direct acting antiviral therapy for hepatitis C virus co\u2010infection among people with HIV",
+  "url": "https://doi.org/10.1111/hiv.70325",
   "year": 2026
  },
  "P30AR079200": {
@@ -1322,6 +1475,15 @@
   "position": "unknown",
   "title": "The effects of adolescent social isolation and group housing on adolescent binge drinking in mice",
   "url": "https://doi.org/10.1371/journal.pone.0354475",
+  "year": 2026
+ },
+ "P50CA302482": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "41517891",
+  "position": "last",
+  "title": "Identification of CADM1 as an Immunotherapeutic Target and Evaluation of a Novel CADM1-Targeting Antibody\u2013Drug Conjugate in Preclinical Osteosarcoma Models",
+  "url": "https://doi.org/10.1158/1535-7163.mct-25-0450",
   "year": 2026
  },
  "P50HD105328": {
@@ -1467,6 +1629,10 @@
   "url": "https://doi.org/10.1117/1.jbo.30.s3.s34116",
   "year": 2025
  },
+ "R00DE032048": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R00DE033794": {
   "abs": true,
   "checked": "2026-09-23",
@@ -1483,6 +1649,15 @@
   "position": "middle",
   "title": "Revolutionizing vision using corneal 3D printing",
   "url": "https://doi.org/10.1016/j.tibtech.2026.01.019",
+  "year": 2026
+ },
+ "R00EY034928": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "41631753",
+  "position": "first",
+  "title": "Theophylline Inhibits Capillary Degeneration in Early Diabetic Retinopathy",
+  "url": "https://doi.org/10.1167/iovs.67.2.8",
   "year": 2026
  },
  "R00EY036122": {
@@ -1640,6 +1815,10 @@
   "title": "Exploring Youths\u2019 Offers to Use E-Cigarettes in Rural Hawai\u2018i: A Test Development and Validation Study",
   "url": "https://doi.org/10.3390/ijerph21111427",
   "year": 2024
+ },
+ "R01AA031231": {
+  "checked": "2026-11-04",
+  "pmid": null
  },
  "R01AA032539": {
   "checked": "2026-10-26",
@@ -1888,6 +2067,10 @@
   "checked": "2026-11-03",
   "pmid": null
  },
+ "R01AG100509": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R01AG101715": {
   "checked": "2026-11-03",
   "pmid": null
@@ -2065,6 +2248,15 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "R01AR053237": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42113468",
+  "position": "last",
+  "title": "Different Lrp5-HBM mutations induce magnitude- and surface-selective effects that are not explained by receptor trafficking",
+  "url": "https://doi.org/10.1093/jbmr/zjag027",
+  "year": 2026
+ },
  "R01AR069503": {
   "abs": true,
   "checked": "2026-09-23",
@@ -2147,6 +2339,10 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "R01AR086597": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R01AR087365": {
   "checked": "2026-11-03",
   "pmid": null
@@ -2202,6 +2398,15 @@
   "url": "https://doi.org/10.1002/adma.202505445",
   "year": 2025
  },
+ "R01CA202981": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42218145",
+  "position": "last",
+  "title": "Multi-ancestry transcriptome-wide association studies uncover insights into breast cancer genetics and biology",
+  "url": "https://doi.org/10.1038/s41467-026-73801-x",
+  "year": 2026
+ },
  "R01CA217251": {
   "abs": true,
   "checked": "2026-09-23",
@@ -2256,6 +2461,19 @@
   "url": "https://doi.org/10.1002/smll.74920",
   "year": 2026
  },
+ "R01CA260281": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42400907",
+  "position": "last",
+  "title": "RelB drives integrin-mediated stress tolerance and relapse in high-grade serous ovarian cancer",
+  "url": "https://doi.org/10.1016/j.celrep.2026.117650",
+  "year": 2026
+ },
+ "R01CA266611": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R01CA269568": {
   "abs": true,
   "checked": "2026-09-23",
@@ -2292,6 +2510,15 @@
   "url": "https://doi.org/10.1016/j.omton.2025.201066",
   "year": 2025
  },
+ "R01CA276279": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "39312740",
+  "position": "last",
+  "title": "Egfl6 promotes ovarian cancer progression by enhancing the immunosuppressive functions of tumor-associated myeloid cells",
+  "url": "https://doi.org/10.1172/jci175147",
+  "year": 2024
+ },
  "R01CA276392": {
   "abs": true,
   "checked": "2026-09-23",
@@ -2313,6 +2540,15 @@
  "R01CA281862": {
   "checked": "2026-10-26",
   "pmid": null
+ },
+ "R01CA283839": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42772761",
+  "position": "first",
+  "title": "Lifestyle and chemotherapy shape functional aging trajectories in older breast cancer survivors and matched comparators",
+  "url": "https://doi.org/10.1093/jnci/djag292",
+  "year": 2026
  },
  "R01CA284268": {
   "abs": true,
@@ -2372,6 +2608,19 @@
   "url": "https://doi.org/10.1016/j.ijpharm.2025.126251",
   "year": 2025
  },
+ "R01CA293996": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42097137",
+  "position": "middle",
+  "title": "Multi-cohort proteogenomic analyses reveal genetic effects across the proteome and diseasome",
+  "url": "https://doi.org/10.1016/j.cell.2026.03.049",
+  "year": 2026
+ },
+ "R01CA295896": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R01CA297855": {
   "abs": true,
   "checked": "2026-09-23",
@@ -2380,6 +2629,18 @@
   "title": "A fused attention-based hybrid model for semi-supervised medical image segmentation",
   "url": "https://doi.org/10.1016/j.bea.2025.100203",
   "year": 2025
+ },
+ "R01CA298785": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
+ "R01CA299014": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
+ "R01CA299072": {
+  "checked": "2026-11-04",
+  "pmid": null
  },
  "R01CA299430": {
   "checked": "2026-10-26",
@@ -2402,6 +2663,14 @@
   "title": "Promoter strength and position govern promoter competition through transcript-dependent insulation",
   "url": "https://doi.org/10.1038/s41588-026-02691-y",
   "year": 2026
+ },
+ "R01CA303874": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
+ "R01CA304003": {
+  "checked": "2026-11-04",
+  "pmid": null
  },
  "R01CA304170": {
   "checked": "2026-11-03",
@@ -2443,8 +2712,24 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "R01CA311452": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R01CA315247": {
   "checked": "2026-10-26",
+  "pmid": null
+ },
+ "R01CA315493": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
+ "R01CA315614": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
+ "R01CA315840": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "R01CA315906": {
@@ -2457,6 +2742,10 @@
  },
  "R01CA316439": {
   "checked": "2026-11-02",
+  "pmid": null
+ },
+ "R01CA317755": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "R01CA325384": {
@@ -2584,6 +2873,10 @@
   "title": "Toward life with a 19\u2013amino acid alphabet through generative artificial intelligence design",
   "url": "https://doi.org/10.1126/science.aeb5171",
   "year": 2026
+ },
+ "R01EB037445": {
+  "checked": "2026-11-04",
+  "pmid": null
  },
  "R01EB039082": {
   "checked": "2026-10-26",
@@ -2743,6 +3036,15 @@
   "url": "https://doi.org/10.1016/j.jtos.2025.03.007",
   "year": 2025
  },
+ "R01EY035312": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42656493",
+  "position": "last",
+  "title": "Assessing microglial phagocytosis of apoptotic neurons in vitro: a multimodal approach",
+  "url": "https://doi.org/10.3389/fnins.2026.1813556",
+  "year": 2026
+ },
  "R01EY037277": {
   "checked": "2026-10-26",
   "pmid": null
@@ -2757,6 +3059,14 @@
  },
  "R01EY038193": {
   "checked": "2026-10-26",
+  "pmid": null
+ },
+ "R01EY039316": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
+ "R01EY039432": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "R01EY040101": {
@@ -2913,6 +3223,10 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "R01HD115093": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R01HD117164": {
   "abs": true,
   "checked": "2026-09-23",
@@ -3061,6 +3375,15 @@
   "position": "middle",
   "title": "Immune-microbiome coordination defines interferon setpoints in healthy humans",
   "url": "https://doi.org/10.1016/j.cell.2026.02.003",
+  "year": 2026
+ },
+ "R01HL136737": {
+  "abs": false,
+  "checked": "2026-11-04",
+  "pmid": "42848862",
+  "position": "last",
+  "title": "Big Job for the Small Titin: Don\u2019t Underestimate the \u201cLittle\u201d Guy",
+  "url": "https://doi.org/10.1161/circresaha.126.329603",
   "year": 2026
  },
  "R01HL145590": {
@@ -3233,9 +3556,27 @@
   "url": "https://doi.org/10.1016/j.chpulm.2025.100171",
   "year": 2025
  },
+ "R01HL173523": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "41802173",
+  "position": "unknown",
+  "title": "A Framework to Decipher and Report Implementation Strategies and Pragmatic Attributes of Trial Design Domains From Pre\u2010Implementation Studies Identified From a Systematic Review: A Methodological Study",
+  "url": "https://doi.org/10.1111/jep.70403",
+  "year": 2026
+ },
  "R01HL173601": {
   "checked": "2026-10-26",
   "pmid": null
+ },
+ "R01HL174510": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42581147",
+  "position": "last",
+  "title": "Molecular mechanisms, therapeutic strategies, and inter-organ fibrosis crosstalk of Gla proteins in cardiovascular disease",
+  "url": "https://doi.org/10.1038/s42003-026-10740-9",
+  "year": 2026
  },
  "R01HL175373": {
   "abs": true,
@@ -3457,6 +3798,15 @@
   "url": "https://doi.org/10.1016/j.yfrne.2026.101272",
   "year": 2026
  },
+ "R01MH113486": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "41822870",
+  "position": "last",
+  "title": "Adapting a U.S.-based micro-savings program for Uganda: implementation process and lessons learned",
+  "url": "https://doi.org/10.1016/j.childyouth.2026.108792",
+  "year": 2026
+ },
  "R01MH123724": {
   "abs": true,
   "checked": "2026-09-23",
@@ -3515,6 +3865,10 @@
   "url": "https://doi.org/10.1186/s12889-023-15564-4",
   "year": 2023
  },
+ "R01MH133124": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R01MH133566": {
   "checked": "2026-10-26",
   "pmid": null
@@ -3535,6 +3889,15 @@
   "position": "middle",
   "title": "Simultaneous brain-wide single-cell recording resolves spatiotemporal memory architecture",
   "url": "https://doi.org/10.64898/2026.05.21.726120",
+  "year": 2026
+ },
+ "R01MH137804": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42545658",
+  "position": "last",
+  "title": "A Systematic Review of Barriers and Facilitators to the Uptake and Adherence of Injectable PrEP Among Adolescent Girls and Young Women in Sub-Saharan Africa",
+  "url": "https://doi.org/10.1007/s10461-026-05201-7",
   "year": 2026
  },
  "R01MH137873": {
@@ -3844,6 +4207,19 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "R01NS145242": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
+ "R01NS146039": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42777704",
+  "position": "last",
+  "title": "CaMKII monomers are sufficient for GluN2B binding, co-condensation, and synaptic potentiation",
+  "url": "https://doi.org/10.1016/j.molcel.2026.08.029",
+  "year": 2026
+ },
  "R01NS146435": {
   "abs": true,
   "checked": "2026-11-03",
@@ -3893,8 +4269,16 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "R01NS151308": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R01NS153564": {
   "checked": "2026-11-03",
+  "pmid": null
+ },
+ "R01NS153770": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "R01NS154768": {
@@ -3944,6 +4328,10 @@
  },
  "R03CA308458": {
   "checked": "2026-10-26",
+  "pmid": null
+ },
+ "R03CA308479": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "R03CA317617": {
@@ -4207,6 +4595,10 @@
   "checked": "2026-11-03",
   "pmid": null
  },
+ "R21AG100982": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R21AG101060": {
   "checked": "2026-11-03",
   "pmid": null
@@ -4225,6 +4617,10 @@
  },
  "R21AG104259": {
   "checked": "2026-11-03",
+  "pmid": null
+ },
+ "R21AG104537": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "R21AG104819": {
@@ -4359,6 +4755,10 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "R21ES039003": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R21EY036651": {
   "abs": true,
   "checked": "2026-09-23",
@@ -4416,12 +4816,24 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "R21HD122186": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R21HD122301": {
   "checked": "2026-10-26",
   "pmid": null
  },
  "R21HD122393": {
   "checked": "2026-10-26",
+  "pmid": null
+ },
+ "R21HD122977": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
+ "R21HD123018": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "R21HD123069": {
@@ -4502,6 +4914,10 @@
  },
  "R21NS151737": {
   "checked": "2026-10-26",
+  "pmid": null
+ },
+ "R21NS152136": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "R21NS153379": {
@@ -4661,6 +5077,10 @@
   "title": "Combining time domain modulation optofluidics and high dynamic range imaging for multiplexed, high throughput digital droplet assays",
   "url": "https://doi.org/10.1038/s41378-025-00918-2",
   "year": 2025
+ },
+ "R33CA291185": {
+  "checked": "2026-11-04",
+  "pmid": null
  },
  "R33CA297902": {
   "abs": true,
@@ -4829,6 +5249,15 @@
   "position": "last",
   "title": "The atypical E3 ligase HOIL-1 safeguards the ribosome during cellular stress",
   "url": "https://doi.org/10.1038/s41556-026-01936-6",
+  "year": 2026
+ },
+ "R35CA197616": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42922719",
+  "position": "last",
+  "title": "Rewiring of Integrin Signaling and Cell-cycle Deregulation Drive SMARCB1-Deficient Epithelioid Sarcoma",
+  "url": "https://doi.org/10.64898/2026.09.01.748640",
   "year": 2026
  },
  "R35CA220430": {
@@ -5038,6 +5467,24 @@
   "url": "https://doi.org/10.1002/advs.77665",
   "year": 2026
  },
+ "R35GM150894": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "38780069",
+  "position": "middle",
+  "title": "Trimethylsilyldiazomethane Disassembly at a Three-Fold Symmetric Iron Site",
+  "url": "https://doi.org/10.1021/acs.inorgchem.4c00604",
+  "year": 2024
+ },
+ "R35GM150982": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "41959328",
+  "position": "middle",
+  "title": "Experimental Data Driven AI Framework for Flexible Protein Conformational Reconstruction",
+  "url": "https://doi.org/10.64898/2026.03.12.708611",
+  "year": 2026
+ },
  "R35GM151115": {
   "abs": true,
   "checked": "2026-09-23",
@@ -5095,6 +5542,15 @@
  "R35GM158223": {
   "checked": "2026-10-26",
   "pmid": null
+ },
+ "R35GM158423": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42808065",
+  "position": "middle",
+  "title": "Matrix-assisted laser desorption/ionization imaging mass spectrometry",
+  "url": "https://doi.org/10.1038/s43586-026-00492-5",
+  "year": 2026
  },
  "R35GM159828": {
   "checked": "2026-10-26",
@@ -5187,6 +5643,10 @@
   "checked": "2026-11-03",
   "pmid": null
  },
+ "R35GM163698": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R35GM163773": {
   "checked": "2026-10-26",
   "pmid": null
@@ -5264,6 +5724,15 @@
   "url": "https://doi.org/10.1016/j.gene.2026.150293",
   "year": 2026
  },
+ "R37CA262299": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42233960",
+  "position": "middle",
+  "title": "Helicobacter pylori Infection and Metabolic Dysfunction\u2013Associated Steatotic Liver Disease: A Prospective Study and Meta-Analysis",
+  "url": "https://doi.org/10.1158/1055-9965.epi-26-0038",
+  "year": 2026
+ },
  "R37CA263592": {
   "abs": true,
   "checked": "2026-09-23",
@@ -5299,6 +5768,10 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "R37CA306888": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R37CA311186": {
   "checked": "2026-11-02",
   "pmid": null
@@ -5319,6 +5792,15 @@
   "position": "first",
   "title": "A neural language for the cerebellum: control of behavior via competing populations of Purkinje cells",
   "url": "https://doi.org/10.1152/jn.00253.2025",
+  "year": 2026
+ },
+ "R38HL167237": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42874760",
+  "position": "unknown",
+  "title": "Non-invasive Left Ventricular End Diastolic Wall Stress and the Risk of Incident Heart Failure in a Clinical Population",
+  "url": "https://doi.org/10.1016/j.amjcard.2026.10.014",
   "year": 2026
  },
  "R43DK148203": {
@@ -5343,6 +5825,15 @@
   "url": "https://doi.org/10.1021/jasms.6c00012",
   "year": 2026
  },
+ "R50CA243878": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "41742418",
+  "position": "middle",
+  "title": "Nucleosome spacing regulates linker methylation by DNMT3A2/3B3",
+  "url": "https://doi.org/10.1016/j.molcel.2026.01.030",
+  "year": 2026
+ },
  "R50CA265359": {
   "abs": true,
   "checked": "2026-09-23",
@@ -5361,6 +5852,24 @@
   "url": "https://doi.org/10.1002/1545-5017.70515",
   "year": 2026
  },
+ "R50CA283805": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42048614",
+  "position": "middle",
+  "title": "Tumor-Derived Complement C3 Overexpression in STK11 -Mutant Lung Adenocarcinoma Drives Tumor Growth and Immune Checkpoint Inhibitor Resistance",
+  "url": "https://doi.org/10.1158/2326-6066.cir-25-0534",
+  "year": 2026
+ },
+ "R50CA285499": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "41499716",
+  "position": "last",
+  "title": "NCI9673 (Part B): ETCTN Randomized Phase II Study of Nivolumab With or Without Ipilimumab in Refractory, Metastatic Squamous Cell Carcinoma of the Anal Canal",
+  "url": "https://doi.org/10.1200/jco-25-00929",
+  "year": 2026
+ },
  "R50CA293837": {
   "abs": true,
   "checked": "2026-09-23",
@@ -5372,6 +5881,10 @@
  },
  "R50CA305011": {
   "checked": "2026-10-26",
+  "pmid": null
+ },
+ "R50CA318466": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "R50NS148159": {
@@ -5422,6 +5935,15 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "R56AR070231": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "29166613",
+  "position": "last",
+  "title": "Niche Cadherins Control the Quiescence-to-Activation Transition in Muscle Stem Cells",
+  "url": "https://doi.org/10.1016/j.celrep.2017.10.102",
+  "year": 2017
+ },
  "R56AR077690": {
   "checked": "2026-11-03",
   "pmid": null
@@ -5442,8 +5964,16 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "R56CA303265": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "R56CA304245": {
   "checked": "2026-10-26",
+  "pmid": null
+ },
+ "R56CA307233": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "R56CA308159": {
@@ -5795,6 +6325,15 @@
   "url": "https://doi.org/10.1073/pnas.2607264123",
   "year": 2026
  },
+ "T32HG000035": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42922581",
+  "position": "unknown",
+  "title": "Integrated map of somatic mosaicism across human tissues in 25 individuals",
+  "url": "https://doi.org/10.64898/2026.09.01.748636",
+  "year": 2026
+ },
  "T32HG000047": {
   "abs": true,
   "checked": "2026-09-23",
@@ -5889,6 +6428,15 @@
   "url": "https://doi.org/10.1128/spectrum.03392-25",
   "year": 2026
  },
+ "U01AI151810": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42210369",
+  "position": "unknown",
+  "title": "Molecular prevalence, genomic characterization, and zoonotic potential of novel paramyxovirus and hepacivirus in Alexandromys fortis, Republic of Korea",
+  "url": "https://doi.org/10.1186/s13567-026-01777-z",
+  "year": 2026
+ },
  "U01AI190384": {
   "checked": "2026-10-26",
   "pmid": null
@@ -5937,6 +6485,15 @@
   "url": "https://doi.org/10.1200/go-25-00236",
   "year": 2026
  },
+ "U01CA286808": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "41746285",
+  "position": "middle",
+  "title": "Leveraging the National Cancer Institute\u2019s collaborative efforts to understand the benefits and harms of cannabis use among individuals with cancer",
+  "url": "https://doi.org/10.1093/jnci/djag057",
+  "year": 2026
+ },
  "U01CA288325": {
   "abs": true,
   "checked": "2026-09-23",
@@ -5955,8 +6512,39 @@
   "url": "https://doi.org/10.64898/2026.07.15.738670",
   "year": 2026
  },
+ "U01CA292550": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "40409882",
+  "position": "middle",
+  "title": "ACR Appropriateness Criteria\u00ae Imaging of Ductal Carcinoma in Situ (DCIS)",
+  "url": "https://doi.org/10.1016/j.jacr.2025.02.027",
+  "year": 2025
+ },
+ "U01CA292741": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42337609",
+  "position": "last",
+  "title": "Point-of-care hrHPV mRNA detection with reverse transcription recombinase polymerase amplification on a portable fluorimeter from provider-collected cervical samples in Maputo, Mozambique",
+  "url": "https://doi.org/10.1186/s13027-026-00772-5",
+  "year": 2026
+ },
+ "U01CA293853": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42328854",
+  "position": "unknown",
+  "title": "(untitled)",
+  "url": "",
+  "year": 0
+ },
  "U01CA307238": {
   "checked": "2026-10-26",
+  "pmid": null
+ },
+ "U01CA312693": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "U01CA319117": {
@@ -6040,6 +6628,15 @@
   "url": "https://doi.org/10.1016/j.chroma.2025.466600",
   "year": 2025
  },
+ "U01FD008421": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42741775",
+  "position": "unknown",
+  "title": "Agentic Superoptimization of Bioimaging Analysis Workflows.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/42741775",
+  "year": 2025
+ },
  "U01FD008646": {
   "checked": "2026-11-02",
   "pmid": null
@@ -6095,6 +6692,15 @@
   "url": "https://doi.org/10.21203/rs.3.rs-10425123/v1",
   "year": 2026
  },
+ "U01NS134349": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42388886",
+  "position": "unknown",
+  "title": "A class of deep intronic IGHMBP2 variants activate a shared cryptic splice donor, enabling correction of select variants with a single antisense oligonucleotide",
+  "url": "https://doi.org/10.64898/2026.04.20.26351111",
+  "year": 2026
+ },
  "U01NS137250": {
   "abs": true,
   "checked": "2026-09-23",
@@ -6117,12 +6723,28 @@
   "checked": "2026-11-02",
   "pmid": null
  },
+ "U18FD008567": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
+ "U18FD008899": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "U18FD008900": {
   "checked": "2026-11-02",
   "pmid": null
  },
  "U18FD008901": {
   "checked": "2026-11-02",
+  "pmid": null
+ },
+ "U18FD008902": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
+ "U18FD008903": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "U18FD008909": {
@@ -6145,8 +6767,24 @@
   "checked": "2026-11-02",
   "pmid": null
  },
+ "U18FD008923": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
+ "U18FD008929": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "U18FD008931": {
   "checked": "2026-11-02",
+  "pmid": null
+ },
+ "U18FD008932": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
+ "U18FD008933": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "U18FD008935": {
@@ -6175,6 +6813,10 @@
  },
  "U18FD008946": {
   "checked": "2026-11-02",
+  "pmid": null
+ },
+ "U18FD008947": {
+  "checked": "2026-11-04",
   "pmid": null
  },
  "U18FD008953": {
@@ -6304,6 +6946,15 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "U24CA305623": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42620145",
+  "position": "first",
+  "title": "A Permutation Test for a Modified Spearman\u2019s Rank Correlation Using Martingale-Residual Ranks Under Right Censoring",
+  "url": "https://doi.org/10.21203/rs.3.rs-10168027/v1",
+  "year": 2026
+ },
  "U24DA057611": {
   "abs": true,
   "checked": "2026-09-23",
@@ -6393,6 +7044,15 @@
   "url": "https://doi.org/10.1038/s41467-026-69057-0",
   "year": 2026
  },
+ "U24NS133077": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42931253",
+  "position": "unknown",
+  "title": "Early Time-Restricted Eating, Circadian Alignment, and Cognitive Preservation in Older Adults: A Neurobiological Hypothesis",
+  "url": "https://doi.org/10.3390/neurosci7050106",
+  "year": 2026
+ },
  "U54AG089334": {
   "abs": true,
   "checked": "2026-09-23",
@@ -6478,6 +7138,15 @@
   "url": "https://doi.org/10.1016/j.bbih.2026.101322",
   "year": 2026
  },
+ "U54CA163072": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42588097",
+  "position": "unknown",
+  "title": "Nutritional Epigenetics of Vitamin Intake (A, B1, B2, B3, B6, B12, and E): Associations with Genome-Wide DNA Methylation",
+  "url": "https://doi.org/10.3390/nu18152474",
+  "year": 2026
+ },
  "U54CA221704": {
   "abs": true,
   "checked": "2026-09-23",
@@ -6503,6 +7172,15 @@
   "position": "middle",
   "title": "Deciphering the Multiscale Morphology of Somatic Oncogenic Alterations in Hepatocellular Carcinoma",
   "url": "https://doi.org/10.64898/2026.07.15.738764",
+  "year": 2026
+ },
+ "U54CA274367": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42673563",
+  "position": "unknown",
+  "title": "Supermeres Containing the Discoidin Domain Receptor 1 Extracellular Domain Promote Collagen Alignment and Immune Exclusion in Microsatellite-Stable Colorectal Cancer",
+  "url": "https://doi.org/10.1158/2767-9764.crc-26-0105",
   "year": 2026
  },
  "U54CA274375": {
@@ -6603,6 +7281,15 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "UC2AR082200": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42124858",
+  "position": "unknown",
+  "title": "Opportunities for deep learning techniques to advance the histological analysis of preclinical models of osteoarthritis beyond ordinal rank systems",
+  "url": "https://doi.org/10.1093/jbmrpl/ziag039",
+  "year": 2026
+ },
  "UG1CA189809": {
   "abs": true,
   "checked": "2026-09-23",
@@ -6668,6 +7355,10 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "UH2CA304460": {
+  "checked": "2026-11-04",
+  "pmid": null
+ },
  "UH3AT012547": {
   "abs": true,
   "checked": "2026-09-23",
@@ -6676,6 +7367,15 @@
   "title": "A commercial tobacco and alcohol use intervention for urban Native American youth",
   "url": "https://doi.org/10.1016/j.apnu.2024.06.014",
   "year": 2024
+ },
+ "UH3CA260318": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42816776",
+  "position": "middle",
+  "title": "Prevalence and Risk Factors for Financial Toxicity Among Sarcoma Patients During and Following Treatment Across the Lifespan",
+  "url": "https://doi.org/10.1002/cnr2.70686",
+  "year": 2026
  },
  "UH3CA265846": {
   "abs": true,
@@ -6730,6 +7430,15 @@
   "checked": "2026-10-26",
   "pmid": null
  },
+ "UM1AI179699": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42535936",
+  "position": "unknown",
+  "title": "Adaptive immunity shapes baseline physiology of M. tuberculosis in high-dose versus low-dose infection BALB/c mouse drug treatment models",
+  "url": "https://doi.org/10.1128/aac.00421-26",
+  "year": 2026
+ },
  "UM1HG010971": {
   "abs": true,
   "checked": "2026-09-23",
@@ -6746,6 +7455,15 @@
   "position": "middle",
   "title": "\u2018Truthsets\u2019 for clinical validation of large-scale functional assays: Practice recommendations from Cancer Variant Interpretation Group UK (CanVIG-UK)",
   "url": "https://doi.org/10.64898/2026.07.10.26357770",
+  "year": 2026
+ },
+ "UM1HG011986": {
+  "abs": true,
+  "checked": "2026-11-04",
+  "pmid": "42818030",
+  "position": "middle",
+  "title": "Single-Nucleus Multi-Omic Atlas Maps Regulatory Architecture and Non-Coding Variant Effects across Adult Human Tissues",
+  "url": "https://doi.org/10.64898/2026.09.25.754561",
   "year": 2026
  },
  "UM1NS132253": {
