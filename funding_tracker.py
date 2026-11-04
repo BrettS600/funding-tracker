@@ -288,7 +288,8 @@ def update_week_status(data, week_iso: str, new: int, pending: int, today: date)
     """Record one check of a week. A check is quiet when it found nothing new
     and no matching award waiting for a dollar amount (after PENDING_GRACE_DAYS
     a listing that never got an amount stops counting). Quiet checks count at
-    most once per 6 days, so extra runs in the same week don't speed things up."""
+    most once per NIH weekly refresh (Sunday night), so extra runs in the same
+    week don't speed things up."""
     weeks = data.setdefault("meta", {}).setdefault("weeks", {})
     st = weeks.setdefault(week_iso, {"first_checked": today.isoformat(), "quiet": 0})
     st["last_checked"] = today.isoformat()
@@ -303,7 +304,8 @@ def update_week_status(data, week_iso: str, new: int, pending: int, today: date)
             st["reopened"] = today.isoformat()
         return st
     counted = st.get("quiet_counted")
-    if not counted or (today - date.fromisoformat(counted)).days >= 6:
+    if not counted or (last_completed_week(date.fromisoformat(counted))[0]
+                       != last_completed_week(today)[0]):
         st["quiet"] = st.get("quiet", 0) + 1
         st["quiet_counted"] = today.isoformat()
     if st["quiet"] >= QUIET_CHECKS_TO_COMPLETE and not st.get("complete"):
@@ -2814,6 +2816,10 @@ def selftest() -> int:
     assert st["quiet"] == 7, "a second run in the same week must not count twice"
     st = update_week_status(led, "2026-09-06", 0, 0, day + timedelta(days=49))
     assert st["quiet"] == 8 and st["complete"], "8th quiet week completes it"
+    mid = {"dates": [], "rows": {}, "meta": {}}
+    update_week_status(mid, "2026-09-06", 0, 0, date(2026, 11, 4))   # a Wednesday run
+    st = update_week_status(mid, "2026-09-06", 0, 0, date(2026, 11, 9))
+    assert st["quiet"] == 2, "a mid-week run and the next Monday each see a new NIH refresh"
     later = day + timedelta(days=49 + 7)
     assert date(2026, 9, 6) not in [s0 for s0, _ in weeks_to_check(led, later)], \
         "complete weeks skip the weekly check"
