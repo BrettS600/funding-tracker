@@ -346,10 +346,10 @@ a:hover { border-bottom-color:var(--grow); }
   <div>
     <h1>Biotech department funding ledger</h1>
     <div class="sub">NIH awards granted each week to biotech-adjacent
-      university departments &middot; updated 2026-11-04 18:38 UTC &middot;
+      university departments &middot; updated 2026-11-04 19:04 UTC &middot;
       1026 rows &middot; 1306 awards tracked</div>
     <div class="lateline" id="lateline"><span>254 awards were added late, after their week was first checked (most recent: Nov 3).</span><button type="button" class="linkbtn" id="showlate">Show them</button></div>
-    <div class="nihline">NIH emails collected for 0 of 1,208 PIs &middot; <a href="nih-email-helper.user.js">Get the Chrome email helper</a></div>
+    <div class="nihline">NIH emails collected for 0 of 1,208 PIs &middot; <a href="https://github.com/BrettS600/funding-tracker/blob/main/data/nih_links.md" target="_blank" rel="noopener">List of every PI&rsquo;s NIH link</a> &middot; <a href="nih-email-helper.user.js">Get the Chrome email helper</a></div>
   </div>
   <div class="todaybox">
     <div class="fig" id="fig">$0</div>
@@ -1448,7 +1448,10 @@ publications (PubMed and Europe PMC) and may belong to someone with a similar na
 &ldquo;View email on NIH&rdquo; opens the PI&rsquo;s NIH page at its View Email button;
 the <a href="nih-email-helper.user.js">Chrome email helper</a> (needs the Tampermonkey
 extension) presses it once on the page you open and keeps a list to paste into
-data/nih_emails.csv. Source: NIH RePORTER (refreshes
+data/nih_emails.csv. The same links, one per PI, are listed in
+<a href="https://github.com/BrettS600/funding-tracker/blob/main/data/nih_links.md" target="_blank" rel="noopener">data/nih_links.md</a>
+(rebuilt every run); an email typed into the nih_email column of data/nih_links.csv
+is kept and shown here with the NIH tag. Source: NIH RePORTER (refreshes
 Sunday nights; this page updates every Monday morning).</div>
 
 <div id="filtermodal" hidden>
