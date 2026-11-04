@@ -1080,12 +1080,13 @@ def _linked_pub_details(pmid: str, pi: str):
                 "url": "", "position": "unknown"}
 
 
-def _top_entries(data):
-    """(entry, university) for the largest award in every non-empty cell."""
+def _award_entries(data):
+    """(entry, university) for every award: each one shows its own contact PI,
+    email and publications line, so each needs its publication lookup."""
     for row in data["rows"].values():
         for entries in row["cells"].values():
-            if entries:
-                yield max(entries, key=lambda e: e["amount"]), row["university"]
+            for e in entries:
+                yield e, row["university"]
 
 
 def _stale(entry: dict, days: int) -> bool:
@@ -1107,7 +1108,7 @@ def sweep_publications(data):
 
     # --- 1. grant-linked papers (batched RePORTER, free OpenAlex lookups) ---
     core_pi = {}
-    for e, uni in _top_entries(data):
+    for e, uni in _award_entries(data):
         core = e.get("core") or ""
         if core and (core not in linked or (not linked[core].get("pmid")
                                             and _stale(linked[core], LINKED_RECHECK_DAYS))):
@@ -1130,7 +1131,7 @@ def sweep_publications(data):
 
     # --- 2. OpenAlex lists for PIs whose grant has no linked paper ---
     todo, seen_keys = [], set()
-    for e, uni in _top_entries(data):
+    for e, uni in _award_entries(data):
         core = e.get("core") or ""
         if core and (linked.get(core) or {}).get("pmid"):
             continue  # linked paper wins; no list needed
@@ -1322,7 +1323,7 @@ def write_pub_files(data, pubs, linked) -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     n = 0
     written = set()
-    for e, uni in _top_entries(data):
+    for e, uni in _award_entries(data):
         kind, slug, match = _pub_status(e, uni, pubs, linked)
         if not slug or slug in written:
             continue
@@ -1613,7 +1614,7 @@ def write_nih_links(data) -> int:
         "installed, the button is pressed for you.",
         f"- Record an email in [nih_links.csv]({NIH_LINKS_EDIT_URL}): row **#N** here is "
         "line **N+1** in the editor. Type the email at the end of that line (after the "
-        "last comma), then Commit changes. The tracker shows it with the NIH tag on its "
+        "last comma), then Commit changes. The site shows it as the NIH PI Email on its "
         "next update, and every run keeps what you typed.",
         "",
         "| # | PI | University | Notice date | Amount | NIH | Email recorded |",
@@ -1716,12 +1717,58 @@ def ingest(awards, week_start_iso: str, today: date | None = None):
 # HTML RENDER
 # ----------------------------------------------------------------------------
 
+def _mailto(addr: str, title: str) -> str:
+    return (f'<a href="mailto:{html_lib.escape(addr, quote=True)}" title="{title}">'
+            f"{html_lib.escape(addr)}</a>")
+
+
+def _email_line(e) -> str:
+    """'NIH PI Email: ...' when an email from NIH's View Email button is recorded
+    for this award's PI; otherwise 'Predicted Email: ...' (the address found in
+    the PI's papers, or --) plus the link that opens NIH at the View Email button."""
+    nih_email = (e.get("nih_email") or "").strip()
+    if nih_email:
+        return "NIH PI Email: " + _mailto(
+            nih_email, "Revealed on NIH&rsquo;s project page (View Email)")
+    predicted = (e.get("pi_email") or "").strip()
+    line = "Predicted Email: " + (
+        _mailto(predicted, "Found in a published paper, not from NIH: it may belong "
+                           "to someone with a similar name") if predicted else "--")
+    appl = _appl_id(e)
+    if appl:
+        # opens the PI's NIH page at the View Email button (the email helper presses it)
+        line += (f' <a class="nihlink" href="https://reporter.nih.gov/project-details/{appl}#details" '
+                 f'target="_blank" rel="noopener">View email on NIH</a>')
+    return line
+
+
+def _pub_line(e, institution, pubs, linked):
+    """(html, kind) for an award's publications line."""
+    kind, slug, match = _pub_status(e, institution, pubs, linked)
+    if kind == "linked":
+        html = (f'<a class="publink" data-pub="{slug}" href="#">'
+                f'Publication Linked To Grant</a>')
+    elif kind == "recent":
+        html = (f'<a class="publink" data-pub="{slug}" href="#">'
+                f'Publications Within The Past 5 Years? Yes</a>'
+                + (' <span class="unc" title="name match uncertain - check '
+                   'affiliations in the popup">?</span>' if match == "uncertain" else ""))
+    elif kind == "none":
+        html = "Publications Within The Past 5 Years? No"
+    else:
+        html = '<span class="pend">Publications: not checked yet</span>'
+    return html, kind
+
+
 def _cell_html(entries, institution="", pubs=None, linked=None):
     if not entries:
         return '<td class="zero" data-v="0">0</td>'
+    pubs, linked = pubs or {}, linked or {}
     total = sum(e["amount"] for e in entries)
+    kinds = []
 
     def aline(e):
+        """One award: amount, dates, then its own contact PI, email and publications."""
         notice, late = e.get("notice") or "", bool(e.get("late"))
         meta = []
         if notice:
@@ -1730,54 +1777,29 @@ def _cell_html(entries, institution="", pubs=None, linked=None):
             meta.append(f'<span class="late" title="NIH posted this award after its week '
                         f'was first checked">Added: {short_date(e["added"])}</span>')
         sub = f'<div class="ameta">{" ".join(meta)}</div>' if meta else ""
+        pub, kind = _pub_line(e, institution, pubs, linked)
+        kinds.append(kind)
+        pib = (f'<div class="pib"><div>PI Name: {html_lib.escape(e.get("pi") or "--")}</div>'
+               f'<div>{_email_line(e)}</div><div>{pub}</div></div>')
         return (f'<div class="aline" data-a="{e["amount"]}" data-n="{html_lib.escape(notice)}" '
                 f'data-late="{1 if late else 0}"><a href="{html_lib.escape(e["url"], quote=True)}" '
-                f'target="_blank" rel="noopener">{html_lib.escape(e["label"])}</a>{sub}</div>')
+                f'target="_blank" rel="noopener">{html_lib.escape(e["label"])}</a>{sub}{pib}</div>')
 
     lines = "".join(aline(e) for e in entries)
     if len(entries) > 1:
         lines += f'<div class="tot">= {fmt_money(total)}</div>'
-    top = max(entries, key=lambda e: e["amount"])
-    pi_name = html_lib.escape(top.get("pi") or "--")
-    nih_email = (top.get("nih_email") or "").strip()
-    email = nih_email or (top.get("pi_email") or "").strip()
-    if email:
-        tag = ('<span class="esrc nih" title="Revealed on NIH&rsquo;s project page (View Email)">NIH</span>'
-               if nih_email else
-               '<span class="esrc paper" title="Found in a published paper, not from NIH: it may '
-               'belong to someone with a similar name">from a paper</span>')
-        pi_mail = (f'<a href="mailto:{html_lib.escape(email, quote=True)}">'
-                   f"{html_lib.escape(email)}</a> {tag}")
-    else:
-        pi_mail = "--"
-    appl = _appl_id(top)
-    if appl and not nih_email:
-        # opens the PI's NIH page at the View Email button (the email helper presses it)
-        pi_mail += (f' <a class="nihlink" href="https://reporter.nih.gov/project-details/{appl}#details" '
-                    f'target="_blank" rel="noopener">View email on NIH</a>')
-    inst = html_lib.escape(institution.strip() or "--")
-    kind, slug, match = _pub_status(top, institution, pubs or {}, linked or {})
-    if kind == "linked":
-        pub_line = (f'<a class="publink" data-pub="{slug}" href="#">'
-                    f'Publication Linked To Grant</a>')
-    elif kind == "recent":
-        pub_line = (f'<a class="publink" data-pub="{slug}" href="#">'
-                    f'Publications Within The Past 5 Years? Yes</a>'
-                    + (' <span class="unc" title="name match uncertain - check '
-                       'affiliations in the popup">?</span>' if match == "uncertain" else ""))
-    elif kind == "none":
-        pub_line = "Publications Within The Past 5 Years? No"
-    else:
-        pub_line = '<span class="pend">Publications: not checked yet</span>'
-    # one line each; cards hide the Institution line because the card's title names it
-    lines += (f'<div class="pib"><div>PI Name: {pi_name}</div><div>PI Email: {pi_mail}</div>'
-              f'<div class="pinst">Institution: {inst}</div><div>{pub_line}</div></div>')
-    # per-cell flags: the checkboxes and the count apply to the selected week
-    flags = (f' data-he="{1 if email else 0}" data-nih="{1 if nih_email else 0}"'
-             f' data-hn="{1 if (top.get("pi") or "").strip() else 0}"'
+    # cards hide the Institution line because the card's title names it
+    lines += f'<div class="pinst">Institution: {html_lib.escape(institution.strip() or "--")}</div>'
+    # per-cell flags for the checkboxes (they apply to the selected week): a cell
+    # qualifies when any of its awards does; "No NIH email yet" keeps a cell until
+    # every award's PI has an NIH email
+    has = lambda f: 1 if any(f(e) for e in entries) else 0
+    flags = (f' data-he="{has(lambda e: (e.get("nih_email") or e.get("pi_email") or "").strip())}"'
+             f' data-nih="{1 if all((e.get("nih_email") or "").strip() for e in entries) else 0}"'
+             f' data-hn="{has(lambda e: (e.get("pi") or "").strip())}"'
              f' data-hi="{1 if institution.strip() else 0}"'
-             f' data-pl="{1 if kind == "linked" else 0}"'
-             f' data-pr="{1 if kind == "recent" else 0}"')
+             f' data-pl="{1 if "linked" in kinds else 0}"'
+             f' data-pr="{1 if "recent" in kinds else 0}"')
     return f'<td data-v="{total}"{flags}>{lines}</td>'
 
 
@@ -1995,10 +2017,11 @@ a:hover { border-bottom-color:var(--grow); }
 .ctitle h3 { margin:0; font-size:14.5px; font-weight:600; line-height:1.3; }
 .cmeta { font-size:12.5px; color:var(--mut); }
 .cbody { padding-left:26px; font-variant-numeric:tabular-nums; }
-.cbody .aline a { font-size:15px; font-weight:500; }
-.cbody .tot { font-size:15px; }
-.cbody .pib { border-top:1px solid var(--soft); margin-top:10px; padding-top:10px;
-  font-size:12.5px; overflow-wrap:anywhere; }
+.cbody .aline > a { font-size:15px; font-weight:500; }
+.cbody .tot { font-size:15px; margin-top:12px; }
+/* each award lists its own PI; a rule separates the awards in a card */
+.cbody .aline + .aline { border-top:1px solid var(--soft); margin-top:12px; padding-top:12px; }
+.cbody .pib { margin-top:8px; font-size:12.5px; overflow-wrap:anywhere; }
 .cbody .pinst { display:none; }
 .empty { border:1px dashed var(--grid); border-radius:8px; padding:18px 16px;
   display:flex; flex-direction:column; gap:4px; }
@@ -2015,7 +2038,7 @@ a:hover { border-bottom-color:var(--grow); }
 #t th, #t td { padding:9px 14px; border-bottom:1px solid var(--line);
   white-space:nowrap; text-align:right; font-size:14px; vertical-align:top; }
 .aline { display:block; line-height:1.6; }
-.aline + .aline { margin-top:4px; }
+.aline + .aline { margin-top:12px; }
 .ameta { font-size:12px; line-height:1.4; color:var(--mut); font-weight:400; }
 .late { display:inline-block; padding:0 6px; border-radius:4px; background:#FDF0DC;
   color:#7A4300; font-size:11.5px; font-weight:500; line-height:18px; }
@@ -2024,11 +2047,8 @@ a:hover { border-bottom-color:var(--grow); }
   padding-top:3px; font-weight:600; }
 .pib { margin-top:7px; font-size:12px; color:var(--mut); font-weight:400; line-height:1.5; }
 .pib a { color:var(--grow); border-bottom-color:#BFE0CC; }
-.esrc { display:inline-block; padding:0 5px; border-radius:4px; font-size:11px; line-height:17px;
-  font-weight:500; }
-.esrc.nih { background:var(--broth); color:#124D2B; }
-.esrc.paper { background:#F1F2F4; color:var(--mut); font-weight:400; }
 .pib a.nihlink { white-space:nowrap; font-weight:500; }
+.pinst { margin-top:7px; font-size:12px; color:var(--mut); font-weight:400; line-height:1.5; }
 .nihline { margin-top:4px; font-size:13px; color:var(--mut); }
 #t th { position:sticky; top:0; background:var(--bg); z-index:3; font-weight:500; }
 .thsub { font-size:11.5px; font-weight:400; color:var(--mut); }
@@ -2101,7 +2121,7 @@ MOBILE_CSS = """
     font-size:12.5px; box-shadow:none; }
   #t td[data-v] { white-space:normal; width:172px; min-width:172px; max-width:172px; }
   .aline, .tot { white-space:nowrap; }
-  .pib { font-size:11.5px; overflow-wrap:anywhere; }
+  .pib, .pinst { font-size:11.5px; overflow-wrap:anywhere; white-space:normal; }
   #pubmodal, #absmodal { padding:8px; }
   .pubhead { padding:12px 12px 8px; }
   .pubscroll { padding:0 8px 12px; }
@@ -2228,7 +2248,7 @@ LEDGER_JS = """
     if (!cell._lines) {
       cell._lines = [...cell.querySelectorAll('.aline')];
       cell._tot = cell.querySelector('.tot');
-      cell._pib = cell.querySelector('.pib');
+      cell._inst = cell.querySelector('.pinst');
       if (cell._tot) cell._tot.dataset.orig = cell._tot.textContent;
     }
     if (!cell._lines.length) return { sum: 0, n: 0 };
@@ -2243,7 +2263,7 @@ LEDGER_JS = """
       cell._tot.textContent = on ? '= ' + money(sum) : cell._tot.dataset.orig;
       cell._tot.style.display = n > 1 ? '' : 'none';
     }
-    if (cell._pib) cell._pib.style.display = n ? '' : 'none';
+    if (cell._inst) cell._inst.style.display = n ? '' : 'none';
     return { sum, n };
   }
   const eff = (r, w) => r.tr.cells[w.i]._eff || { sum: 0, n: 0 };
@@ -2908,18 +2928,19 @@ still waiting for an amount; complete weeks are still checked once a month and r
 if anything turns up. Every award shows its <b>Award Notice Date</b>; awards that arrived
 after their week was first checked carry an amber <span class="late">Added: date</span>
 tag. Cards with several awards list each one and end with a ruled <b>= total</b>. &ldquo;No department listed&rdquo; (-- in the table) means
-NIH reported none for that keyword-matched award. PI lines show the contact PI of
-the largest award. Emails tagged <span class="esrc nih">NIH</span> were revealed on
-NIH&rsquo;s own project page and saved in data/nih_emails.csv; emails tagged
-<span class="esrc paper">from a paper</span> were found in the PI&rsquo;s recent
-publications (PubMed and Europe PMC) and may belong to someone with a similar name.
+NIH reported none for that keyword-matched award. Every award lists its own contact
+PI, email and publications. <b>NIH PI Email</b> is the email revealed on NIH&rsquo;s own
+project page (View Email) and recorded in data/nih_links.csv or data/nih_emails.csv.
+Until one is recorded, the line reads <b>Predicted Email</b>: an address found in the
+PI&rsquo;s recent publications (PubMed and Europe PMC), which may belong to someone with
+a similar name.
 &ldquo;View email on NIH&rdquo; opens the PI&rsquo;s NIH page at its View Email button;
 the <a href="nih-email-helper.user.js">Chrome email helper</a> (needs the Tampermonkey
 extension) presses it once on the page you open and keeps a list to paste into
 data/nih_emails.csv. The same links, one per PI, are listed in
 <a href="{NIH_LINKS_URL}" target="_blank" rel="noopener">data/nih_links.md</a>
 (rebuilt every run); an email typed into the nih_email column of data/nih_links.csv
-is kept and shown here with the NIH tag. Source: NIH RePORTER (refreshes
+is kept and shown here as the NIH PI Email. Source: NIH RePORTER (refreshes
 Sunday nights; this page updates every Monday morning).</div>
 
 <div id="filtermodal" hidden>
@@ -3284,10 +3305,21 @@ def selftest() -> int:
     assert '<div class="pinst">Institution: Brown University</div>' in page, "institution line"
     assert '<div class="tot">= $5,100,000</div>' in page
     assert "PI Name: Jane Big" in page and 'href="mailto:jbig@brown.edu"' in page
-    assert 'href="mailto:jbig@brown.edu">jbig@brown.edu</a> <span class="esrc paper"' in page, \
-        "paper-found emails are labelled"
-    assert 'href="mailto:ada@tufts.edu">ada@tufts.edu</a> <span class="esrc nih"' in page, \
-        "an NIH email wins and is tagged NIH"
+    assert 'Predicted Email: <a href="mailto:jbig@brown.edu"' in page, \
+        "paper-found emails are shown as Predicted Email"
+    assert 'NIH PI Email: <a href="mailto:ada@tufts.edu"' in page, \
+        "an NIH email wins and is shown as NIH PI Email"
+    assert "PI Email: <a" not in page.replace("NIH PI Email: <a", ""), "old PI Email label gone"
+    # every award shows its own PI, not just the cell's largest award
+    bme_cell = [tr for tr in page.split("<tr>") if "PI Name: Jane Big" in tr][0]
+    assert "PI Name: Jane Big" in bme_cell and "PI Name: John Small" in bme_cell, \
+        "the smaller award's PI is shown too"
+    assert 'NIH PI Email: <a href="mailto:jsmall@brown.edu"' in bme_cell, \
+        "the smaller award's PI gets their own email line"
+    assert bme_cell.index("$4,600,000") < bme_cell.index("PI Name: Jane Big") \
+        < bme_cell.index("$500,000") < bme_cell.index("PI Name: John Small"), \
+        "each PI sits under their own award"
+    assert ' data-nih="0"' in bme_cell, "No NIH email yet keeps a cell until every award has one"
     assert 'href="https://reporter.nih.gov/project-details/111#details"' in page, \
         "PIs without an NIH email get the View email on NIH link"
     assert "project-details/222#details" not in page, "no NIH link once the NIH email is in"
@@ -3299,7 +3331,7 @@ def selftest() -> int:
                for e in data["rows"]["tufts university||--||nih (niaid)"]["cells"]["2026-09-06"]), \
         "the PI's other award at the same university gets the NIH email too"
     assert "f.nonih && d.nih === '1'" in js, "No NIH email yet filter"
-    assert "PI Email: --" in page
+    assert "Predicted Email: --" in page
     assert 'data-v="0">0<' in page
     assert "r.tr.cells[0].textContent = ++n" in js, "table rows renumber after sort/filter"
     assert 'data-total="5940000"' in page, \

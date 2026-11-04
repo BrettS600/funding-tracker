@@ -25,15 +25,19 @@ award matched the bio keywords), Funder (the NIH institute, e.g.
 *NIH (NIGMS)*).
 
 **Each funding cell** stacks the week's awards (each amount linked to its
-RePORTER project page), shows a ruled unlinked **= total** when there are
-several, then for the largest award:
+RePORTER project page) and ends with a ruled unlinked **= total** when there
+are several. Every award, not just the largest, shows its own contact PI:
 
-- **PI Name / PI Email** — name from NIH; email recovered from the PI's own
-  publications (PubMed affiliation lines, then Europe PMC open-access full
-  text). `--` when nothing was found yet. Hover an email for its source.
-  An email domain that doesn't match the institution usually means the PI
-  moved — verify before sending.
-- **Institution** — the awardee organization.
+- **PI Name** — the contact PI NIH lists for that award.
+- **NIH PI Email** — the email revealed by the View Email button on the
+  award's NIH project page, once you've recorded it in `data/nih_links.csv`
+  (or `data/nih_emails.csv`). One recorded email covers every award that PI
+  has at the same institution.
+- **Predicted Email** — shown until an NIH email is recorded: an address
+  found in the PI's own publications (PubMed affiliation lines, then Europe
+  PMC open-access full text), or `--` when none was found. It may belong to
+  someone with a similar name, so verify before sending. **View email on
+  NIH** next to it opens the project page at the View Email button.
 - **Publication line** — one of three:
   - **Publication Linked To Grant** (clickable) when NIH links a paper to
     the grant: opens a one-row popup with that paper (the most recent, any
@@ -44,6 +48,9 @@ several, then for the largest award:
     in the popup.
   - **Publications Within The Past 5 Years? No** (plain) when neither
     exists, or *not checked yet* until the PI's first lookup.
+
+Below the awards, the table view also shows **Institution** (the awardee
+organization); cards leave it out because the card title names it.
 
 **The publications popup** lists #, Year, Author Order (first = red,
 middle = yellow, last = green — in biomedicine the last author is usually
