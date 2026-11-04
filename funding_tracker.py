@@ -6,9 +6,13 @@ Runs once a week (GitHub Actions, Monday morning, right after NIH RePORTER's
 Sunday-night refresh) and maintains a ledger of NIH awards GRANTED during the
 just-completed week to biotech-adjacent university departments.
 
-  Each run also re-checks the previous weeks (RECHECK_WEEKS in total), because
-  RePORTER often posts an award, or its dollar amount, weeks after the notice
-  date; awards already recorded are skipped, so nothing is counted twice.
+  Each run also re-checks every earlier week, because RePORTER often posts an
+  award, or its dollar amount, weeks after the notice date; awards already
+  recorded are skipped, so nothing is counted twice. A week is marked complete
+  after QUIET_CHECKS_TO_COMPLETE weekly checks in a row find nothing new (and
+  no matching award still waiting for an amount); complete weeks are checked
+  once a month after that and reopen if anything turns up. Awards that arrive
+  after their week was first checked are tagged "Added: <date>".
 
   Column A = #   B = University   C = Department   D = Funder (NIH institute)
   Every completed Sunday-Saturday week = one column, labeled like
@@ -93,10 +97,16 @@ UNIVERSITY_MARKERS = ("UNIVERSITY", "COLLEGE", "INSTITUTE", "POLYTECH",
 
 SCHEMA = "nih-weekly-1"  # ledger format tag; older data is reset automatically
 
-# Every run re-asks NIH about this many recent weeks, so awards RePORTER posts
-# (or gives a dollar amount) after their week's Monday run are still added.
-# Awards already recorded are skipped, so nothing is counted twice.
-RECHECK_WEEKS = 8
+# Every run re-checks every week in the ledger, because RePORTER often posts an
+# award (or its dollar amount) weeks after its notice date; awards already
+# recorded are skipped, so nothing is counted twice. A week is checked off as
+# complete after QUIET_CHECKS_TO_COMPLETE weekly checks in a row that found
+# nothing new and no matching award still waiting for a dollar amount.
+# Complete weeks still get a light re-check every COMPLETE_RECHECK_DAYS and
+# reopen if anything new turns up.
+QUIET_CHECKS_TO_COMPLETE = 8
+COMPLETE_RECHECK_DAYS = 28
+PENDING_GRACE_DAYS = 182   # after ~6 months a $0 listing no longer holds a week open
 
 # --- PI email lookup --------------------------------------------------------
 ENABLE_EMAIL_LOOKUP = True
@@ -247,16 +257,67 @@ def last_completed_week(today: date):
     return start, start + timedelta(days=6)
 
 
-def recheck_weeks(today: date):
-    """The last RECHECK_WEEKS completed weeks, oldest first. Each run asks NIH
-    about all of them again, because RePORTER often posts an award (or its
-    dollar amount) weeks after its notice date."""
-    start, _ = last_completed_week(today)
+def all_weeks(data, today: date):
+    """Every week from the ledger's first week through the last completed one."""
+    last, _ = last_completed_week(today)
+    starts = [date.fromisoformat(w) for w in data.get("dates", [])]
+    w = min(starts) if starts else last
     out = []
-    for k in range(RECHECK_WEEKS - 1, -1, -1):
-        s = start - timedelta(days=7 * k)
-        out.append((s, s + timedelta(days=6)))
+    while w <= last:
+        out.append(w)
+        w += timedelta(days=7)
     return out
+
+
+def weeks_to_check(data, today: date):
+    """(start, end) of every week due a check this run, oldest first: all open
+    weeks, plus complete weeks whose monthly safety check is due."""
+    status = data.get("meta", {}).get("weeks", {})
+    due = []
+    for w in all_weeks(data, today):
+        st = status.get(w.isoformat()) or {}
+        if st.get("complete"):
+            last = date.fromisoformat(st.get("last_checked") or "1970-01-01")
+            if (today - last).days < COMPLETE_RECHECK_DAYS:
+                continue
+        due.append((w, w + timedelta(days=6)))
+    return due
+
+
+def update_week_status(data, week_iso: str, new: int, pending: int, today: date):
+    """Record one check of a week. A check is quiet when it found nothing new
+    and no matching award waiting for a dollar amount (after PENDING_GRACE_DAYS
+    a listing that never got an amount stops counting). Quiet checks count at
+    most once per NIH weekly refresh (Sunday night), so extra runs in the same
+    week don't speed things up."""
+    weeks = data.setdefault("meta", {}).setdefault("weeks", {})
+    st = weeks.setdefault(week_iso, {"first_checked": today.isoformat(), "quiet": 0})
+    st["last_checked"] = today.isoformat()
+    st["pending"] = pending
+    young = (today - date.fromisoformat(week_iso)).days < PENDING_GRACE_DAYS
+    if new > 0 or (pending > 0 and young):
+        st["quiet"] = 0
+        st.pop("quiet_counted", None)
+        if st.get("complete"):
+            st["complete"] = False
+            st.pop("completed_on", None)
+            st["reopened"] = today.isoformat()
+        return st
+    counted = st.get("quiet_counted")
+    if not counted or (last_completed_week(date.fromisoformat(counted))[0]
+                       != last_completed_week(today)[0]):
+        st["quiet"] = st.get("quiet", 0) + 1
+        st["quiet_counted"] = today.isoformat()
+    if st["quiet"] >= QUIET_CHECKS_TO_COMPLETE and not st.get("complete"):
+        st["complete"] = True
+        st["completed_on"] = today.isoformat()
+    return st
+
+
+def short_date(iso: str) -> str:
+    """'2026-09-16' -> 'Sep 16'."""
+    d = date.fromisoformat(iso)
+    return f"{d:%b} {d.day}"
 
 
 def wlabel(week_start_iso: str) -> str:
@@ -1284,11 +1345,11 @@ def write_pub_files(data, pubs, linked) -> int:
 # ----------------------------------------------------------------------------
 
 def make_award(key, university, department, amount, url, funder, pi,
-               pi_email="", core=""):
+               pi_email="", core="", notice=""):
     return {
         "key": key, "university": university, "department": department,
         "funder": funder, "amount": int(amount), "url": url, "pi": pi,
-        "pi_email": pi_email, "core": core,
+        "pi_email": pi_email, "core": core, "notice": notice,
     }
 
 
@@ -1296,7 +1357,9 @@ _DIAG_LOGGED = [False]
 
 
 def fetch_nih_week(week_start: date, week_end: date):
-    awards, offset = [], 0
+    """(awards, pending): the week's matching awards, and how many otherwise
+    matching awards NIH lists without a dollar amount yet."""
+    awards, offset, pending = [], 0, set()
     while offset <= 9500:
         payload = {
             "criteria": {
@@ -1314,9 +1377,19 @@ def fetch_nih_week(week_start: date, week_end: date):
             "limit": 500,
             "offset": offset,
         }
-        r = SESSION.post("https://api.reporter.nih.gov/v2/projects/search",
-                         json=payload, timeout=TIMEOUT)
-        r.raise_for_status()
+        # every week is re-checked now, so ride out a brief NIH hiccup instead of
+        # failing the whole run (a failed run changes nothing; it never counts as quiet)
+        for attempt in range(3):
+            try:
+                r = SESSION.post("https://api.reporter.nih.gov/v2/projects/search",
+                                 json=payload, timeout=TIMEOUT)
+                r.raise_for_status()
+                break
+            except requests.RequestException as e:
+                if attempt == 2:
+                    raise
+                log(f"  NIH search failed ({e}); retrying")
+                time.sleep(10 * (attempt + 1))
         results = r.json().get("results", [])
         if offset == 0 and results and not _DIAG_LOGGED[0]:
             # One-time diagnostic: does the public API carry PI emails at all?
@@ -1333,7 +1406,7 @@ def fetch_nih_week(week_start: date, week_end: date):
             dept = (org.get("dept_type") or "").strip().upper()
             name = (org.get("org_name") or "").strip()
             text = (p.get("project_title") or "") + " " + (p.get("pref_terms") or "")
-            if amt < 1 or not name:
+            if not name:
                 continue
             if dept in NIH_INCLUDE_DEPTS:
                 if dept == "ENGINEERING (ALL TYPES)" and not has_bio_keyword(text):
@@ -1345,10 +1418,13 @@ def fetch_nih_week(week_start: date, week_end: date):
                 dept_label = NO_DEPT_LABEL  # NIH reported no department
             else:
                 continue  # named clinical dept, company, or off-topic
+            appl = p.get("appl_id")
+            if amt < 1:
+                pending.add(appl)  # matches, but NIH hasn't posted a dollar amount yet
+                continue
             ic = (p.get("agency_ic_admin") or {}).get("abbreviation") or ""
             funder = (ic if ic in NON_NIH_AGENCIES
                       else f"NIH ({ic})" if ic else "NIH")
-            appl = p.get("appl_id")
             url = p.get("project_detail_url") or \
                 f"https://reporter.nih.gov/project-details/{appl}"
             # If the API itself carries an email, take it - free and exact.
@@ -1367,12 +1443,13 @@ def fetch_nih_week(week_start: date, week_end: date):
                 department=dept_label, amount=amt, url=url, funder=funder,
                 pi=flip_name(p.get("contact_pi_name") or ""),
                 pi_email=api_email, core=(p.get("core_project_num") or ""),
+                notice=(p.get("award_notice_date") or "")[:10],
             ))
         if len(results) < 500:
             break
         offset += 500
         time.sleep(1)
-    return awards
+    return awards, len(pending)
 
 
 # ----------------------------------------------------------------------------
@@ -1383,7 +1460,44 @@ def row_key(a) -> str:
     return f"{a['university'].lower()}||{a['department'].lower()}||{a['funder'].lower()}"
 
 
-def ingest(awards, week_start_iso: str):
+def history_path() -> Path:
+    return DATA_DIR / "added_history.json"
+
+
+def _appl_id(entry) -> str:
+    key = entry.get("key") or ""
+    if key.startswith("NIH:"):
+        return key[4:]
+    m = re.search(r"(\d+)\s*$", entry.get("url", ""))
+    return m.group(1) if m else ""
+
+
+def apply_added_history(data) -> None:
+    """Awards recorded before 'added' dates were kept get them here, from
+    data/added_history.json (rebuilt from the repo's commit history): the day
+    each week was first checked, and the awards that arrived after that."""
+    hist = load_json(history_path(), {})
+    first = hist.get("week_first_checked") or {}
+    late = {str(i): d for d, ids in (hist.get("late") or {}).items() for i in ids}
+    weeks = data.setdefault("meta", {}).setdefault("weeks", {})
+    for w in data.get("dates", []):
+        if w not in weeks and w in first:
+            weeks[w] = {"first_checked": first[w], "quiet": 0}
+    for row in data["rows"].values():
+        for w, entries in row["cells"].items():
+            for e in entries:
+                if "added" in e:
+                    continue
+                appl = _appl_id(e)
+                if appl in late:
+                    e["added"], e["late"] = late[appl], True
+                else:
+                    e["added"] = (weeks.get(w) or {}).get("first_checked", "")
+                    e["late"] = False
+
+
+def ingest(awards, week_start_iso: str, today: date | None = None):
+    today = today or date.today()
     data = load_json(DATA_FILE, {"dates": [], "rows": {}, "meta": {}})
     seen = load_json(SEEN_FILE, {})
 
@@ -1396,14 +1510,27 @@ def ingest(awards, week_start_iso: str):
                 "ledger fresh (old daily data cleared automatically)")
         data = {"dates": [], "rows": {}, "meta": {"schema": SCHEMA}}
         seen = {}
+    apply_added_history(data)
 
     if week_start_iso not in data["dates"]:
         data["dates"].append(week_start_iso)
         data["dates"].sort()
+    # an award is "late" when it turns up after its week was first checked
+    weeks = data["meta"].setdefault("weeks", {})
+    if week_start_iso not in weeks:
+        weeks[week_start_iso] = {"first_checked": today.isoformat(), "quiet": 0}
+    late = weeks[week_start_iso]["first_checked"] < today.isoformat()
+
+    # awards recorded before notice dates were kept get theirs on the next check
+    by_appl = {_appl_id(e): e for row in data["rows"].values()
+               for e in row["cells"].get(week_start_iso, [])}
 
     new_count = 0
     for a in awards:
         if a["key"] in seen:
+            e = by_appl.get(a["key"][4:])
+            if e is not None and a.get("notice") and not e.get("notice"):
+                e["notice"] = a["notice"]
             continue
         seen[a["key"]] = {"week": week_start_iso, "amount": a["amount"]}
         row = data["rows"].setdefault(row_key(a), {
@@ -1415,7 +1542,8 @@ def ingest(awards, week_start_iso: str):
         row["cells"].setdefault(week_start_iso, []).append({
             "amount": a["amount"], "label": fmt_money(a["amount"]),
             "url": a["url"], "pi": a["pi"], "pi_email": a["pi_email"],
-            "core": a.get("core", ""),
+            "core": a.get("core", ""), "key": a["key"],
+            "notice": a.get("notice", ""), "added": today.isoformat(), "late": late,
         })
         new_count += 1
 
@@ -1434,11 +1562,21 @@ def _cell_html(entries, institution="", pubs=None, linked=None):
     if not entries:
         return '<td class="zero" data-v="0">0</td>'
     total = sum(e["amount"] for e in entries)
-    lines = "".join(
-        f'<div class="aline"><a href="{html_lib.escape(e["url"], quote=True)}" '
-        f'target="_blank" rel="noopener">{html_lib.escape(e["label"])}</a></div>'
-        for e in entries
-    )
+
+    def aline(e):
+        notice, late = e.get("notice") or "", bool(e.get("late"))
+        meta = []
+        if notice:
+            meta.append(f"Award Notice Date: {short_date(notice)}")
+        if late and e.get("added"):
+            meta.append(f'<span class="late" title="NIH posted this award after its week '
+                        f'was first checked">Added: {short_date(e["added"])}</span>')
+        sub = f'<div class="ameta">{" ".join(meta)}</div>' if meta else ""
+        return (f'<div class="aline" data-a="{e["amount"]}" data-n="{html_lib.escape(notice)}" '
+                f'data-late="{1 if late else 0}"><a href="{html_lib.escape(e["url"], quote=True)}" '
+                f'target="_blank" rel="noopener">{html_lib.escape(e["label"])}</a>{sub}</div>')
+
+    lines = "".join(aline(e) for e in entries)
     if len(entries) > 1:
         lines += f'<div class="tot">= {fmt_money(total)}</div>'
     top = max(entries, key=lambda e: e["amount"])
@@ -1610,6 +1748,18 @@ a:hover { border-bottom-color:var(--grow); }
   cursor:pointer; flex:none; }
 .wk .wkl { flex:1; }
 .wk .wkn { font-size:12.5px; color:var(--mut); font-variant-numeric:tabular-nums; }
+.wk .wkn .ok { color:var(--grow); }
+.range { display:flex; flex-direction:column; gap:8px; padding:12px 14px;
+  border-bottom:1px solid var(--soft); }
+.rangehead { font-size:12.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+  color:var(--mut); }
+.rangerow { display:flex; align-items:center; gap:8px; }
+.rangerow label { display:flex; flex-direction:column; gap:3px; flex:1; font-size:12.5px;
+  color:var(--mut); }
+.rangerow select { height:40px; padding:0 8px; border:1px solid var(--grid); border-radius:8px;
+  background:#fff; font:inherit; font-size:14px; color:var(--ink); }
+.rangerow select:focus { border-color:var(--grow); outline:2px solid var(--broth); }
+.rangenote { font-size:12.5px; color:var(--mut); line-height:1.45; }
 .menufoot { display:flex; justify-content:space-between; align-items:center; gap:12px;
   padding:10px 14px; border-top:1px solid var(--soft); font-size:12.5px; color:var(--mut); }
 .primary { height:40px; padding:0 18px; border:0; border-radius:8px; background:var(--grow);
@@ -1665,6 +1815,12 @@ a:hover { border-bottom-color:var(--grow); }
   border-bottom:2px solid var(--grow); }
 .colhead h2 { margin:0; font-size:15px; font-weight:600; }
 .colhead span { font-size:12.5px; color:var(--mut); font-variant-numeric:tabular-nums; }
+.colhead .wstat { color:var(--mut); }
+.colhead .wstat.done { color:var(--grow); font-weight:500; }
+.cbody .ameta { margin-top:1px; }
+.lateline { margin-top:6px; font-size:13px; color:#7A4300; display:flex; flex-wrap:wrap;
+  align-items:center; gap:4px 8px; }
+.lateline .linkbtn { height:32px; color:#7A4300; text-decoration:underline; font-size:13px; }
 .card { background:#fff; border:1px solid var(--card); border-radius:8px; padding:14px 16px;
   display:flex; flex-direction:column; gap:10px; }
 .chead { display:flex; gap:10px; align-items:baseline; }
@@ -1693,11 +1849,18 @@ a:hover { border-bottom-color:var(--grow); }
 #t th, #t td { padding:9px 14px; border-bottom:1px solid var(--line);
   white-space:nowrap; text-align:right; font-size:14px; vertical-align:top; }
 .aline { display:block; line-height:1.6; }
+.aline + .aline { margin-top:4px; }
+.ameta { font-size:12px; line-height:1.4; color:var(--mut); font-weight:400; }
+.late { display:inline-block; padding:0 6px; border-radius:4px; background:#FDF0DC;
+  color:#7A4300; font-size:11.5px; font-weight:500; line-height:18px; }
+.ameta .late { margin-left:4px; }
 .tot { display:inline-block; border-top:1px solid var(--ink); margin-top:3px;
   padding-top:3px; font-weight:600; }
 .pib { margin-top:7px; font-size:12px; color:var(--mut); font-weight:400; line-height:1.5; }
 .pib a { color:var(--grow); border-bottom-color:#BFE0CC; }
 #t th { position:sticky; top:0; background:var(--bg); z-index:3; font-weight:500; }
+.thsub { font-size:11.5px; font-weight:400; color:var(--mut); }
+.thsub.done { color:var(--grow); }
 #t th:nth-child(1), #t td.rownum { position:sticky; left:0; background:var(--bg);
   text-align:right; min-width:48px; max-width:48px; z-index:2;
   color:var(--mut); font-size:12.5px; }
@@ -1746,8 +1909,9 @@ MOBILE_CSS = """
   .cards { display:block; padding:0 14px 24px; overflow:visible; }
   .col { display:none; }
   .col.on { display:flex; }
-  .colhead { flex-direction:row; justify-content:space-between; align-items:baseline;
-    gap:8px; border-bottom:0; padding:0 0 2px; }
+  .colhead { border-bottom:0; padding:0 0 4px; }
+  .rangerow select { font-size:16px; }
+  .ameta { white-space:normal; }
   .card { padding:14px; }
   .cbody { padding-left:24px; }
   .legend { padding:12px 14px 32px; }
@@ -1790,7 +1954,9 @@ LEDGER_JS = """
   const tbody = table.tBodies[0];
   const ths = [...table.tHead.rows[0].cells];
   const WEEKS = ths.filter(th => th.dataset.w).map(th => ({
-    iso: th.dataset.w, label: th.dataset.label, short: th.dataset.short,
+    iso: th.dataset.w, end: th.dataset.end, label: th.dataset.label, short: th.dataset.short,
+    done: th.dataset.status === 'complete', quiet: +th.dataset.quiet || 0,
+    need: +th.dataset.need || 8, pending: +th.dataset.pending || 0,
     i: ths.indexOf(th), th: th, funded: 0 }));
   const NEWEST = WEEKS.slice().reverse();
   // every row's text is read once here; reading it inside a loop that also hides
@@ -1805,12 +1971,17 @@ LEDGER_JS = """
 
   const q = $('q'), sortSel = $('sort'), cardsEl = $('cards'), tabsEl = $('tabs');
   const tableWrap = $('tablewrap'), hideBox = $('hidezero');
+  const rf = $('rangefrom'), rt = $('rangeto');
+  // the days that have awards, newest first, with their labels ("Sep 16")
+  const NOTICE = rf ? [...rf.options].map(o => o.value).filter(Boolean) : [];
+  const NLABEL = {};
+  if (rf) [...rf.options].forEach(o => { if (o.value) NLABEL[o.value] = o.textContent; });
   const BOX = { email: $('onlyemail'), name: $('onlyname'), inst: $('onlyinst'),
-                linked: $('onlylinked'), recent: $('onlyrecent') };
+                linked: $('onlylinked'), recent: $('onlyrecent'), late: $('onlylate') };
   const PAGE = 25;                          // cards per week before "Show all"
   const KEY = 'funding-ledger-view-v1';     // choices remembered on this device
-  const DEFAULTS = { mode: 'last4', weeks: [], hide: true, sort: 'amount',
-    f: { email: false, name: false, inst: false, linked: false, recent: false } };
+  const DEFAULTS = { mode: 'last4', weeks: [], from: '', to: '', hide: true, sort: 'amount',
+    f: { email: false, name: false, inst: false, linked: false, recent: false, late: false } };
   let S = load();
   let expanded = {};
   let activeTab = null;
@@ -1820,13 +1991,17 @@ LEDGER_JS = """
     let s = null;
     try { s = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
     if (s && typeof s === 'object') {
-      if (['latest', 'last4', 'all', 'custom'].includes(s.mode)) out.mode = s.mode;
+      if (['latest', 'last4', 'all', 'custom', 'range'].includes(s.mode)) out.mode = s.mode;
       if (Array.isArray(s.weeks)) out.weeks = s.weeks.filter(x => WEEKS.some(w => w.iso === x));
+      if (NOTICE.includes(s.from)) out.from = s.from;
+      if (NOTICE.includes(s.to)) out.to = s.to;
       if (typeof s.hide === 'boolean') out.hide = s.hide;
       if (s.sort === 'name' || s.sort === 'amount') out.sort = s.sort;
       if (s.f && typeof s.f === 'object') for (const k in out.f) out.f[k] = !!s.f[k];
     }
     if (out.mode === 'custom' && !out.weeks.length) out.mode = 'last4';
+    if (out.mode === 'range' && !(out.from && out.to)) out.mode = 'last4';
+    if (out.mode !== 'range') out.from = out.to = '';
     return out;
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
@@ -1835,12 +2010,17 @@ LEDGER_JS = """
     if (S.mode === 'latest') return NEWEST.slice(0, 1);
     if (S.mode === 'last4') return NEWEST.slice(0, 4);
     if (S.mode === 'all') return NEWEST.slice();
+    if (S.mode === 'range') return NEWEST.filter(w => w.iso <= S.to && w.end >= S.from);
     return NEWEST.filter(w => S.weeks.includes(w.iso));
   }
+  const rangeText = () => S.from === S.to ? NLABEL[S.from]
+    : NLABEL[S.from] + ' – ' + NLABEL[S.to];
   function anyCellFilter() {
     const f = S.f;
     return f.email || f.name || f.inst || f.linked || f.recent;
   }
+  // the date range and "added late" pick out single awards inside a cell
+  const awardFilterOn = () => S.mode === 'range' || S.f.late;
   function passes(c) {
     // email / name / institution must all hold; the two publication boxes combine as OR
     const f = S.f, d = c.dataset;
@@ -1848,6 +2028,14 @@ LEDGER_JS = """
     if (f.name && d.hn !== '1') return false;
     if (f.inst && d.hi !== '1') return false;
     if ((f.linked || f.recent) && !((f.linked && d.pl === '1') || (f.recent && d.pr === '1'))) return false;
+    return true;
+  }
+  function lineOk(line, w) {
+    if (S.mode === 'range') {
+      const n = line.dataset.n || w.iso;
+      if (n < S.from || n > S.to) return false;
+    }
+    if (S.f.late && line.dataset.late !== '1') return false;
     return true;
   }
   const money = n => '$' + Math.round(n).toLocaleString('en-US');
@@ -1859,16 +2047,59 @@ LEDGER_JS = """
     return e;
   };
 
+  // Hides the award lines the range / "added late" filters leave out and fixes the
+  // cell's "= total"; returns what is left. Cards copy the cell's markup, so they match.
+  function trim(cell, w) {
+    if (!cell._lines) {
+      cell._lines = [...cell.querySelectorAll('.aline')];
+      cell._tot = cell.querySelector('.tot');
+      cell._pib = cell.querySelector('.pib');
+      if (cell._tot) cell._tot.dataset.orig = cell._tot.textContent;
+    }
+    if (!cell._lines.length) return { sum: 0, n: 0 };
+    const on = awardFilterOn();
+    let sum = 0, n = 0;
+    cell._lines.forEach(l => {
+      const ok = !on || lineOk(l, w);
+      l.style.display = ok ? '' : 'none';
+      if (ok) { sum += +l.dataset.a || 0; n++; }
+    });
+    if (cell._tot) {
+      cell._tot.textContent = on ? '= ' + money(sum) : cell._tot.dataset.orig;
+      cell._tot.style.display = n > 1 ? '' : 'none';
+    }
+    if (cell._pib) cell._pib.style.display = n ? '' : 'none';
+    return { sum, n };
+  }
+  const eff = (r, w) => r.tr.cells[w.i]._eff || { sum: 0, n: 0 };
+
   function render() {
     const sel = selected(), qv = q.value.trim().toLowerCase();
+    sel.forEach(w => ROWS.forEach(r => { const c = r.tr.cells[w.i]; c._eff = trim(c, w); }));
     const res = S.hide ? renderCards(sel, qv) : renderTable(sel, qv);
     cardsEl.hidden = !S.hide;
     tabsEl.hidden = !S.hide;
     tableWrap.hidden = S.hide;
     $('fig').textContent = money(res.grand);
-    $('cap').textContent = 'granted in the ' + (sel.length === 1 ? 'week' : sel.length + ' weeks')
-      + ' shown · ' + count(res.funded) + (res.funded === 1 ? ' funded row' : ' funded rows');
+    const what = S.mode === 'range' ? 'with notice dates ' + rangeText()
+      : 'in the ' + (sel.length === 1 ? 'week' : sel.length + ' weeks') + ' shown';
+    $('cap').textContent = 'granted ' + what + ' · ' + count(res.funded)
+      + (res.funded === 1 ? ' funded row' : ' funded rows');
     renderControls(sel);
+  }
+
+  function status(w) {
+    if (w.done) {
+      const s = el('span', 'wstat done', '✓ Complete');
+      s.title = 'Nothing new in ' + w.need + ' weekly checks in a row; still checked once a month';
+      return s;
+    }
+    let t = 'Still checking · ' + Math.min(w.quiet, w.need) + ' of ' + w.need + ' quiet weeks';
+    if (w.pending) t += ' · ' + count(w.pending) + ' waiting for amounts';
+    const s = el('span', 'wstat', t);
+    s.title = 'Checked every Monday; complete after ' + w.need
+      + ' checks in a row find nothing new and nothing waiting for an amount';
+    return s;
   }
 
   function renderCards(sel, qv) {
@@ -1877,24 +2108,26 @@ LEDGER_JS = """
     if (!sel.some(w => w.iso === activeTab)) activeTab = sel.length ? sel[0].iso : null;
     let grand = 0, funded = 0;
     sel.forEach(w => {
-      const list = ROWS.filter(r => val(r, w) > 0 && r.hay.includes(qv) && passes(r.tr.cells[w.i]));
+      const list = ROWS.filter(r => eff(r, w).n > 0 && r.hay.includes(qv) && passes(r.tr.cells[w.i]));
       if (S.sort === 'name') list.sort((a, b) => a.inst.localeCompare(b.inst));
-      else list.sort((a, b) => val(b, w) - val(a, w) || a.inst.localeCompare(b.inst));
-      const sum = list.reduce((s, r) => s + val(r, w), 0);
+      else list.sort((a, b) => eff(b, w).sum - eff(a, w).sum || a.inst.localeCompare(b.inst));
+      const sum = list.reduce((s, r) => s + eff(r, w).sum, 0);
       grand += sum;
       funded += list.length;
 
       const col = el('section', w.iso === activeTab ? 'col on' : 'col');
       const head = el('div', 'colhead');
       head.append(el('h2', '', w.label),
-                  el('span', '', count(list.length) + ' funded' + (list.length ? ' · ' + money(sum) : '')));
+                  el('span', 'csub', 'Notice week · ' + count(list.length) + ' funded'
+                     + (list.length ? ' · ' + money(sum) : '')),
+                  status(w));
       col.append(head);
       if (!list.length) {
         const e = el('div', 'empty');
         if (w.funded) e.append(el('b', '', 'No rows match'),
                                el('span', '', 'Nothing this week fits the search or filters.'));
         else e.append(el('b', '', 'No awards recorded for this week'),
-                      el('span', '', 'Every Monday the last 8 weeks are checked again, so awards NIH posts late are still added.'));
+                      el('span', '', 'Every Monday each week is checked again until it’s complete, so awards NIH posts late are still added.'));
         col.append(e);
       }
       const show = expanded[w.iso] ? list : list.slice(0, PAGE);
@@ -1907,7 +2140,8 @@ LEDGER_JS = """
       }
       cardsEl.append(col);
 
-      const tab = el('button', w.iso === activeTab ? 'on' : '', w.short + ' · ' + count(list.length));
+      const tab = el('button', w.iso === activeTab ? 'on' : '',
+                     w.short + (w.done ? ' ✓' : '') + ' · ' + count(list.length));
       tab.type = 'button';
       tab.setAttribute('aria-pressed', w.iso === activeTab ? 'true' : 'false');
       tab.addEventListener('click', () => { activeTab = w.iso; render(); });
@@ -1936,13 +2170,13 @@ LEDGER_JS = """
       w.th.style.display = d;
       ROWS.forEach(r => { r.tr.cells[w.i].style.display = d; });
     });
-    const filt = anyCellFilter();
-    const keep = c => +c.dataset.v > 0 && passes(c);
+    const filt = anyCellFilter() || awardFilterOn();
+    const keep = (r, w) => eff(r, w).n > 0 && passes(r.tr.cells[w.i]);
     ROWS.forEach(r => {
-      const ok = r.hay.includes(qv) && (!filt || sel.some(w => keep(r.tr.cells[w.i])));
+      const ok = r.hay.includes(qv) && (!filt || sel.some(w => keep(r, w)));
       r.tr.style.display = ok ? '' : 'none';
     });
-    const tot = r => sel.reduce((s, w) => s + val(r, w), 0);
+    const tot = r => sel.reduce((s, w) => s + eff(r, w).sum, 0);
     const order = ROWS.slice();
     if (S.sort === 'name') order.sort((a, b) => a.inst.localeCompare(b.inst));
     else order.sort((a, b) => tot(b) - tot(a) || a.inst.localeCompare(b.inst));
@@ -1952,18 +2186,18 @@ LEDGER_JS = """
       if (r.tr.style.display === 'none') return;
       r.tr.cells[0].textContent = ++n;
       sel.forEach(w => {
-        const c = r.tr.cells[w.i];
-        if (+c.dataset.v > 0 && (!filt || passes(c))) { grand += +c.dataset.v; funded++; }
+        if (eff(r, w).n > 0 && (!filt || passes(r.tr.cells[w.i]))) { grand += eff(r, w).sum; funded++; }
       });
     });
     return { grand, funded };
   }
 
   const NAMES = { email: 'Has a PI email', name: 'Has a PI name', inst: 'Has an institution',
-                  linked: 'Publication linked to grant', recent: 'Publications in last 5 years' };
+                  linked: 'Publication linked to grant', recent: 'Publications in last 5 years',
+                  late: 'Only awards added late' };
   function renderControls(sel) {
     const labels = { latest: 'Latest week', last4: 'Last 4 weeks', all: 'All weeks' };
-    $('weekslabel').textContent = labels[S.mode]
+    $('weekslabel').textContent = S.mode === 'range' ? rangeText() : labels[S.mode]
       || (sel.length === 1 ? sel[0].label : sel.length + ' picked');
     document.querySelectorAll('#weeksmenu [data-quick]').forEach(b => {
       b.classList.toggle('on', b.dataset.quick === S.mode);
@@ -1972,16 +2206,20 @@ LEDGER_JS = """
     const on = new Set(sel.map(w => w.iso));
     document.querySelectorAll('#weeksmenu input[type=checkbox]').forEach(cb => { cb.checked = on.has(cb.value); });
     $('wkcount').textContent = sel.length + (sel.length === 1 ? ' week' : ' weeks') + ' selected';
+    if (rf) { rf.value = S.mode === 'range' ? S.from : ''; rt.value = S.mode === 'range' ? S.to : ''; }
     hideBox.checked = S.hide;
-    for (const k in BOX) BOX[k].checked = S.f[k];
+    for (const k in BOX) if (BOX[k]) BOX[k].checked = S.f[k];
     sortSel.value = S.sort;
 
     const chips = [];
+    if (S.mode === 'range') chips.push(['Notice dates ' + rangeText(),
+      () => { S.mode = 'last4'; S.from = S.to = ''; }]);
     if (S.hide) chips.push(['Rows with no award hidden', () => { S.hide = false; }]);
     for (const k in NAMES) if (S.f[k]) chips.push([NAMES[k], () => { S.f[k] = false; }]);
-    const badge = $('fbadge');
-    badge.textContent = chips.length;
-    badge.hidden = !chips.length;
+    const badge = $('fbadge');          // counts only what the Filters popup sets
+    const nf = chips.length - (S.mode === 'range' ? 1 : 0);
+    badge.textContent = nf;
+    badge.hidden = !nf;
     const box = $('chips');
     box.textContent = '';
     chips.forEach(([text, off]) => {
@@ -1989,7 +2227,7 @@ LEDGER_JS = """
       const x = el('button', '', '×');
       x.type = 'button';
       x.setAttribute('aria-label', 'Remove filter: ' + text);
-      x.addEventListener('click', () => { off(); changed(); });
+      x.addEventListener('click', () => { off(); expanded = {}; changed(); });
       chip.append(el('span', '', text), x);
       box.append(chip);
     });
@@ -2007,14 +2245,27 @@ LEDGER_JS = """
   document.addEventListener('click', () => { if (!wmenu.hidden) openWeeks(false); });
   $('weeksdone').addEventListener('click', () => openWeeks(false));
   wmenu.querySelectorAll('[data-quick]').forEach(b => b.addEventListener('click', () => {
-    S.mode = b.dataset.quick; S.weeks = []; expanded = {}; changed();
+    S.mode = b.dataset.quick; S.weeks = []; S.from = S.to = ''; expanded = {}; changed();
   }));
   wmenu.querySelectorAll('input[type=checkbox]').forEach(cb => cb.addEventListener('change', () => {
     const cur = new Set(selected().map(w => w.iso));
     if (cb.checked) cur.add(cb.value); else cur.delete(cb.value);
     if (!cur.size) { cb.checked = true; return; }   // always keep at least one week
-    S.mode = 'custom'; S.weeks = [...cur]; changed();
+    S.mode = 'custom'; S.weeks = [...cur]; S.from = S.to = ''; changed();
   }));
+  // custom range: picking one end fills the other with the oldest / newest day
+  function rangeChanged() {
+    let a = rf.value, b = rt.value;
+    if (!a && !b) {
+      if (S.mode === 'range') S.mode = 'last4';
+      S.from = S.to = ''; expanded = {}; changed(); return;
+    }
+    if (!a) a = NOTICE[NOTICE.length - 1];
+    if (!b) b = NOTICE[0];
+    if (a > b) [a, b] = [b, a];
+    S.mode = 'range'; S.from = a; S.to = b; S.weeks = []; expanded = {}; changed();
+  }
+  if (rf) { rf.addEventListener('change', rangeChanged); rt.addEventListener('change', rangeChanged); }
 
   // filters popup
   const fmodal = $('filtermodal');
@@ -2024,11 +2275,20 @@ LEDGER_JS = """
   $('filterdone').addEventListener('click', closeFilters);
   fmodal.addEventListener('click', e => { if (e.target === fmodal) closeFilters(); });
   hideBox.addEventListener('change', () => { S.hide = hideBox.checked; changed(); });
-  for (const k in BOX) BOX[k].addEventListener('change', () => { S.f[k] = BOX[k].checked; changed(); });
+  for (const k in BOX) if (BOX[k]) BOX[k].addEventListener('change', () => {
+    S.f[k] = BOX[k].checked; expanded = {}; changed();
+  });
   $('filterreset').addEventListener('click', () => {
     S.hide = true;
     for (const k in S.f) S.f[k] = false;
     changed();
+  });
+  // header line: "N awards were added late ... Show them"
+  const showLate = $('showlate');
+  if (showLate) showLate.addEventListener('click', () => {
+    S.f.late = true; S.hide = true;
+    if (S.mode !== 'range') { S.mode = 'all'; S.weeks = []; }
+    expanded = {}; changed();
   });
 
   sortSel.addEventListener('change', () => { S.sort = sortSel.value; changed(); });
@@ -2294,16 +2554,73 @@ def render_html(data, pubs=None, linked=None) -> str:
     week_funded = {w: sum(1 for r in rows if r["cells"].get(w)) for w in weeks}
     n_awards = sum(len(v) for r in rows for v in r["cells"].values())
 
-    head_cells = "".join(
-        f'<th class="num" data-w="{w}" data-total="{week_totals[w]}" '
-        f'data-label="{wlabel(w)}" data-short="{wshort(w)}" title="{w}">{wlabel(w)}</th>'
-        for w in weeks)
+    # each week's check-off status (see update_week_status)
+    today = date.today()
+    wmeta = data.get("meta", {}).get("weeks", {})
+
+    def wstatus(w):
+        st = wmeta.get(w) or {}
+        young = (today - date.fromisoformat(w)).days < PENDING_GRACE_DAYS
+        return (bool(st.get("complete")), int(st.get("quiet", 0)),
+                int(st.get("pending", 0)) if young else 0)
+
+    def head_cell(w):
+        done, quiet, pend = wstatus(w)
+        end = (date.fromisoformat(w) + timedelta(days=6)).isoformat()
+        sub = ("✓ Complete" if done else
+               f"Checking · {min(quiet, QUIET_CHECKS_TO_COMPLETE)}/{QUIET_CHECKS_TO_COMPLETE} quiet")
+        return (f'<th class="num" data-w="{w}" data-end="{end}" data-total="{week_totals[w]}" '
+                f'data-status="{"complete" if done else "open"}" data-quiet="{quiet}" '
+                f'data-need="{QUIET_CHECKS_TO_COMPLETE}" data-pending="{pend}" '
+                f'data-label="{wlabel(w)}" data-short="{wshort(w)}" title="{w}">{wlabel(w)}'
+                f'<div class="thsub{" done" if done else ""}">{sub}</div></th>')
+
+    head_cells = "".join(head_cell(w) for w in weeks)
     # the weeks menu lists the newest week first
     week_items = "".join(
         f'<label class="wk"><input type="checkbox" value="{w}">'
         f'<span class="wkl">{wlabel(w)}</span>'
-        f'<span class="wkn">{week_funded[w]:,} funded</span></label>'
+        f'<span class="wkn">{week_funded[w]:,} funded'
+        + (' · <span class="ok">✓ complete</span>' if wstatus(w)[0] else "")
+        + "</span></label>"
         for w in reversed(weeks))
+
+    # custom range: From / To list only the days that have awards, newest first
+    entries = [e for r in rows for v in r["cells"].values() for e in v]
+    notices = sorted({e["notice"] for e in entries if e.get("notice")}, reverse=True)
+    multi_year = len({n[:4] for n in notices}) > 1
+
+    def nlabel(n):
+        return short_date(n) + (f", {n[:4]}" if multi_year else "")
+
+    if notices:
+        opts = '<option value="">—</option>' + "".join(
+            f'<option value="{n}">{nlabel(n)}</option>' for n in notices)
+        range_html = f"""<div class="range" role="group" aria-labelledby="rangehead">
+        <div class="rangehead" id="rangehead">Custom range · award notice dates</div>
+        <div class="rangerow"><label>From<select id="rangefrom">{opts}</select></label>
+          <label>To<select id="rangeto">{opts}</select></label></div>
+        <div class="rangenote">Shows the weeks these dates fall in, with only the awards
+          whose notice date is in the range.</div></div>"""
+    else:
+        range_html = """<div class="range"><div class="rangehead">Custom range · award notice
+        dates</div><div class="rangenote">Notice dates appear after the next Monday
+        update.</div></div>"""
+
+    # awards NIH posted after their week was first checked
+    late = [e for e in entries if e.get("late")]
+    if late:
+        recent = max(e.get("added") or "" for e in late)
+        one = len(late) == 1
+        late_html = (
+            f'<div class="lateline" id="lateline"><span>{len(late):,} '
+            f'{"award was" if one else "awards were"} added late, after '
+            f'{"its" if one else "their"} week was first checked'
+            + (f" (most recent: {short_date(recent)})" if recent else "")
+            + f'.</span><button type="button" class="linkbtn" id="showlate">'
+            f'{"Show it" if one else "Show them"}</button></div>')
+    else:
+        late_html = ""
 
     body = []
     for i, r in enumerate(rows, start=1):
@@ -2339,6 +2656,7 @@ def render_html(data, pubs=None, linked=None) -> str:
     <div class="sub">NIH awards granted each week to biotech-adjacent
       university departments &middot; updated {generated} &middot;
       {len(rows)} rows &middot; {n_awards} awards tracked</div>
+    {late_html}
   </div>
   <div class="todaybox">
     <div class="fig" id="fig">$0</div>
@@ -2357,6 +2675,7 @@ def render_html(data, pubs=None, linked=None) -> str:
         <button type="button" data-quick="last4">Last 4 weeks</button>
         <button type="button" data-quick="all">All weeks</button>
       </div>
+      {range_html}
       <div class="wklist" role="group" aria-label="Weeks">{week_items}</div>
       <div class="menufoot"><span id="wkcount"></span>
         <button type="button" class="primary" id="weeksdone">Done</button></div>
@@ -2389,11 +2708,15 @@ def render_html(data, pubs=None, linked=None) -> str:
 {chr(10).join(body)}
 </tbody></table></div>
 
-<div class="legend">Each week is one completed Sunday&ndash;Saturday week. An award
-appears once, in the week of its NIH award-notice date, so amounts are never
-double-counted; every Monday the last 8 weeks are checked again, so awards NIH
-posts late are still added. Cards with several awards list each one and end with
-a ruled <b>= total</b>. &ldquo;No department listed&rdquo; (-- in the table) means
+<div class="legend">Each week is one completed Sunday&ndash;Saturday week of NIH award
+notice dates. An award appears once, in the week of its notice date, so amounts are
+never double-counted. NIH often posts an award, or its dollar amount, weeks late, so
+every Monday each week is checked again. A week is marked <b>&check; Complete</b> after
+{QUIET_CHECKS_TO_COMPLETE} weekly checks in a row find nothing new and no matching award
+still waiting for an amount; complete weeks are still checked once a month and reopen
+if anything turns up. Every award shows its <b>Award Notice Date</b>; awards that arrived
+after their week was first checked carry an amber <span class="late">Added: date</span>
+tag. Cards with several awards list each one and end with a ruled <b>= total</b>. &ldquo;No department listed&rdquo; (-- in the table) means
 NIH reported none for that keyword-matched award. PI lines show the contact PI of
 the largest award; emails come from the PI&rsquo;s own recent publications (PubMed
 and Europe PMC), and -- means none was found yet. Source: NIH RePORTER (refreshes
@@ -2424,6 +2747,12 @@ Sunday nights; this page updates every Monday morning).</div>
         <label class="fopt"><input type="checkbox" id="onlylinked">Publication linked to the grant</label>
         <label class="fopt"><input type="checkbox" id="onlyrecent">Publications in the last 5 years</label>
         <span class="fhint">Check both to see rows with either.</span>
+      </div>
+      <div class="fgroup" role="group" aria-labelledby="flate">
+        <h3 id="flate">Added late</h3>
+        <label class="fopt"><input type="checkbox" id="onlylate">Only awards added late</label>
+        <span class="fhint">Awards NIH posted after their week was first checked. They carry
+          an <span class="late">Added: date</span> tag.</span>
       </div>
     </div>
     <div class="ffoot">
@@ -2471,10 +2800,40 @@ def selftest() -> int:
     assert wlabel("2026-09-06") == "Sep 6 – Sep 12"
     assert wlabel("2026-09-27") == "Sep 27 – Oct 3"
     assert wshort("2026-09-20") == "Sep 20–26" and wshort("2026-09-27") == "Sep 27–Oct 3"
-    span = recheck_weeks(date(2026, 11, 3))
-    assert len(span) == RECHECK_WEEKS == 8, "re-check covers 8 weeks"
-    assert span[-1] == (date(2026, 10, 25), date(2026, 10, 31)), "newest = last completed week"
-    assert span[0] == (date(2026, 9, 6), date(2026, 9, 12)), "oldest first, 7 weeks back"
+    assert short_date("2026-09-08") == "Sep 8"
+
+    # every week is checked until 8 quiet weekly checks in a row; then monthly
+    led = {"dates": ["2026-09-06", "2026-09-20"], "rows": {}, "meta": {}}
+    due = weeks_to_check(led, date(2026, 11, 3))
+    assert [s0 for s0, _ in due][0] == date(2026, 9, 6) and len(due) == 8, \
+        "all weeks from the first through the last completed one, gaps included"
+    assert due[-1] == (date(2026, 10, 25), date(2026, 10, 31)), "newest = last completed week"
+    day = date(2026, 11, 2)
+    for k in range(7):
+        st = update_week_status(led, "2026-09-06", 0, 0, day + timedelta(days=7 * k))
+    assert st["quiet"] == 7 and not st.get("complete"), "7 quiet checks: still open"
+    st = update_week_status(led, "2026-09-06", 0, 0, day + timedelta(days=44))
+    assert st["quiet"] == 7, "a second run in the same week must not count twice"
+    st = update_week_status(led, "2026-09-06", 0, 0, day + timedelta(days=49))
+    assert st["quiet"] == 8 and st["complete"], "8th quiet week completes it"
+    mid = {"dates": [], "rows": {}, "meta": {}}
+    update_week_status(mid, "2026-09-06", 0, 0, date(2026, 11, 4))   # a Wednesday run
+    st = update_week_status(mid, "2026-09-06", 0, 0, date(2026, 11, 9))
+    assert st["quiet"] == 2, "a mid-week run and the next Monday each see a new NIH refresh"
+    later = day + timedelta(days=49 + 7)
+    assert date(2026, 9, 6) not in [s0 for s0, _ in weeks_to_check(led, later)], \
+        "complete weeks skip the weekly check"
+    assert date(2026, 9, 6) in [s0 for s0, _ in weeks_to_check(led, day + timedelta(days=49 + 28))], \
+        "complete weeks get the monthly check"
+    st = update_week_status(led, "2026-09-06", 2, 0, later)
+    assert not st["complete"] and st["quiet"] == 0 and st["reopened"], "new awards reopen it"
+    young = date(2026, 9, 20)
+    st = update_week_status(led, "2026-09-20", 0, 0, day)
+    st = update_week_status(led, "2026-09-20", 0, 3, day + timedelta(days=7))
+    assert st["quiet"] == 0 and st["pending"] == 3, "a $0 listing keeps a young week open"
+    old = young + timedelta(days=PENDING_GRACE_DAYS + 7)
+    st = update_week_status(led, "2026-09-20", 0, 3, old)
+    assert st["quiet"] == 1, "after the grace period a $0 listing no longer holds it open"
 
     # automatic fresh start from old daily-format data
     save_json(DATA_FILE, {"dates": ["2026-09-16"], "rows": {
@@ -2582,6 +2941,37 @@ def selftest() -> int:
     globals()["lookup_pi_email"] = orig_lookup
     globals()["_batch_grant_pmids"] = orig_batch
 
+    # awards recorded before notice dates were kept get theirs on the next check
+    filled = dict(wk1[0], notice="2026-09-08")
+    data, n_fill = ingest([filled], "2026-09-06")
+    assert n_fill == 0, "a notice-date fill is not a new award"
+    big = data["rows"]["brown university||biomedical engineering||nih (nigms)"]["cells"]["2026-09-06"][0]
+    assert big["notice"] == "2026-09-08" and big["late"] is False and big["added"]
+
+    # an award that turns up after its week was first checked is tagged late
+    later_day = date.today() + timedelta(days=7)
+    data, n_late = ingest([make_award(
+        "NIH:555", "Tufts University", NO_DEPT_LABEL, 90_000,
+        "https://reporter.nih.gov/project-details/555", "NIH (NIAID)", "Ada Lovelace",
+        notice="2026-09-10")], "2026-09-06", later_day)
+    assert n_late == 1
+    e555 = [e for e in data["rows"]["tufts university||--||nih (niaid)"]["cells"]["2026-09-06"]
+            if e["url"].endswith("/555")][0]
+    assert e555["late"] is True and e555["added"] == later_day.isoformat(), "late flag"
+
+    # added dates for awards recorded before this build come from the repo history
+    hist_led = {"dates": ["2026-09-06"], "meta": {}, "rows": {"r": {"cells": {"2026-09-06": [
+        {"amount": 1, "url": "https://reporter.nih.gov/project-details/901"},
+        {"amount": 2, "key": "NIH:902", "url": "x"}]}}}}
+    save_json(history_path(), {"week_first_checked": {"2026-09-06": "2026-09-16"},
+                               "late": {"2026-11-03": [902]}})
+    apply_added_history(hist_led)
+    h1, h2 = hist_led["rows"]["r"]["cells"]["2026-09-06"]
+    assert h1["added"] == "2026-09-16" and h1["late"] is False, "on-time award from history"
+    assert h2["added"] == "2026-11-03" and h2["late"] is True, "late award from history"
+    assert hist_led["meta"]["weeks"]["2026-09-06"]["first_checked"] == "2026-09-16"
+    history_path().unlink()
+
     write_site(data)
     page = (DOCS_DIR / "index.html").read_text()
     main_head = page.split('<table id="t">')[1].split("</thead>")[0]
@@ -2595,6 +2985,13 @@ def selftest() -> int:
     assert page.index('value="2026-09-13"') < page.index('value="2026-09-06"'), \
         "weeks menu lists the newest week first"
     assert 'id="filtermodal"' in page and 'id="hidezero"' in page, "filters popup"
+    assert 'id="rangefrom"' in page and 'id="rangeto"' in page, "notice-date range"
+    assert '<option value="2026-09-10">Sep 10</option>' in page, "range lists days with awards"
+    assert 'id="onlylate"' in page and 'id="showlate"' in page, "late filter + header line"
+    assert "1 award was added late" in page, "header late line"
+    assert 'data-status="open"' in page and 'data-end="2026-09-12"' in page, "week status attrs"
+    assert "Award Notice Date: Sep 8" in page and 'data-n="2026-09-08"' in page, "notice date"
+    assert "Added: " in page and 'data-late="1"' in page, "late tag"
     assert 'id="cards"' in page and 'id="tablewrap"' in page, "card view + table view"
     assert ">Author Order<" in page and "Author Contribution" not in page, "renamed header"
     assert '<th data-t="text">Institution</th>' in page, "Institution column"
@@ -2611,6 +3008,7 @@ def selftest() -> int:
     assert "mode: 'last4'" in js and "hide: true" in js, \
         "defaults: last 4 weeks, rows with no award hidden"
     assert "localStorage" in js and "PAGE = 25" in js, "remembered choices, top 25 per week"
+    assert "S.mode === 'range'" in js and "S.f.late" in js, "range + late filters in the script"
     ledger_js = js.split("// ---- publication popup ----")[0]
     assert "innerText" not in ledger_js, "row text must be read once (innerText per row froze the page)"
     assert "<tr data-he=" not in page and ' data-pl="' in page.split("<tbody>")[1] \
@@ -2623,6 +3021,10 @@ def selftest() -> int:
                       {"R01Y": {"pmid": None, "checked": "2026-09-20"}})
     assert 'href="#">Publications Within The Past 5 Years? Yes</a>' in demo, \
         "whole 5-year line must be the popup link"
+    demo2 = _cell_html([{"amount": 5, "label": "$5", "url": "u", "notice": "2026-09-16",
+                         "added": "2026-11-03", "late": True}], "X")
+    assert "Award Notice Date: Sep 16" in demo2 and "Added: Nov 3" in demo2 \
+        and 'data-late="1"' in demo2 and 'data-a="5"' in demo2, "award line dates"
     for need in ["Abstract (Yes/No)", 'class="abslink"', 'id="absmodal"', "k === 'abs'",
                  "europepmc/webservices/rest/search"]:
         assert need in page, f"abstract feature markup missing: {need}"
@@ -2641,8 +3043,8 @@ def selftest() -> int:
     assert "PI Email: --" in page
     assert 'data-v="0">0<' in page
     assert "r.tr.cells[0].textContent = ++n" in js, "table rows renumber after sort/filter"
-    assert 'data-total="5850000"' in page, \
-        "week header must carry its own total (4.6M + 0.5M + 0.75M)"
+    assert 'data-total="5940000"' in page, \
+        "week header must carry its own total (4.6M + 0.5M + 0.75M + the late 90K)"
     assert 'data-label="Sep 6 – Sep 12"' in page, "week header label missing"
     assert 'id="fig"' in page and 'id="cap"' in page, "summary ids missing"
     assert page.count('<th class="num" data-w="') == 2, "one header per week"
@@ -2660,7 +3062,7 @@ def selftest() -> int:
     data, n4 = ingest([wk1[0], late], "2026-09-06")
     assert n4 == 1, "only the late award is new"
     tufts = data["rows"]["tufts university||--||nih (niaid)"]["cells"]["2026-09-06"]
-    assert [e["amount"] for e in tufts] == [750_000, 250_000], "late award joins its own week"
+    assert [e["amount"] for e in tufts] == [750_000, 90_000, 250_000], "late award joins its own week"
     assert data["dates"] == ["2026-09-06", "2026-09-13"], "no extra columns"
     data, n5 = ingest([late], "2026-09-06")
     assert n5 == 0, "re-checking the same week again adds nothing"
@@ -2696,17 +3098,23 @@ def main() -> int:
         write_site(data)
         return 0
 
-    span = recheck_weeks(date.today())
-    log(f"checking the last {len(span)} weeks: {span[0][0]} .. {span[-1][1]} "
-        f"(awards by NIH award-notice date; ones already recorded are skipped)")
-    data, added = None, 0
-    for start, end in span:
-        awards = fetch_nih_week(start, end)
-        data, new = ingest(awards, start.isoformat())
+    today = date.today()
+    data = load_json(DATA_FILE, {"dates": [], "rows": {}, "meta": {}})
+    due = weeks_to_check(data, today)
+    log(f"checking {len(due)} week(s) (awards by NIH award-notice date; "
+        f"ones already recorded are skipped; complete weeks wait for their monthly check)")
+    added = 0
+    for start, end in due:
+        awards, pending = fetch_nih_week(start, end)
+        data, new = ingest(awards, start.isoformat(), today)
+        st = update_week_status(data, start.isoformat(), new, pending, today)
+        save_json(DATA_FILE, data)
         added += new
-        log(f"  week of {start}: {len(awards)} award(s) matched filters, {new} new")
+        log(f"  week of {start}: {len(awards)} matched, {new} new, {pending} waiting for "
+            f"an amount - " + ("complete" if st.get("complete") else
+                               f"quiet {st.get('quiet', 0)} of {QUIET_CHECKS_TO_COMPLETE}"))
         time.sleep(1)
-    log(f"NIH RePORTER: {added} new award(s) across {len(span)} weeks")
+    log(f"NIH RePORTER: {added} new award(s) across {len(due)} week(s)")
     data = sweep_pi_emails(data)
     if ENABLE_EMAIL_LOOKUP and not args.skip_pubs:
         data = sweep_publications(data)
