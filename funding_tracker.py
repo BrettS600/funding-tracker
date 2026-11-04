@@ -36,6 +36,10 @@ Outputs
   data/pi_email_cache.json PI email lookup cache
   data/nih_emails.csv      emails revealed on NIH's project pages (you add these;
                            docs/nih-email-helper.user.js collects them in Chrome)
+  data/nih_links.csv       every PI with their NIH View Email link, rebuilt each run;
+                           emails typed into its nih_email column are kept and shown
+  data/nih_links.md        the same list with clickable links (GitHub's CSV view
+                           shows links as plain text)
   docs/index.html          sortable/filterable page served by GitHub Pages
 
 Usage
@@ -1506,18 +1510,120 @@ def load_nih_emails() -> dict:
     """{RePORTER appl id: email} from data/nih_emails.csv - the lines the email
     helper copies (appl_id,email,pi,date). A header, blank lines and anything
     that isn't an id plus a valid email are skipped; a later line for the same
-    project wins."""
+    project wins. Emails typed into data/nih_links.csv are added too."""
     import csv
     path = nih_emails_path()
     out = {}
+    if path.exists():
+        for rec in csv.reader(path.read_text(encoding="utf-8").splitlines()):
+            if len(rec) >= 2:
+                appl, email = rec[0].strip(), rec[1].strip()
+                if appl.isdigit() and EMAIL_RE.fullmatch(email):
+                    out[appl] = email
+    # emails typed by hand into the links list's nih_email column
+    for appl, note in read_nih_links_notes().items():
+        if EMAIL_RE.fullmatch(note):
+            out[appl] = note
+    return out
+
+
+def nih_links_path() -> Path:
+    return DATA_DIR / "nih_links.csv"
+
+
+def nih_links_md_path() -> Path:
+    return DATA_DIR / "nih_links.md"
+
+
+NIH_LINKS_URL = "https://github.com/BrettS600/funding-tracker/blob/main/data/nih_links.md"
+NIH_LINKS_EDIT_URL = "https://github.com/BrettS600/funding-tracker/edit/main/data/nih_links.csv"
+NIH_LINKS_HEADER = ["appl_id", "pi", "university", "department", "funder",
+                    "notice_date", "amount", "nih_link", "nih_email"]
+
+
+def read_nih_links_notes() -> dict:
+    """{appl id: whatever is typed in the nih_email column} from data/nih_links.csv,
+    kept exactly as typed (an email, or a note like 'not available')."""
+    import csv
+    path = nih_links_path()
+    out = {}
     if not path.exists():
         return out
-    for rec in csv.reader(path.read_text(encoding="utf-8").splitlines()):
-        if len(rec) >= 2:
-            appl, email = rec[0].strip(), rec[1].strip()
-            if appl.isdigit() and EMAIL_RE.fullmatch(email):
-                out[appl] = email
+    for rec in csv.DictReader(path.read_text(encoding="utf-8").splitlines()):
+        appl = (rec.get("appl_id") or "").strip()
+        note = (rec.get("nih_email") or "").strip()
+        if appl.isdigit() and note:
+            out[appl] = note
     return out
+
+
+def write_nih_links(data) -> int:
+    """Rebuilds data/nih_links.csv: one row per PI (their newest award), newest first,
+    with the link that opens NIH's project page at the View Email button. Anything
+    already typed in a PI's nih_email column is kept, even when their newest award
+    changes; otherwise the column shows an NIH email from data/nih_emails.csv.
+    Run after apply_nih_emails. Returns the number of rows."""
+    import csv
+    import io
+    notes = read_nih_links_notes()
+    best = {}
+    for row in data["rows"].values():
+        for week, entries in row["cells"].items():
+            for e in entries:
+                appl, pi = _appl_id(e), (e.get("pi") or "").strip()
+                if not appl or not pi:
+                    continue
+                key = f"{pi}|{row['university']}".lower()
+                g = best.setdefault(key, {"note": "", "nih": ""})
+                g["note"] = g["note"] or notes.get(appl, "")
+                g["nih"] = g["nih"] or e.get("nih_email", "")
+                rank = (e.get("notice") or week, int(appl))
+                if rank > g.get("rank", ("", 0)):
+                    g.update(rank=rank, appl=appl, e=e, row=row)
+    table = []
+    for g in sorted(best.values(), key=lambda g: (g["rank"][0], g["e"]["pi"]), reverse=True):
+        e, row = g["e"], g["row"]
+        table.append([g["appl"], e["pi"], row["university"], row["department"], row["funder"],
+                      g["rank"][0], e.get("label") or fmt_money(e["amount"]),
+                      f"https://reporter.nih.gov/project-details/{g['appl']}#details",
+                      g["note"] or g["nih"]])
+    out = io.StringIO()
+    w = csv.writer(out, lineterminator="\n")
+    w.writerow(NIH_LINKS_HEADER)
+    w.writerows(table)
+    nih_links_path().parent.mkdir(parents=True, exist_ok=True)
+    nih_links_path().write_text(out.getvalue(), encoding="utf-8")
+
+    # the same list as a page GitHub shows with clickable links (its CSV view
+    # shows links as plain text)
+    def md(v):
+        # \$ stops GitHub reading dollar amounts as math
+        return (str(v).replace("\\", "\\\\").replace("|", "\\|").replace("$", "\\$")
+                .replace("<", "&lt;").strip())
+
+    done = sum(1 for r in table if r[8])
+    lines = [
+        "# NIH View Email links, one per PI",
+        "",
+        f"Rebuilt every run from the tracker: {len(table):,} PIs, newest award first. "
+        f"Email recorded for {done:,}.",
+        "",
+        "- **View email** opens the PI's NIH project page at the View Email button "
+        "(Ctrl-click or Cmd-click opens it in a new tab). With the Chrome email helper "
+        "installed, the button is pressed for you.",
+        f"- Record an email in [nih_links.csv]({NIH_LINKS_EDIT_URL}): row **#N** here is "
+        "line **N+1** in the editor. Type the email at the end of that line (after the "
+        "last comma), then Commit changes. The tracker shows it with the NIH tag on its "
+        "next update, and every run keeps what you typed.",
+        "",
+        "| # | PI | University | Notice date | Amount | NIH | Email recorded |",
+        "|---:|---|---|---|---:|---|---|",
+    ]
+    for i, r in enumerate(table, start=1):
+        lines.append(f"| {i} | {md(r[1])} | {md(r[2])} | {r[5]} | {md(r[6])} | "
+                     f"[View email]({r[7]}) | {md(r[8])} |")
+    nih_links_md_path().write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return len(best)
 
 
 def apply_nih_emails(data) -> int:
@@ -2702,6 +2808,8 @@ def render_html(data, pubs=None, linked=None) -> str:
                     if e.get("nih_email"):
                         pis_nih.add(k)
     nih_html = (f'<div class="nihline">NIH emails collected for {len(pis_nih):,} of {len(pis):,} PIs '
+                f'&middot; <a href="{NIH_LINKS_URL}" target="_blank" rel="noopener">'
+                f'List of every PI&rsquo;s NIH link</a> '
                 f'&middot; <a href="nih-email-helper.user.js">Get the Chrome email helper</a></div>')
 
     body = []
@@ -2808,7 +2916,10 @@ publications (PubMed and Europe PMC) and may belong to someone with a similar na
 &ldquo;View email on NIH&rdquo; opens the PI&rsquo;s NIH page at its View Email button;
 the <a href="nih-email-helper.user.js">Chrome email helper</a> (needs the Tampermonkey
 extension) presses it once on the page you open and keeps a list to paste into
-data/nih_emails.csv. Source: NIH RePORTER (refreshes
+data/nih_emails.csv. The same links, one per PI, are listed in
+<a href="{NIH_LINKS_URL}" target="_blank" rel="noopener">data/nih_links.md</a>
+(rebuilt every run); an email typed into the nih_email column of data/nih_links.csv
+is kept and shown here with the NIH tag. Source: NIH RePORTER (refreshes
 Sunday nights; this page updates every Monday morning).</div>
 
 <div id="filtermodal" hidden>
@@ -2869,7 +2980,8 @@ Sunday nights; this page updates every Monday morning).</div>
 def write_site(data) -> None:
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
     n_nih = apply_nih_emails(data)
-    log(f"NIH emails (data/nih_emails.csv) on {n_nih} award(s)")
+    n_links = write_nih_links(data)
+    log(f"NIH emails on {n_nih} award(s); data/nih_links.csv lists {n_links} PI(s)")
     pubs = load_json(pubs_cache_path(), {})
     linked = load_json(linked_cache_path(), {})
     n = write_pub_files(data, pubs, linked)
@@ -3074,8 +3186,38 @@ def selftest() -> int:
         'appl_id,email,pi,date\n222,ada@tufts.edu,"LOVELACE, ADA",2026-11-04\n'
         'not-an-id,x@y.edu\n111,not an email\n\n', encoding="utf-8")
     assert load_nih_emails() == {"222": "ada@tufts.edu"}
+    # emails (and notes) typed by hand into the links list
+    nih_links_path().write_text(
+        ",".join(NIH_LINKS_HEADER) + "\n"
+        '333,Amy New,Brown University,x,x,2026-09-13,"$1,000,000",u,not available\n'
+        '112,John Small,Brown University,x,x,2026-09-06,"$500,000",u, jsmall@brown.edu \n',
+        encoding="utf-8")
+    assert load_nih_emails() == {"222": "ada@tufts.edu", "112": "jsmall@brown.edu"}
 
     write_site(data)
+    import csv
+    links = list(csv.DictReader(nih_links_path().read_text(encoding="utf-8").splitlines()))
+    by_pi = {r["pi"]: r for r in links}
+    assert len(links) == 4 and set(by_pi) == {"Jane Big", "John Small", "Ada Lovelace", "Amy New"}, \
+        "one row per PI"
+    assert links[0]["pi"] == "Amy New", "newest award first"
+    assert by_pi["Jane Big"]["nih_link"] == "https://reporter.nih.gov/project-details/111#details" \
+        and by_pi["Jane Big"]["nih_email"] == "", "link opens at View Email; email blank to fill in"
+    assert by_pi["John Small"]["nih_email"] == "jsmall@brown.edu", "typed email kept"
+    assert by_pi["Amy New"]["nih_email"] == "not available", "typed note kept as typed"
+    small = [e for e in data["rows"]["brown university||biomedical engineering||nih (nigms)"][
+        "cells"]["2026-09-06"] if e["pi"] == "John Small"][0]
+    assert small["nih_email"] == "jsmall@brown.edu", "a typed email reaches the award"
+    assert by_pi["Ada Lovelace"]["appl_id"] == "555" and by_pi["Ada Lovelace"]["nih_email"] \
+        == "ada@tufts.edu", "a PI's newest award, with the email recorded on an older one"
+    assert by_pi["Jane Big"]["amount"] == "$4,600,000" and by_pi["Jane Big"]["notice_date"] == "2026-09-08"
+    mdl = nih_links_md_path().read_text(encoding="utf-8")
+    assert "| 1 | Amy New | Brown University | 2026-09-13 | \\$1,000,000 | " \
+        "[View email](https://reporter.nih.gov/project-details/333#details) | not available |" in mdl
+    assert "[View email](https://reporter.nih.gov/project-details/111#details) |  |" in mdl, \
+        "blank email cell"
+    assert "4 PIs, newest award first. Email recorded for 3." in mdl
+    assert "line **N+1**" in mdl and NIH_LINKS_EDIT_URL in mdl
     page = (DOCS_DIR / "index.html").read_text()
     main_head = page.split('<table id="t">')[1].split("</thead>")[0]
     assert main_head.count("<th ") == 5, "expected 3 label ths + 2 week ths (# th has no attrs)"
@@ -3150,7 +3292,9 @@ def selftest() -> int:
         "PIs without an NIH email get the View email on NIH link"
     assert "project-details/222#details" not in page, "no NIH link once the NIH email is in"
     assert 'data-nih="1"' in page and 'data-nih="0"' in page and 'id="onlynonih"' in page
-    assert "NIH emails collected for 1 of 4 PIs" in page, "progress line"
+    assert "NIH emails collected for 2 of 4 PIs" in page, "progress line"
+    assert "project-details/333#details" in page, "a note that isn't an email keeps the link"
+    assert f'href="{NIH_LINKS_URL}"' in page, "header links to the clickable list"
     assert all(e.get("nih_email") == "ada@tufts.edu"
                for e in data["rows"]["tufts university||--||nih (niaid)"]["cells"]["2026-09-06"]), \
         "the PI's other award at the same university gets the NIH email too"
