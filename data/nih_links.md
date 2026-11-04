@@ -3,7 +3,7 @@
 Rebuilt every run from the tracker: 1,208 PIs, newest award first. Email recorded for 0.
 
 - **View email** opens the PI's NIH project page at the View Email button (Ctrl-click or Cmd-click opens it in a new tab). With the Chrome email helper installed, the button is pressed for you.
-- Record an email in [nih_links.csv](https://github.com/BrettS600/funding-tracker/edit/main/data/nih_links.csv): row **#N** here is line **N+1** in the editor. Type the email at the end of that line (after the last comma), then Commit changes. The tracker shows it with the NIH tag on its next update, and every run keeps what you typed.
+- Record an email in [nih_links.csv](https://github.com/BrettS600/funding-tracker/edit/main/data/nih_links.csv): row **#N** here is line **N+1** in the editor. Type the email at the end of that line (after the last comma), then Commit changes. The site shows it as the NIH PI Email on its next update, and every run keeps what you typed.
 
 | # | PI | University | Notice date | Amount | NIH | Email recorded |
 |---:|---|---|---|---:|---|---|
